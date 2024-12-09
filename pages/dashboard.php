@@ -21,7 +21,7 @@
                <tr>
                   <td>1</td>
                   <td>
-                     <img src="../assets/img/avatars/1.png" alt="users" class="rounded w-50">
+                     <img src="assets/img/avatars/1.png" alt="users" class="rounded w-75">
                   </td>
                   <td>Albert Einsten</td>
                   <td>1234567843218765</td>
@@ -33,7 +33,7 @@
                <tr>
                   <td>2</td>
                   <td>
-                     <img src="../assets/img/avatars/2.png" alt="users" class="rounded w-50">
+                     <img src="assets/img/avatars/2.png" alt="users" class="rounded w-75">
                   </td>
                   <td>Nikola Tesla</td>
                   <td>0987123454326789</td>
