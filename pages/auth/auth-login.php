@@ -98,7 +98,7 @@
                   <h4 class="mb-1">Welcome to Perpustakaan! 👋🏻</h4>
                   <p class="mb-5">Please sign-in to your account</p>
 
-                  <form id="formAuthentication" class="mb-5" action="../?page=dashboard" method="POST">
+                  <form id="formAuthentication" class="mb-5" action="../../?page=dashboard" method="POST">
                      <div class="form-floating form-floating-outline mb-5">
                         <input type="text" class="form-control" id="email" name="email-username"
                            placeholder="Enter your email or username" autofocus />
