@@ -15,7 +15,7 @@
             <!-- Account -->
             <div class="card-body">
                <div class="d-flex align-items-start align-items-sm-center gap-6">
-                  <img src="../assets/img/avatars/1.png" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded"
+                  <img src="assets/img/avatars/1.png" alt="user-avatar" class="d-block w-px-100 h-px-100 rounded"
                      id="uploadedAvatar" />
                   <div class="button-wrapper">
                      <label for="upload" class="btn btn-sm btn-primary me-3 mb-4" tabindex="0">
