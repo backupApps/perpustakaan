@@ -13,7 +13,7 @@
    <meta name="description" content="" />
 
    <!-- Favicon -->
-   <link rel="icon" type="image/x-icon" href="../../../assets/img/favicon/favicon.ico" />
+   <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
 
    <!-- Fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,28 +21,28 @@
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
       rel="stylesheet" />
 
-   <link rel="stylesheet" href="../../../assets/vendor/fonts/remixicon/remixicon.css" />
+   <link rel="stylesheet" href="../../assets/vendor/fonts/remixicon/remixicon.css" />
 
    <!-- Menu waves for no-customizer fix -->
-   <link rel="stylesheet" href="../../../assets/vendor/libs/node-waves/node-waves.css" />
+   <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
 
    <!-- Core CSS -->
-   <link rel="stylesheet" href="../../../assets/vendor/css/core.css" class="template-customizer-core-css" />
-   <link rel="stylesheet" href="../../../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-   <link rel="stylesheet" href="../../../assets/css/demo.css" />
+   <link rel="stylesheet" href="../../assets/vendor/css/core.css" class="template-customizer-core-css" />
+   <link rel="stylesheet" href="../../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+   <link rel="stylesheet" href="../../assets/css/demo.css" />
 
    <!-- Vendors CSS -->
-   <link rel="stylesheet" href="../../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+   <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
    <!-- Page CSS -->
    <!-- Page -->
-   <link rel="stylesheet" href="../../../assets/vendor/css/pages/page-auth.css" />
+   <link rel="stylesheet" href="../../assets/vendor/css/pages/page-auth.css" />
 
    <!-- Helpers -->
-   <script src="../../../assets/vendor/js/helpers.js"></script>
+   <script src="../../assets/vendor/js/helpers.js"></script>
    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-   <script src="../../../assets/js/config.js"></script>
+   <script src="../../assets/js/config.js"></script>
 </head>
 
 <body>
@@ -98,7 +98,7 @@
                   <h4 class="mb-1">Welcome to Perpustakaan! 👋🏻</h4>
                   <p class="mb-5">Please sign-in to your account</p>
 
-                  <form id="formAuthentication" class="mb-5" action="../../?page=dashboard" method="POST">
+                  <form id="formAuthentication" class="mb-5" action="../?page=dashboard" method="POST">
                      <div class="form-floating form-floating-outline mb-5">
                         <input type="text" class="form-control" id="email" name="email-username"
                            placeholder="Enter your email or username" autofocus />
@@ -134,13 +134,13 @@
                </div>
             </div>
             <!-- /Login -->
-            <img src="../../../assets/img/illustrations/tree-3.png" alt="auth-tree"
+            <img src="../../assets/img/illustrations/tree-3.png" alt="auth-tree"
                class="authentication-image-object-left d-none d-lg-block" />
-            <img src="../../../assets/img/illustrations/auth-basic-mask-light.png"
+            <img src="../../assets/img/illustrations/auth-basic-mask-light.png"
                class="authentication-image d-none d-lg-block" height="172" alt="triangle-bg"
                data-app-light-img="illustrations/auth-basic-mask-light.png"
                data-app-dark-img="illustrations/auth-basic-mask-dark.png" />
-            <img src="../../../assets/img/illustrations/tree.png" alt="auth-tree"
+            <img src="../../assets/img/illustrations/tree.png" alt="auth-tree"
                class="authentication-image-object-right d-none d-lg-block" />
          </div>
       </div>
@@ -150,19 +150,19 @@
 
    <!-- Core JS -->
    <!-- build:js assets/vendor/js/core.js -->
-   <script src="../../../assets/vendor/libs/jquery/jquery.js"></script>
-   <script src="../../../assets/vendor/libs/popper/popper.js"></script>
-   <script src="../../../assets/vendor/js/bootstrap.js"></script>
-   <script src="../../../assets/vendor/libs/node-waves/node-waves.js"></script>
-   <script src="../../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-   <script src="../../../assets/vendor/js/menu.js"></script>
+   <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+   <script src="../../assets/vendor/libs/popper/popper.js"></script>
+   <script src="../../assets/vendor/js/bootstrap.js"></script>
+   <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+   <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+   <script src="../../assets/vendor/js/menu.js"></script>
 
    <!-- endbuild -->
 
    <!-- Vendors JS -->
 
    <!-- Main JS -->
-   <script src="../../../assets/js/main.js"></script>
+   <script src="../../assets/js/main.js"></script>
 
    <!-- Page JS -->
 
