@@ -1,11 +1,11 @@
 <!doctype html>
 
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default"
-   data-assets-path="../assets/" data-template="vertical-menu-template-free" data-style="light">
+   data-assets-path="assets/" data-template="vertical-menu-template-free" data-style="light">
 
 <head>
    <!-- Page CSS -->
-   <?php include("../components/link-css.php"); ?>
+   <?php include("components/link-css.php"); ?>
 </head>
 
 <body>
@@ -13,12 +13,12 @@
    <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
          <!-- Sidebar Menu -->
-         <?php include("../components/sidebar.php"); ?>
+         <?php include("components/sidebar.php"); ?>
 
          <!-- Layout container -->
          <div class="layout-page">
             <!-- Navbar -->
-            <?php include("../components/navbar.php"); ?>
+            <?php include("components/navbar.php"); ?>
 
             <!-- Content wrapper -->
             <div class="content-wrapper">
@@ -28,7 +28,7 @@
                   include("pages/" . $page . ".php");
                ?>
                <!-- Footer -->
-               <?php include("../components/footer.php"); ?>
+               <?php include("components/footer.php"); ?>
                <!-- / Footer -->
 
                <div class="content-backdrop fade"></div>
@@ -40,7 +40,7 @@
    </div>
 
    <!-- Core JS -->
-   <?php include("../components/link-js.php"); ?>
+   <?php include("components/link-js.php"); ?>
 </body>
 
 </html>
