@@ -32,52 +32,38 @@
                   The Book To Be Borrowed
                </h5>
             </div>
-            <div class="row g-6 mb-6 p-4">
-               <div class="col-md-6 col-xl-4">
-                  <div class="card bg-success text-white">
-                     <div class="card-body">
-                        <i class="menu-icon tf-icons ri-check-line"></i>
-                        <h5 class="card-title text-white">Books Title</h5>
-                        <p class="card-text">123</p>
-                     </div>
+            <div class="card-body">
+               <h6>Book 1</h6>
+               <form>
+                  <div class="input-group input-group-merge mb-6">
+                     <span class="input-group-text" id="basic-addon-search31"><i
+                           class="ri-search-line ri-20px"></i></span>
+                     <input type="text" class="form-control" placeholder="Code" aria-label="Search..."
+                        aria-describedby="basic-addon-search31" />
                   </div>
-               </div>
-               <div class="col-md-6 col-xl-4">
-                  <div class="card bg-success text-white">
-                     <div class="card-body">
-                        <i class="menu-icon tf-icons ri-check-line"></i>
-                        <h5 class="card-title text-white">Books Title</h5>
-                        <p class="card-text">312</p>
-                     </div>
+                  <div class="form-floating form-floating-outline mb-6">
+                     <input type="text" class="form-control" placeholder="Harry Potter; Games of Thrones; ..." />
+                     <label for="basic-default-company">Title</label>
                   </div>
-               </div>
-               <div class="col-md-6 col-xl-4">
-                  <div class="card bg-warning text-white">
-                     <div class="card-body">
-                        <i class="menu-icon tf-icons ri-close-line"></i>
-                        <h5 class="card-title text-white">Books Title</h5>
-                        <p class="card-text">312</p>
-                     </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+               </form>
+            </div>
+            <hr />
+            <div class="card-body">
+               <h6>Book 2</h6>
+               <form>
+                  <div class="input-group input-group-merge mb-6">
+                     <span class="input-group-text" id="basic-addon-search31"><i
+                           class="ri-search-line ri-20px"></i></span>
+                     <input type="text" class="form-control" placeholder="Code" aria-label="Search..."
+                        aria-describedby="basic-addon-search31" />
                   </div>
-               </div>
-               <div class="col-md-6 col-xl-4">
-                  <div class="card bg-warning text-white">
-                     <div class="card-body">
-                        <i class="menu-icon tf-icons ri-close-line"></i>
-                        <h5 class="card-title text-white">Books Title</h5>
-                        <p class="card-text">312</p>
-                     </div>
+                  <div class="form-floating form-floating-outline mb-6">
+                     <input type="text" class="form-control" placeholder="Harry Potter; Games of Thrones; ..." />
+                     <label for="basic-default-company">Title</label>
                   </div>
-               </div>
-               <div class="col-md-6 col-xl-4">
-                  <div class="card bg-warning text-white">
-                     <div class="card-body">
-                        <i class="menu-icon tf-icons ri-close-line"></i>
-                        <h5 class="card-title text-white">Books Title</h5>
-                        <p class="card-text">312</p>
-                     </div>
-                  </div>
-               </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+               </form>
             </div>
          </div>
       </div>

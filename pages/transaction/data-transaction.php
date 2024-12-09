@@ -16,10 +16,6 @@
                      <input type="text" class="form-control" id="basic-default-company" placeholder="" />
                      <label for="basic-default-company">Borrower's Name</label>
                   </div>
-                  <div class="form-floating form-floating-outline mb-6">
-                     <input type="text" class="form-control" id="basic-default-company" placeholder="" />
-                     <label for="basic-default-company">Address</label>
-                  </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                </form>
             </div>
@@ -29,23 +25,23 @@
          <div class="card mb-6">
             <div class="card-header d-flex justify-content-between align-items-center">
                <h5 class="mb-0">
-                  The Book To Be Borrowed
+                  Borrowed Books
                </h5>
             </div>
-            <div class="card-body">
-               <form>
-                  <div class="input-group input-group-merge mb-6">
-                     <span class="input-group-text" id="basic-addon-search31"><i
-                           class="ri-search-line ri-20px"></i></span>
-                     <input type="text" class="form-control" placeholder="Code" aria-label="Search..."
-                        aria-describedby="basic-addon-search31" />
-                  </div>
-                  <div class="form-floating form-floating-outline mb-6">
-                     <input type="text" class="form-control" placeholder="Harry Potter; Games of Thrones; ..." />
-                     <label for="basic-default-company">Title</label>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-               </form>
+
+            <div class="row g-6 mb-6 p-4">
+               <div class="input-group">
+                  <input type="text" class="form-control" value="123 | Title Book 1" />
+                  <button class="btn btn-outline-primary" type="submit">Return</button>
+               </div>
+               <div class="input-group">
+                  <input type="text" class="form-control" value="213 | Title Book 2" />
+                  <button class="btn btn-outline-primary" type="submit">Return</button>
+               </div>
+               <div class="input-group">
+                  <input type="text" class="form-control" value="321 | Title Book 3" />
+                  <button class="btn btn-outline-primary" type="submit">Return</button>
+               </div>
             </div>
          </div>
       </div>
