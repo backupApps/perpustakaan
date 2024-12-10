@@ -1,3 +1,11 @@
+<?php 
+session_start();
+if (isset($_SESSION['login'])) {
+   header('location: ../../?page=dashboard');
+   exit();
+}
+?>
+
 <!doctype html>
 
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default"
@@ -55,7 +63,7 @@
             <div class="card p-7">
                <!-- Logo -->
                <div class="app-brand justify-content-center mt-5">
-                  <a href="index.html" class="app-brand-link gap-3">
+                  <a href="" class="app-brand-link gap-3">
                      <span class="app-brand-logo demo">
                         <span style="color: #9055fd">
                            <svg width="30" height="24" viewBox="0 0 250 196" fill="none"
@@ -96,39 +104,61 @@
 
                <div class="card-body mt-1">
                   <h4 class="mb-1">Welcome to Perpustakaan! 👋🏻</h4>
+                  <?php if (isset($_SESSION['msg-global'])) { ?>
+                  <p class="text-danger text mb-5">
+                     <?php 
+                     echo $_SESSION['msg-global']; 
+                     unset($_SESSION['username']); 
+                     unset($_SESSION['password']);
+                     ?>
+                  </p>
+                  <?php } else { ?>
                   <p class="mb-5">Please sign-in to your account</p>
+                  <?php } ?>
 
-                  <form id="formAuthentication" class="mb-5" action="../../?page=dashboard" method="POST">
+                  <form class="mb-5" action="login-process.php" method="POST">
                      <div class="form-floating form-floating-outline mb-5">
-                        <input type="text" class="form-control" id="email" name="email-username"
-                           placeholder="Enter your email or username" autofocus />
-                        <label for="email">Email or Username</label>
+                        <input type="text"
+                           class="form-control <?php echo (isset($_SESSION['msg-user'])) ?'border-danger' : null; ?>"
+                           id="email" name="username" placeholder="Enter your username"
+                           value="<?php echo (isset($_SESSION['username'])) ? $_SESSION['username'] : null; ?>"
+                           <?php echo (isset($_SESSION['msg-user'])) ? null : 'autofocus'; ?> />
+                        <label for="email">Username</label>
+                        <?php if (isset($_SESSION['msg-user'])) { ?>
+                        <span class="text-danger">
+                           <?php echo $_SESSION['msg-user'];?>
+                        </span>
+                        <?php } ?>
                      </div>
                      <div class="mb-5">
                         <div class="form-password-toggle">
                            <div class="input-group input-group-merge">
                               <div class="form-floating form-floating-outline">
-                                 <input type="password" id="password" class="form-control" name="password"
-                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                    aria-describedby="password" />
+                                 <input type="password" id="password" name="password"
+                                    class="form-control <?php echo (isset($_SESSION['msg-pass'])) ? 'border-danger' : null; ?>"
+                                    value="<?php echo (isset($_SESSION['password'])) ? $_SESSION['password'] : null; ?>"
+                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
                                  <label for="password">Password</label>
                               </div>
-                              <span class="input-group-text cursor-pointer"><i
-                                    class="ri-eye-off-line ri-20px"></i></span>
+                              <span
+                                 class="input-group-text cursor-pointer <?php echo (isset($_SESSION['msg-pass'])) ? 'border-danger' : null; ?>">
+                                 <i class="ri-eye-off-line ri-20px"></i>
+                              </span>
                            </div>
+                           <?php if (isset($_SESSION['msg-pass'])) { ?>
+                           <span class="text-danger">
+                              <?php echo $_SESSION['msg-pass'];?>
+                           </span>
+                           <?php } ?>
                         </div>
                      </div>
                      <div class="mb-5 pb-2 d-flex justify-content-between pt-2 align-items-center">
-                        <div class="form-check mb-0">
-                           <input class="form-check-input" type="checkbox" id="remember-me" />
-                           <label class="form-check-label" for="remember-me"> Remember Me </label>
-                        </div>
                         <a href="auth-forgot.php" class="float-end mb-1">
                            <span>Forgot Password?</span>
                         </a>
                      </div>
                      <div class="mb-5">
-                        <button class="btn btn-primary d-grid w-100" type="submit">login</button>
+                        <button class="btn btn-primary d-grid w-100" type="submit" name="submit">login</button>
                      </div>
                   </form>
                </div>
@@ -157,17 +187,13 @@
    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
    <script src="../../assets/vendor/js/menu.js"></script>
 
-   <!-- endbuild -->
-
-   <!-- Vendors JS -->
-
    <!-- Main JS -->
    <script src="../../assets/js/main.js"></script>
-
-   <!-- Page JS -->
 
    <!-- Place this tag before closing body tag for github widget button. -->
    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
+
+<?php session_destroy(); ?>
