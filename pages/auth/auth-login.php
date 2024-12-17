@@ -105,13 +105,13 @@ if (isset($_SESSION['login'])) {
                <div class="card-body mt-1">
                   <h4 class="mb-1">Welcome to Perpustakaan! 👋🏻</h4>
                   <?php if (isset($_SESSION['msg-global'])) { ?>
-                  <p class="text-danger text mb-5">
+                  <div class="alert alert-danger mt-2" role="alert">
                      <?php 
                      echo $_SESSION['msg-global']; 
                      unset($_SESSION['username']); 
                      unset($_SESSION['password']);
                      ?>
-                  </p>
+                  </div>
                   <?php } else { ?>
                   <p class="mb-5">Please sign-in to your account</p>
                   <?php } ?>
@@ -125,9 +125,9 @@ if (isset($_SESSION['login'])) {
                            <?php echo (isset($_SESSION['msg-user'])) ? null : 'autofocus'; ?> />
                         <label for="email">Username</label>
                         <?php if (isset($_SESSION['msg-user'])) { ?>
-                        <span class="text-danger">
+                        <div class="alert alert-danger mt-2" role="alert">
                            <?php echo $_SESSION['msg-user'];?>
-                        </span>
+                        </div>
                         <?php } ?>
                      </div>
                      <div class="mb-5">
@@ -146,9 +146,9 @@ if (isset($_SESSION['login'])) {
                               </span>
                            </div>
                            <?php if (isset($_SESSION['msg-pass'])) { ?>
-                           <span class="text-danger">
+                           <div class="alert alert-danger mt-2" role="alert">
                               <?php echo $_SESSION['msg-pass'];?>
-                           </span>
+                           </div>
                            <?php } ?>
                         </div>
                      </div>

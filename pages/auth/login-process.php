@@ -25,7 +25,7 @@ if (isset($_SESSION['msg-user']) || isset($_SESSION['msg-pass'])){
    exit();
 }
 
-$connect = mysqli_connect("localhost", "root", "phpmyadminpassword", "pbo");
+include('../../components/connection.php');
 
 $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 $query = mysqli_query($connect, $sql);
