@@ -1,4 +1,5 @@
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+<nav
+   class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme shadow"
    id="layout-navbar">
    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-4 me-xl-0 d-xl-none">
       <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
@@ -53,7 +54,7 @@
                </li>
                <li>
                   <div class="d-grid px-4 pt-2 pb-1">
-                     <a class="btn btn-danger d-flex" href="auth/process/logout-process.php">
+                     <a class="btn btn-danger d-flex" href="pages/auth/logout-process.php">
                         <small class="align-middle">Logout</small>
                         <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
                      </a>
