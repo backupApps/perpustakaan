@@ -1,0 +1,9 @@
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# Kondisi: Jika URL bukan file atau folder yang ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect semua ke 404.php
+RewriteRule ^ /pages/404.php [L]
