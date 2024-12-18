@@ -53,7 +53,7 @@
                </li>
                <li>
                   <div class="d-grid px-4 pt-2 pb-1">
-                     <a class="btn btn-danger d-flex" href="pages/auth/logout-process.php">
+                     <a class="btn btn-danger d-flex" href="auth/process/logout-process.php">
                         <small class="align-middle">Logout</small>
                         <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
                      </a>
