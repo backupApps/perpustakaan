@@ -38,4 +38,4 @@ if($numRow == 0){
 
 // login
 $_SESSION['login'] = true;
-header('location: ../../?page=dashboard');
+header('location: ../../main/?page=dashboard');
