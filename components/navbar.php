@@ -1,5 +1,4 @@
-<nav
-   class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme shadow"
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl align-items-center bg-navbar-theme shadow"
    id="layout-navbar">
    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-4 me-xl-0 d-xl-none">
       <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
@@ -30,7 +29,7 @@
          <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
                <div class="avatar avatar-online">
-                  <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                  <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
@@ -39,7 +38,7 @@
                      <div class="d-flex align-items-center">
                         <div class="flex-shrink-0 me-2">
                            <div class="avatar avatar-online">
-                              <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                            </div>
                         </div>
                         <div class="flex-grow-1">
