@@ -22,7 +22,7 @@ if ($address == '') {
    $_SESSION['msg']['address'] = "Kolom penerbit tidak boleh kosong!";
 }
 
-if (isset($_SESSION['msg']['code']) || isset($_SESSION['msg']['name']) || $_SESSION['msg']['address']) {
+if (isset($_SESSION['msg']['code']) || isset($_SESSION['msg']['name']) || isset($_SESSION['msg']['address'])) {
    header('location: ../../../?page=publisher/input-publisher');
    exit();
 }
