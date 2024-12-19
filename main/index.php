@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION['login'])){
-   header('location: auth/form-login.php');
+   header('location: ../auth/form-login.php');
    exit();
 }
 ?>
@@ -13,7 +13,7 @@ if (!isset($_SESSION['login'])){
 
 <head>
    <!-- Page CSS -->
-   <?php include("components/link-css.php"); ?>
+   <?php include("../components/link-css.php"); ?>
 </head>
 
 <body>
@@ -27,19 +27,19 @@ if (!isset($_SESSION['login'])){
    <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
          <!-- Sidebar Menu -->
-         <?php include("components/sidebar.php"); ?>
+         <?php include("../components/sidebar.php"); ?>
 
          <!-- Layout container -->
          <div class="layout-page">
             <!-- Navbar -->
-            <?php include("components/navbar.php"); ?>
+            <?php include("../components/navbar.php"); ?>
 
             <!-- Content wrapper -->
             <div class="content-wrapper">
                <!-- Content -->
                <?php include($page_path); ?>
                <!-- Footer -->
-               <?php include("components/footer.php"); ?>
+               <?php include("../components/footer.php"); ?>
                <!-- / Footer -->
 
                <div class="content-backdrop fade"></div>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['login'])){
    ?>
 
    <!-- Core JS -->
-   <?php include("components/link-js.php"); ?>
+   <?php include("../components/link-js.php"); ?>
 </body>
 
 </html>
