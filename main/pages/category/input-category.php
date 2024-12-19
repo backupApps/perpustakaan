@@ -22,7 +22,7 @@
                   <div class="mb-6">
                      <label class="form-label">Code Category</label>
                      <input type="text" name="code" class="form-control" id="basic-default-fullname"
-                        placeholder="NVL; CMC; SNC; ..." readonly />
+                        placeholder="NVL; CMC; SNC; ..." />
                      <?php if (isset($_SESSION['msg']['code'])) { ?>
                      <div class="alert alert-danger mt-2" role="alert">
                         <?php echo $_SESSION['msg']['code'];?>

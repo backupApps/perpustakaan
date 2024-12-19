@@ -19,7 +19,8 @@ include('process/read.php');
                <form action="pages/category/process/update.php" method="POST">
                   <div class="mb-6">
                      <label class="form-label">Code Category</label>
-                     <input type="text" name="code" class="form-control" value="<?php echo $data['code']; ?>" />
+                     <input type="text" name="code" class="form-control" value="<?php echo $data['code']; ?>"
+                        readonly />
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Name Category</label>
