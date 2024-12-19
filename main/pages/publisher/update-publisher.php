@@ -1,37 +1,31 @@
+<?php
+include('process/read.php');
+?>
+
 <div class="container-xxl flex-grow-1 container-p-y">
    <!-- Basic Layout -->
    <div class="row w-50">
       <div class="col-xl">
          <div class="card mb-6">
             <div class="card-header d-flex justify-content-between align-items-center">
-               <h5 class="mb-0">Publisher | Input</h5>
+               <h5 class="mb-0">Publisher | Update</h5>
             </div>
             <?php if (isset($_SESSION['msg']['failed'])) { ?>
             <div class="alert alert-danger mt-2" role="alert">
                <?php echo $_SESSION['msg']['failed'];?>
             </div>
             <?php } ?>
-
-            <?php if (isset($_SESSION['msg']['success'])) { ?>
-            <div class="alert alert-success mt-2" role="alert">
-               <?php echo $_SESSION['msg']['success'];?>
-            </div>
-            <?php } ?>
             <div class="card-body">
-               <form action="pages/publisher/process/create.php" method="POST">
+               <form action="pages/publisher/process/update.php" method="POST">
                   <div class="mb-6">
-                     <label class="form-label">Code</label>
-                     <input type="text" name="code" class="form-control" id="basic-default-fullname"
-                        placeholder="ERL; GRA; ..." />
-                     <?php if (isset($_SESSION['msg']['code'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['code'];?>
-                     </div>
-                     <?php } ?>
+                     <label class="form-label">Code Publisher</label>
+                     <input type="text" name="code" class="form-control" value="<?php echo $data['code']; ?>"
+                        readonly />
                   </div>
                   <div class="mb-6">
-                     <label class="form-label">Name</label>
-                     <input type="text" name="name" class="form-control" placeholder="Erlangga; Grammedia; ..." />
+                     <label class="form-label">Name Publisher</label>
+                     <input type="text" name="name" class="form-control" value="<?php echo $data['name']; ?>"
+                        placeholder="Novel; Comic; Sains; Encyclopedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
                      <div class="alert alert-danger mt-2" role="alert">
                         <?php echo $_SESSION['msg']['name'];?>
@@ -40,14 +34,15 @@
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Address</label>
-                     <input type="text" name="address" class="form-control" />
+                     <input type="text" name="address" class="form-control" value="<?php echo $data['address']; ?>" />
                      <?php if (isset($_SESSION['msg']['address'])) { ?>
                      <div class="alert alert-danger mt-2" role="alert">
                         <?php echo $_SESSION['msg']['address'];?>
                      </div>
                      <?php } ?>
                   </div>
-                  <button type="submit" name="submit" class="btn btn-primary">Add Publisher</button>
+                  <button type="submit" class="btn btn-secondary">Back</button>
+                  <button type="submit" name="submit" class="btn btn-primary">Save</button>
                </form>
             </div>
          </div>
