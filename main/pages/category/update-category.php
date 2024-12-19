@@ -1,9 +1,5 @@
 <?php
-$code = $_REQUEST['code'];
-include('components/connection.php');
-$sql = "SELECT * FROM category WHERE code='$code'";
-$query = mysqli_query($connect, $sql);
-$data = mysqli_fetch_array($query);
+include('process/read.php');
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -19,12 +15,6 @@ $data = mysqli_fetch_array($query);
                <?php echo $_SESSION['msg']['failed'];?>
             </div>
             <?php } ?>
-
-            <?php if (isset($_SESSION['msg']['success'])) { ?>
-            <div class="alert alert-success mt-2" role="alert">
-               <?php echo $_SESSION['msg']['success'];?>
-            </div>
-            <?php } ?>
             <div class="card-body">
                <form action="pages/category/process/update.php" method="POST">
                   <div class="mb-6">
@@ -33,7 +23,7 @@ $data = mysqli_fetch_array($query);
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Name Category</label>
-                     <input type="text" name="name" class="form-control"
+                     <input type="text" name="name" class="form-control" value="<?php echo $data['name']; ?>"
                         placeholder="Novel; Comic; Sains; Encyclopedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
                      <div class="alert alert-danger mt-2" role="alert">

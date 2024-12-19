@@ -13,6 +13,12 @@ $no = 1;
          <?php echo $_SESSION['msg']['delete'];?>
       </div>
       <?php } ?>
+
+      <?php if (isset($_SESSION['msg']['update'])) { ?>
+      <div class="alert alert-success mt-2" role="alert">
+         <?php echo $_SESSION['msg']['update'];?>
+      </div>
+      <?php } ?>
       <div class="table-responsive text-nowrap">
          <table class="table table-striped">
             <thead>

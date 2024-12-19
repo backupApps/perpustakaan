@@ -22,7 +22,7 @@ if (isset($_SESSION['msg']['code']) || isset($_SESSION['msg']['name'])) {
    exit();
 }
 
-include('../../../components/connection.php');
+include('../../../../components/connection.php');
 
 $sql = "SELECT * FROM category WHERE code='$code' OR name='$name'";
 $query = mysqli_query($connect, $sql);
