@@ -71,17 +71,7 @@ if ($synopsis == '') {
    $_SESSION['msg']['synopsis'] = "Kolom sinopsis tidak boleh kosong!";
 }
 
-if (isset($_SESSION['msg']['code']) || 
-   isset($_SESSION['msg']['title']) || 
-   isset($_SESSION['msg']['category']) ||
-   isset($_SESSION['msg']['writer']) ||
-   isset($_SESSION['msg']['isbn']) ||
-   isset($_SESSION['msg']['publisher']) ||
-   isset($_SESSION['msg']['date']) ||
-   isset($_SESSION['msg']['cover']) ||
-   isset($_SESSION['msg']['language']) ||
-   isset($_SESSION['msg']['synopsis'])
-) {
+if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=book/input-book');
    exit();
 }
