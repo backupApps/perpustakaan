@@ -87,21 +87,21 @@
 
       <!-- Member -->
       <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'member/member-data' || $_REQUEST['page'] == 'member/member-input' ) {echo 'open';}?>">
+         class="menu-item <?php if ($_REQUEST['page'] == 'member/data-member' || $_REQUEST['page'] == 'member/input-member' ) {echo 'open';}?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-id-card-line"></i>
             <div data-i18n="Member">Member</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page']=='member/member-data')?'active':null ?>">
-               <a href="?page=member/member-data" class="menu-link">
+            <li class="menu-item <?php echo ($_REQUEST['page']=='member/data-member')?'active':null ?>">
+               <a href="?page=member/data-member" class="menu-link">
                   <div data-i18n="Data">Member Data</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page']=='member/member-input')?'active':null ?>">
-               <a href="?page=member/member-input" class="menu-link">
+            <li class="menu-item <?php echo ($_REQUEST['page']=='member/input-member')?'active':null ?>">
+               <a href="?page=member/input-member" class="menu-link">
                   <div data-i18n="Input">Member Input</div>
                </a>
             </li>
