@@ -7,7 +7,7 @@ $query = mysqli_query($connect, $sql);
 $editData = [];
 if (isset($_REQUEST['code'])) {
    $code = $_REQUEST['code'];
-   $sql = "SELECT * FROM category WHERE code='$code'";
+   $sql = "SELECT * FROM category WHERE category_code='$code'";
    $query = mysqli_query($connect, $sql);
    $data = mysqli_fetch_array($query);
 }

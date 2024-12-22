@@ -17,14 +17,14 @@ if ($name == '') {
    $_SESSION['msg']['name'] = "Kolom nama tidak boleh kosong!";
 }
 
-if (isset($_SESSION['msg']['code']) || isset($_SESSION['msg']['name'])) {
+if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=category/input-category');
    exit();
 }
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM category WHERE code='$code' OR name='$name'";
+$sql = "SELECT * FROM category WHERE category_code='$code' OR category_name='$name'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data kategori sudah ada, periksa kode atau nama yang sama!";
@@ -33,6 +33,6 @@ if (mysqli_num_rows($query) != 0) {
 }
 
 $sql = "INSERT INTO category VALUES ('$code', '$name')";
-$query = mysqli_query($connect, $sql);
+mysqli_query($connect, $sql);
 $_SESSION['msg']['success'] = "Data kategori baru berhasil ditambahkan!";
 header('location: ../../../?page=category/input-category');

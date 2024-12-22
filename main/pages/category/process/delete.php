@@ -3,7 +3,7 @@
 $code = $_REQUEST['code'];
 
 include('../../../../components/connection.php');
-$sql = "DELETE FROM category WHERE code='$code'";
+$sql = "DELETE FROM category WHERE category_code='$code'";
 $query = mysqli_query($connect, $sql);
 
 session_start();

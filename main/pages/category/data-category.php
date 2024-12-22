@@ -33,15 +33,15 @@ $no = 1;
                <?php while ($data = mysqli_fetch_array($query)) { ?>
                <tr>
                   <td><?php echo $no++; ?></td>
-                  <td><?php echo $data['code']; ?></td>
-                  <td><?php echo $data['name']; ?></td>
+                  <td><?php echo $data['category_code']; ?></td>
+                  <td><?php echo $data['category_name']; ?></td>
                   <td>
-                     <a href="?page=category/update-category&code=<?php echo $data['code']; ?>"
+                     <a href="?page=category/update-category&code=<?php echo $data['category_code']; ?>"
                         class="btn btn-sm btn-info">
                         Edit
                         <i class="ri-pencil-line"></i>
                      </a> |
-                     <a href="pages/category/process/delete.php?code=<?php echo $data['code']; ?>"
+                     <a href="pages/category/process/delete.php?code=<?php echo $data['category_code']; ?>"
                         onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
                         <i class="ri-delete-bin-line"></i>
                         Delete

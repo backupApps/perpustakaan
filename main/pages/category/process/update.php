@@ -20,7 +20,7 @@ if (isset($_SESSION['msg']['name'])) {
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM category WHERE name='$name' AND code != 'code'";
+$sql = "SELECT * FROM category WHERE category_name='$name' AND category_code != 'code'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data kategori sudah ada, periksa kode atau nama yang sama!";
@@ -28,7 +28,7 @@ if (mysqli_num_rows($query) != 0) {
    exit();
 }
 
-$sql = "UPDATE category SET name='$name' WHERE code='$code'";
+$sql = "UPDATE category SET category_name='$name' WHERE category_code='$code'";
 $query = mysqli_query($connect, $sql);
 $_SESSION['msg']['update'] = "Data kategori berhasil di-edit!";
 header('location: ../../../?page=category/data-category');
