@@ -34,18 +34,18 @@ $no = 1;
                <?php while ($data = mysqli_fetch_array($query)) { ?>
                <tr>
                   <td><?php echo $no++; ?></td>
-                  <td><?php echo $data['code']; ?></td>
-                  <td><?php echo $data['name']; ?></td>
+                  <td><?php echo $data['publisher_code']; ?></td>
+                  <td><?php echo $data['publisher_name']; ?></td>
                   <td style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                      <?php echo $data['address']; ?></td>
                   </td>
                   <td>
-                     <a href="?page=publisher/update-publisher&code=<?php echo $data['code']; ?>"
+                     <a href="?page=publisher/update-publisher&code=<?php echo $data['publisher_code']; ?>"
                         class="btn btn-sm btn-info">
                         Edit
                         <i class="ri-pencil-line"></i>
                      </a> |
-                     <a href="pages/publisher/process/delete.php?code=<?php echo $data['code']; ?>"
+                     <a href="pages/publisher/process/delete.php?code=<?php echo $data['publisher_code']; ?>"
                         onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
                         <i class="ri-delete-bin-line"></i>
                         Delete

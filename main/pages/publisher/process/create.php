@@ -22,14 +22,14 @@ if ($address == '') {
    $_SESSION['msg']['address'] = "Kolom penerbit tidak boleh kosong!";
 }
 
-if (isset($_SESSION['msg']['code']) || isset($_SESSION['msg']['name']) || isset($_SESSION['msg']['address'])) {
+if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=publisher/input-publisher');
    exit();
 }
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM publisher WHERE code='$code' OR name='$name'";
+$sql = "SELECT * FROM publisher WHERE publisher_code='$code' OR publisher_name='$name'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data penerbit sudah ada, periksa kode atau nama yang sama!";
@@ -38,6 +38,6 @@ if (mysqli_num_rows($query) != 0) {
 }
 
 $sql = "INSERT INTO publisher VALUES ('$code', '$name', '$address')";
-$query = mysqli_query($connect, $sql);
+mysqli_query($connect, $sql);
 $_SESSION['msg']['success'] = "Data penerbit baru berhasil ditambahkan!";
 header('location: ../../../?page=publisher/input-publisher');

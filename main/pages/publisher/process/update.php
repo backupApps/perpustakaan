@@ -30,7 +30,7 @@ if (isset($_SESSION['msg']['address'])) {
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM publisher WHERE name='$name' AND code!='code'";
+$sql = "SELECT * FROM publisher WHERE publisher_name='$name' AND publisher_code!='code'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data penerbit sudah ada, periksa kode atau nama yang sama!";
@@ -38,7 +38,7 @@ if (mysqli_num_rows($query) != 0) {
    exit();
 }
 
-$sql = "UPDATE publisher SET name='$name', address='$address' WHERE code='$code'";
+$sql = "UPDATE publisher SET publisher_name='$name', address='$address' WHERE publisher_code='$code'";
 $query = mysqli_query($connect, $sql);
 $_SESSION['msg']['update'] = "Data penerbit berhasil di-edit!";
 header('location: ../../../?page=publisher/data-publisher');

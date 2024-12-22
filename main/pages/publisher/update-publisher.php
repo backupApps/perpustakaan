@@ -19,12 +19,12 @@ include('process/read.php');
                <form action="pages/publisher/process/update.php" method="POST">
                   <div class="mb-6">
                      <label class="form-label">Code Publisher</label>
-                     <input type="text" name="code" class="form-control" value="<?php echo $data['code']; ?>"
+                     <input type="text" name="code" class="form-control" value="<?php echo $data['publisher_code']; ?>"
                         readonly />
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Name Publisher</label>
-                     <input type="text" name="name" class="form-control" value="<?php echo $data['name']; ?>"
+                     <input type="text" name="name" class="form-control" value="<?php echo $data['publisher_name']; ?>"
                         placeholder="Novel; Comic; Sains; Encyclopedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
                      <div class="alert alert-danger mt-2" role="alert">
