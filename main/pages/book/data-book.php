@@ -43,16 +43,17 @@ $no = 1;
                   <td><?php echo $no++ ?></td>
                   <td><?php echo $data['code'] ?></td>
                   <td><?php echo $data['title'] ?></td>
-                  <td><?php echo $data['category'] ?></td>
+                  <td><?php echo $data['category_name'] ?></td>
                   <td><?php echo $data['isbn'] ?></td>
                   <td><?php echo $data['writer'] ?></td>
-                  <td><?php echo $data['publisher'] ?></td>
+                  <td><?php echo $data['publisher_name'] ?></td>
                   <td><?php echo $data['date'] ?></td>
                   <td><?php echo $data['language'] ?></td>
                   <td>
                      <img class="w-100" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
                   </td>
-                  <td><?php echo $data['synopsis'] ?></td>
+                  <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                     <?php echo $data['synopsis'] ?></td>
                   <td>
                      <a href="?page=book/update-book&code=<?php echo $data['code']; ?>" class="btn btn-sm btn-info">
                         Edit

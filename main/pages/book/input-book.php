@@ -58,23 +58,13 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            name="category">
                            <option value="">-- Select Category --</option>
                            <?php while($var = mysqli_fetch_array($selectCategory)) { ?>
-                           <option value="<?php echo $var['code'];?>"
-                              <?php echo (isset($_SESSION['value']['category']) && $_SESSION['value']['category'] == $var['code']) ? 'selected' : ''; ?>>
-                              <?php echo $var['name']; ?></option>
+                           <option value="<?php echo $var['category_code'];?>"
+                              <?php echo (isset($_SESSION['value']['category']) && $_SESSION['value']['category'] == $var['category_code']) ? 'selected' : ''; ?>>
+                              <?php echo $var['category_name']; ?></option>
                            <?php } ?>
                         </select>
                         <?php if (isset($_SESSION['msg']['category'])) { ?>
                         <span class="text-danger"><?php echo $_SESSION['msg']['category'] ?></span>
-                        <?php } ?>
-                     </div>
-                     <div class="col-md-4">
-                        <label class="form-label">Writer</label>
-                        <input
-                           class="form-control <?php echo (isset($_SESSION['msg']['writer'])) ? 'border-danger' : null; ?>"
-                           value="<?php echo (isset($_SESSION['value']['writer'])) ? $_SESSION['value']['writer'] : null; ?>"
-                           type="text" name="writer" placeholder="J.K. Rowling; J.R.R. Tolkien; ..." />
-                        <?php if (isset($_SESSION['msg']['writer'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['writer'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -88,6 +78,16 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
+                        <label class="form-label">Writer</label>
+                        <input
+                           class="form-control <?php echo (isset($_SESSION['msg']['writer'])) ? 'border-danger' : null; ?>"
+                           value="<?php echo (isset($_SESSION['value']['writer'])) ? $_SESSION['value']['writer'] : null; ?>"
+                           type="text" name="writer" placeholder="J.K. Rowling; J.R.R. Tolkien; ..." />
+                        <?php if (isset($_SESSION['msg']['writer'])) { ?>
+                        <span class="text-danger"><?php echo $_SESSION['msg']['writer'] ?></span>
+                        <?php } ?>
+                     </div>
+                     <div class="col-md-4">
                         <label class="form-label">Publisher</label>
                         <select
                            class="select2 form-select <?php echo (isset($_SESSION['msg']['publisher'])) ? 'border-danger' : null; ?>"
@@ -95,9 +95,9 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            name="publisher">
                            <option value="">-- Select Publisher --</option>
                            <?php while($var = mysqli_fetch_array($selectPublisher)) { ?>
-                           <option value="<?php echo $var['code'];?>"
-                              <?php echo (isset($_SESSION['value']['publisher']) && $_SESSION['value']['publisher'] == $var['code']) ? 'selected' : ''; ?>>
-                              <?php echo $var['name']; ?>
+                           <option value="<?php echo $var['publisher_code'];?>"
+                              <?php echo (isset($_SESSION['value']['publisher']) && $_SESSION['value']['publisher'] == $var['publisher_code']) ? 'selected' : ''; ?>>
+                              <?php echo $var['publisher_name']; ?>
                            </option>
                            <?php } ?>
                         </select>

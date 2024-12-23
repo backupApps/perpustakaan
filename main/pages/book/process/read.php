@@ -1,10 +1,9 @@
 <?php 
 include('../components/connection.php');
-// $sql = "SELECT * FROM book
-//          LEFT JOIN category ON book.code = book.code 
-//          LEFT JOIN publisher ON book.code = book.code";
+$sql = "SELECT * FROM book
+         LEFT JOIN category ON book.category_code = category.category_code 
+         LEFT JOIN publisher ON book.publisher_code = publisher.publisher_code";
 
-$sql = "SELECT * FROM book";
 $query = mysqli_query($connect, $sql);
 
 // for update

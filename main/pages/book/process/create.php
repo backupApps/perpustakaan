@@ -86,13 +86,13 @@ if (mysqli_num_rows($query) != 0) {
    exit();
 }
 
-$sql = "INSERT INTO book (`code`, `title`, `category`, `isbn`, `writer`, `publisher`, `date`, `language`, `cover`, `synopsis`)
+$sql = "INSERT INTO book
 VALUES (
    '$code', 
    '$title', 
    '$category', 
-   '$writer', 
    '$isbn', 
+   '$writer', 
    '$publisher', 
    '$date', 
    '$language', 
