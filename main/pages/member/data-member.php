@@ -63,3 +63,5 @@ $no = 1;
       </div>
    </div>
 </div>
+
+<?php unset($_SESSION['msg']); ?>

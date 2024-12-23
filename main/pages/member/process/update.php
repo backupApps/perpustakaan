@@ -17,7 +17,7 @@ $photo = $_FILES['photo']['name'];
 $fileTmp = $_FILES['photo']['tmp_name'];
 $folder = '../photo/';
 $target = $folder.$photo;
-$upload = move_uploaded_file($fileTmp, $target);
+move_uploaded_file($fileTmp, $target);
 
 // value
 $_SESSION['value']['nik'] = $nik;
@@ -43,34 +43,28 @@ if ($email == '') {
 if ($address == '') {
    $_SESSION['msg']['address'] = "Kolom address tidak boleh kosong!";
 }
-if ($photo == '') {
-   $_SESSION['msg']['photo'] = "Pilih Gambar!";
-} else if (!$upload) {
-   $_SESSION['msg']['photo'] = "Gagal meng-upload file.";
-   header('location: ../../../?page=member/update-member');
-   exit();
-}
+// if ($photo == '') {
+//    $_SESSION['msg']['photo'] = "Pilih Gambar!";
+// } else if (!$upload) {
+//    $_SESSION['msg']['photo'] = "Gagal meng-upload file.";
+//    header('location: ../../../?page=member/update-member');
+//    exit();
+// }
 
-if (isset($_SESSION['msg']['nik']) || 
-   isset($_SESSION['msg']['name']) || 
-   isset($_SESSION['msg']['phoneNumber']) ||
-   isset($_SESSION['msg']['email']) ||
-   isset($_SESSION['msg']['address']) ||
-   isset($_SESSION['msg']['photo'])
-) {
+if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=member/update-member&nik='.$nik);
    exit();
 }
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM member WHERE email='$email' AND nik!='nik'";
-$query = mysqli_query($connect, $sql);
-if (mysqli_num_rows($query) != 0) {
-   $_SESSION['msg']['failed'] = "Data anggota sudah ada, periksa kembali nomor telepon atau alamat email!";
-   header('location: ../../../?page=member/update-member&nik='.$nik);
-   exit();
-}
+// $sql = "SELECT * FROM member WHERE email='$email' AND nik!='nik'";
+// $query = mysqli_query($connect, $sql);
+// if (mysqli_num_rows($query) != 0) {
+//    $_SESSION['msg']['failed'] = "Data anggota sudah ada, periksa kembali nomor telepon atau alamat email!";
+//    header('location: ../../../?page=member/update-member&nik='.$nik);
+//    exit();
+// }
 
 $sql = "UPDATE member SET name='$name', phone_number='$phoneNumber', email='$email', address='$address', photo='$photo' WHERE nik='$nik'";
 $query = mysqli_query($connect, $sql);

@@ -85,8 +85,11 @@
                         <div class="form-floating form-floating-outline">
                            <input
                               class="form-control <?php echo (isset($_SESSION['msg']['photo'])) ? 'border-danger' : null; ?>"
-                              type="file" name="photo" placeholder="" />
+                              type="file" name="photo" placeholder=""
+                              value="<?php echo (isset($_SESSION['value']['photo']) && $_SESSION['value']['photo'] != '') ? $_SESSION['value']['photo'] : $data['photo']; ?>" />
                            <label for="photo">Photo</label>
+                           <?php echo $data['photo']; ?>
+                           <br>
                         </div><?php if (isset($_SESSION['msg']['photo'])) { ?>
                         <span class="text-danger"><?php echo $_SESSION['msg']['photo'] ?></span>
                         <?php } ?>
