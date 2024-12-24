@@ -1,8 +1,5 @@
 <?php 
 include('../components/connection.php');
-// $sql = "SELECT * FROM book
-//          LEFT JOIN category ON book.code = book.code 
-//          LEFT JOIN publisher ON book.code = book.code";
 
 $sql = "SELECT * FROM member";
 $query = mysqli_query($connect, $sql);
