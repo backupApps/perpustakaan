@@ -30,7 +30,7 @@ if (isset($_SESSION['msg']['address'])) {
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM publisher WHERE publisher_name='$name' AND publisher_code!='code'";
+$sql  = "SELECT * FROM publisher WHERE publisher_name='$name' AND publisher_code != '$code'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data penerbit sudah ada, periksa kode atau nama yang sama!";

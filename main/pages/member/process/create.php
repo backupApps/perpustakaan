@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../../../../components/connection.php');
 
 if (!isset($_POST['submit'])) {
    header('location: ../../../index.php');
@@ -16,8 +17,18 @@ $address = $_POST['address'];
 $photo = $_FILES['photo']['name'];
 $fileTmp = $_FILES['photo']['tmp_name'];
 $folder = '../photo/';
-$target = $folder.$photo;
-$upload = move_uploaded_file($fileTmp, $target);
+
+$ekstensiValid = ['jpg', 'jpeg', 'png'];
+$ekstensiFile = strtolower(pathinfo($photo, PATHINFO_EXTENSION));
+$ekstensiGambar = explode('.', $photo);
+$ekstensiGambar = end($ekstensiGambar);
+
+// fungsi waktu
+$photo = date('l, d-m-Y  H:i:s');
+
+// generate nama baru
+$newName = strtolower(md5($photo).'.'.$ekstensiGambar);
+$upload = move_uploaded_file($fileTmp, $folder.$newName);
 
 // value
 $_SESSION['value']['nik'] = $nik;
@@ -51,18 +62,10 @@ if ($photo == '') {
    exit();
 }
 
-if (isset($_SESSION['msg']['nik']) || 
-   isset($_SESSION['msg']['name']) || 
-   isset($_SESSION['msg']['phoneNumber']) ||
-   isset($_SESSION['msg']['email']) ||
-   isset($_SESSION['msg']['address']) ||
-   isset($_SESSION['msg']['photo'])
-) {
+if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=member/input-member');
    exit();
 }
-
-include('../../../../components/connection.php');
 
 $sql = "SELECT * FROM member WHERE nik='$nik' OR phone_number='$phoneNumber' OR email='$email'";
 $query = mysqli_query($connect, $sql);
@@ -72,7 +75,7 @@ if (mysqli_num_rows($query) != 0) {
    exit();
 }
 
-$sql = "INSERT INTO member VALUES ('$nik', '$name', '$phoneNumber', '$email', '$address', '$photo')";
+$sql = "INSERT INTO member VALUES ('$nik', '$name', '$phoneNumber', '$email', '$address', '$newName')";
 $query = mysqli_query($connect, $sql);
 $_SESSION['msg']['member'] = "Data anggota baru berhasil ditambahkan!";
 header('location: ../../../?page=member/input-member');

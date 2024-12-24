@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../../../../components/connection.php');
 
 if (!isset($_POST['submit'])) {
    header('location: ../../../?page=member/data-member');
@@ -16,16 +17,44 @@ $address = $_POST['address'];
 $photo = $_FILES['photo']['name'];
 $fileTmp = $_FILES['photo']['tmp_name'];
 $folder = '../photo/';
-$target = $folder.$photo;
-move_uploaded_file($fileTmp, $target);
+
+$ekstensiValid = ['jpg', 'jpeg', 'png'];
+$ekstensiFile = strtolower(pathinfo($photo, PATHINFO_EXTENSION));
+$ekstensiGambar = explode('.', $photo);
+$ekstensiGambar = end($ekstensiGambar);
+
+// fungsi waktu
+$photo = date('l, d-m-Y  H:i:s');
+
+// generate nama baru
+$newName = strtolower(md5($photo).'.'.$ekstensiGambar);
+
+// Ambil gambar lama dari database
+$sql = "SELECT photo FROM member WHERE nik='$nik'";
+$query = mysqli_query($connect, $sql);
+$data = mysqli_fetch_array($query);
+$oldFile = $data['photo'];
+$filePath = $folder . $oldFile;
+
+if ($_FILES['photo']['name']) {
+   if (file_exists($filePath)) {
+      unlink($filePath);
+   }
+
+   $upload = move_uploaded_file($fileTmp, $folder.$newName);
+   if ($upload) {
+      $sql = "UPDATE member SET photo='$newName' WHERE nik='$nik'";
+      mysqli_query($connect, $sql);
+   }
+}
 
 // value
-$_SESSION['value']['nik'] = $nik;
-$_SESSION['value']['name'] = $name;
-$_SESSION['value']['phoneNumber'] = $phoneNumber;
-$_SESSION['value']['email'] = $email;
-$_SESSION['value']['address'] = $address;
-$_SESSION['value']['photo'] = $photo;
+// $_SESSION['value']['nik'] = $nik;
+// $_SESSION['value']['name'] = $name;
+// $_SESSION['value']['phoneNumber'] = $phoneNumber;
+// $_SESSION['value']['email'] = $email;
+// $_SESSION['value']['address'] = $address;
+// $_SESSION['value']['photo'] = $photo;
 
 // validation
 if ($nik == '') {
@@ -43,30 +72,35 @@ if ($email == '') {
 if ($address == '') {
    $_SESSION['msg']['address'] = "Kolom address tidak boleh kosong!";
 }
-// if ($photo == '') {
-//    $_SESSION['msg']['photo'] = "Pilih Gambar!";
-// } else if (!$upload) {
-//    $_SESSION['msg']['photo'] = "Gagal meng-upload file.";
-//    header('location: ../../../?page=member/update-member');
-//    exit();
-// }
+if ($newName) {
+   header('location: ../../../?page=member/data-member');
+} else if ($photo == '') {
+   $_SESSION['msg']['photo'] = "Pilih Gambar!";
+} else if (!$upload) {
+   $_SESSION['msg']['photo'] = "Gagal meng-upload file.";
+   header('location: ../../../?page=member/update-member');
+   exit();
+}
 
 if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=member/update-member&nik='.$nik);
    exit();
 }
 
-include('../../../../components/connection.php');
-
-// $sql = "SELECT * FROM member WHERE email='$email' AND nik!='nik'";
-// $query = mysqli_query($connect, $sql);
-// if (mysqli_num_rows($query) != 0) {
-//    $_SESSION['msg']['failed'] = "Data anggota sudah ada, periksa kembali nomor telepon atau alamat email!";
-//    header('location: ../../../?page=member/update-member&nik='.$nik);
-//    exit();
-// }
-
-$sql = "UPDATE member SET name='$name', phone_number='$phoneNumber', email='$email', address='$address', photo='$photo' WHERE nik='$nik'";
+$sql = "SELECT * FROM member WHERE email='$email' AND nik!='$nik'";
 $query = mysqli_query($connect, $sql);
+if (mysqli_num_rows($query) != 0) {
+   $_SESSION['msg']['failed'] = "Data anggota sudah ada, periksa kembali nomor telepon atau alamat email!";
+   header('location: ../../../?page=member/update-member&nik='.$nik);
+   exit();
+}
+
+$sql = "UPDATE member SET name='$name', phone_number='$phoneNumber', email='$email', address='$address' WHERE nik='$nik'";
+$query = mysqli_query($connect, $sql);
+if ($query) {
 $_SESSION['msg']['update'] = "Data member berhasil di-edit!";
 header('location: ../../../?page=member/data-member');
+} else {
+   $_SESSION['msg']['failed'] = "Gagal meng-edit data member!";
+   header('location: ../../../?page=member/update-member&nik='.$nik);
+}

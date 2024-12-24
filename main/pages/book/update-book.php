@@ -140,6 +140,10 @@ $selectPublisher = mysqli_query($connect, $publisher);
                               <?php echo (isset($data['language']) && $data['language'] == 'English') ? 'selected' : ''; ?>>
                               English
                            </option>
+                           <option value="Japan"
+                              <?php echo (isset($data['language']) && $data['language'] == 'Japan') ? 'selected' : ''; ?>>
+                              Japan
+                           </option>
                         </select>
                         <?php if (isset($_SESSION['msg']['language'])) { ?>
                         <span class="text-danger"><?php echo $_SESSION['msg']['language'] ?></span>

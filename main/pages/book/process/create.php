@@ -20,8 +20,18 @@ $synopsis = $_POST['synopsis'];
 $cover = $_FILES['cover']['name'];
 $fileTmp = $_FILES['cover']['tmp_name'];
 $folder = '../image/';
-$target = $folder.$cover;
-$upload = move_uploaded_file($fileTmp, $target);
+
+$ekstensiValid = ['jpg', 'jpeg', 'png'];
+$ekstensiFile = strtolower(pathinfo($cover, PATHINFO_EXTENSION));
+$ekstensiGambar = explode('.', $cover);
+$ekstensiGambar = end($ekstensiGambar);
+
+// fungsi waktu
+$cover = date('l, d-m-Y  H:i:s');
+
+// generate nama baru
+$newName = strtolower(md5($cover).'.'.$ekstensiGambar);
+$upload = move_uploaded_file($fileTmp, $folder.$newName);
 
 // value
 $_SESSION['value']['code'] = $code;
@@ -96,7 +106,7 @@ VALUES (
    '$publisher', 
    '$date', 
    '$language', 
-   '$cover', 
+   '$newName', 
    '$synopsis'
 )";
 $query = mysqli_query($connect, $sql);

@@ -7,33 +7,32 @@ if (!isset($_POST['submit'])) {
    exit();
 }
 
-// Ambil data lama dari database
-$code = $_POST['code'];
-$sql = "SELECT * FROM book WHERE code='$code'";
-$query = mysqli_query($connect, $sql);
-$oldData = mysqli_fetch_array($query);
-
 // Ambil data dari form
-$title = $_POST['title'] ?: $oldData['title'];
-$category = $_POST['category'] ?: $oldData['category'];
-$writer = $_POST['writer'] ?: $oldData['writer'];
-$publisher = $_POST['publisher'] ?: $oldData['publisher'];
-$date = $_POST['date'] ?: $oldData['date'];
-$language = $_POST['language'] ?: $oldData['language'];
-$synopsis = $_POST['synopsis'] ?: $oldData['synopsis'];
-
-$isbn = $_POST['isbn'] ?: $oldData['isbn'];
-if (isset($_POST['isbn']) && $_POST['isbn'] !== '') {
-   $isbn = $_POST['isbn'];
-} else {
-   $isbn = $oldData['isbn'];  // Gunakan ISBN lama jika tidak diubah
-}
+$code = $_POST['code'];
+$title = $_POST['title'];
+$category = $_POST['category'];
+$writer = $_POST['writer'];
+$publisher = $_POST['publisher'];
+$isbn = $_POST['isbn'];
+$date = $_POST['date'];
+$language = $_POST['language'];
+$synopsis = $_POST['synopsis'];
 
 // insert gambar ke db dan folder covers
 $cover = $_FILES['cover']['name'];
 $fileTmp = $_FILES['cover']['tmp_name'];
 $folder = '../image/';
-$target = $folder . $cover;
+
+$ekstensiValid = ['jpg', 'jpeg', 'png'];
+$ekstensiFile = strtolower(pathinfo($cover, PATHINFO_EXTENSION));
+$ekstensiGambar = explode('.', $cover);
+$ekstensiGambar = end($ekstensiGambar);
+
+// fungsi waktu
+$cover = date('l, d-m-Y  H:i:s');
+
+// generate nama baru
+$newName = strtolower(md5($cover).'.'.$ekstensiGambar);
 
 // Ambil gambar lama dari database
 $sql = "SELECT cover FROM book WHERE code='$code'";
@@ -43,18 +42,18 @@ $oldFile = $data['cover'];
 $filePath = $folder . $oldFile;
 
 // Cek apakah file gambar baru diupload
-if ($cover) {
+if ($_FILES['cover']['name']) {
    // Jika gambar baru diupload, hapus gambar lama
    if (file_exists($filePath)) {
        unlink($filePath);  // Hapus gambar lama
    }
 
    // Pindahkan gambar baru ke folder
-   $upload = move_uploaded_file($fileTmp, $target);
+   $upload = move_uploaded_file($fileTmp, $folder.$newName);
 
    // Update nama gambar baru di database
    if ($upload) {
-       $sql = "UPDATE book SET cover='$cover' WHERE code='$code'";
+       $sql = "UPDATE book SET cover='$newName' WHERE code='$code'";
        mysqli_query($connect, $sql);
    }
 }
@@ -81,13 +80,15 @@ if ($publisher == '') {
 if ($date == '') {
    $_SESSION['msg']['date'] = "Tentukan waktu!";
 }
-// if ($cover == '') {
-//    $_SESSION['msg']['cover'] = "Pilih Gambar!";
-// } else if (!$upload) {
-//    $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
-//    header('location: ../../../?page=book/update-book&code='.$code);
-//    exit();
-// }
+if ($newName) {
+   header('location: ../../../?page=book/data-book');
+} else if ($cover == '') {
+   $_SESSION['msg']['cover'] = "Pilih Gambar!";
+} else if (!$upload) {
+   $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
+   header('location: ../../../?page=book/update-book&code='.$code);
+   exit();
+}
 if ($language == '') {
    $_SESSION['msg']['language'] = "Pilih bahasa!";
 }
@@ -100,13 +101,13 @@ if (isset($_SESSION['msg'])) {
    exit();
 }
 
-// $sql = "SELECT * FROM book WHERE isbn='$isbn' AND code!='code'";
-// $query = mysqli_query($connect, $sql);
-// if (mysqli_num_rows($query) != 0) {
-//    $_SESSION['msg']['failed'] = "Data buku sudah ada, periksa kode atau isbn yang sama!";
-//    header('location: ../../../?page=book/update-book&code='.$code);
-//    exit();
-// }
+$sql = "SELECT * FROM book WHERE title='$title' AND code!='$code' AND isbn!='$isbn'";
+$query = mysqli_query($connect, $sql);
+if (mysqli_num_rows($query) != 0) {
+   $_SESSION['msg']['failed'] = "Data buku sudah ada, periksa kode atau isbn yang sama!";
+   header('location: ../../../?page=book/update-book&code='.$code);
+   exit();
+}
 
 $sql = "UPDATE book SET title='$title', category_code='$category', isbn='$isbn', writer='$writer', publisher_code='$publisher', date='$date', language='$language', synopsis='$synopsis' WHERE code='$code'";
 $query = mysqli_query($connect, $sql);

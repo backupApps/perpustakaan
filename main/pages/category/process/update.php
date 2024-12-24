@@ -20,7 +20,7 @@ if (isset($_SESSION['msg']['name'])) {
 
 include('../../../../components/connection.php');
 
-$sql = "SELECT * FROM category WHERE category_name='$name' AND category_code != 'code'";
+$sql = "SELECT * FROM category WHERE category_name='$name' AND category_code!='$code'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data kategori sudah ada, periksa kode atau nama yang sama!";
