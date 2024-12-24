@@ -108,85 +108,32 @@
          </ul>
       </li>
 
-      <!-- Transaction 1 -->
-      <!-- <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'transaction1/borrow' || $_REQUEST['page'] == 'transaction1/return' || $_REQUEST['page']=='transaction1/borrower') {echo 'open';} ?>">
+      <!-- Transaction -->
+      <li
+         class="menu-item <?php if ($_REQUEST['page'] == 'transaction/borrow' || $_REQUEST['page'] == 'transaction/return' || $_REQUEST['page']=='transaction/show-data') {echo 'open';} ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-shopping-cart-line"></i>
             <div data-i18n="Transaction">Transaction</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page']=='transaction1/borrower')?'active':null ?>">
-               <a href="?page=transaction1/borrower" class="menu-link">
+            <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/show-data')?'active':null ?>">
+               <a href="?page=transaction/show-data" class="menu-link">
                   <div data-i18n="Data">Borrower's Data</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page']=='transaction1/borrow')?'active':null ?>">
-               <a href="?page=transaction1/borrow" class="menu-link">
+            <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/borrow')?'active':null ?>">
+               <a href="?page=transaction/borrow" class="menu-link">
                   <div data-i18n="Data">Borrowed Books</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page']=='transaction1/return')?'active':null ?>">
-               <a href="?page=transaction1/return" class="menu-link">
+            <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/return')?'active':null ?>">
+               <a href="?page=transaction/return" class="menu-link">
                   <div data-i18n="Input">Return Books</div>
                </a>
-            </li>
-         </ul>
-      </li> -->
-
-      <!-- Transaction 2 -->
-      <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'transaction/borrow/data' || $_REQUEST['page'] == 'transaction/borrow/input' || $_REQUEST['page'] == 'transaction/return/data' || $_REQUEST['page'] == 'transaction/return/input') {echo 'open';} ?>">
-         <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons ri-shopping-cart-line"></i>
-            <div data-i18n="Transaction">Transaction</div>
-         </a>
-         <ul class="menu-sub ms-5">
-            <li
-               class="menu-item <?php if ($_REQUEST['page'] == 'transaction/borrow/data' || $_REQUEST['page'] == 'transaction/borrow/input') {echo 'open';} ?>">
-               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                  <div data-i18n="Borrowed">Borrowed Books</div>
-               </a>
-               <ul class="menu-sub ms-5">
-                  <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/borrow/data')?'active':null ?>">
-                     <a href="?page=transaction/borrow/data" class="menu-link">
-                        <div data-i18n="Data">Data</div>
-                     </a>
-                  </li>
-               </ul>
-               <ul class="menu-sub ms-5">
-                  <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/borrow/input')?'active':null ?>">
-                     <a href="?page=transaction/borrow/input" class="menu-link">
-                        <div data-i18n="Input">Input</div>
-                     </a>
-                  </li>
-               </ul>
-            </li>
-         </ul>
-         <ul class="menu-sub ms-5">
-            <li
-               class="menu-item <?php if ($_REQUEST['page'] == 'transaction/return/data' || $_REQUEST['page'] == 'transaction/return/input') {echo 'open';} ?>">
-               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                  <div data-i18n="Return">Return Books</div>
-               </a>
-               <ul class="menu-sub ms-5">
-                  <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/return/data')?'active':null ?>">
-                     <a href="?page=transaction/return/data" class="menu-link">
-                        <div data-i18n="Data">Data</div>
-                     </a>
-                  </li>
-               </ul>
-               <ul class="menu-sub ms-5">
-                  <li class="menu-item <?php echo ($_REQUEST['page']=='transaction/return/input')?'active':null ?>">
-                     <a href="?page=transaction/return/input" class="menu-link">
-                        <div data-i18n="Input">Input</div>
-                     </a>
-                  </li>
-               </ul>
             </li>
          </ul>
       </li>
