@@ -9,19 +9,31 @@ if (isset($_GET['q'])) {
 
    // Query untuk mencari nama berdasarkan NIK
    $sql = "SELECT name FROM member WHERE nik = '$nik' LIMIT 1";
-   $result = mysqli_query($connect, $sql);
+   $query = mysqli_query($connect, $sql);
 
-   if (mysqli_num_rows($result) > 0) {
+   if (mysqli_num_rows($query) > 0) {
        // Menampilkan nama jika NIK ditemukan
-       $row = mysqli_fetch_array($result);
-       echo $row['name'];
+       $data = mysqli_fetch_array($query);
+       echo $data['name'];
    } else {
        // Menampilkan pesan jika NIK tidak ditemukan
-       $_SESSION['msg']['not-get'] = "No member found with this NIK.";
-       header('location: ../../../?page=transaction/borrow');
+       echo "No member found with this NIK!";
    }
 }
 
-// Menutup koneksi
+if (isset($_GET['b'])) {
+    $code = $_GET['b'];
+ 
+    $sql = "SELECT title FROM book WHERE code = '$code' LIMIT 1";
+    $query = mysqli_query($connect, $sql);
+ 
+    if (mysqli_num_rows($query) > 0) {
+        $data = mysqli_fetch_array($query);
+        echo $data['title'];
+    } else {
+        echo "No book found with this code!";
+    }
+ }
+
 mysqli_close($connect);
 ?>
