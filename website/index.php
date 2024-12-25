@@ -1,3 +1,9 @@
+<?php 
+include('../components/connection.php');
+$sql = "SELECT * FROM book";
+$query = mysqli_query($connect, $sql);
+?>
+
 <!doctype html>
 
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default"
@@ -102,27 +108,24 @@
                </div>
                <div class="carousel-inner">
                   <div class="carousel-item active">
-                     <img class="d-block w-100" src="../assets/img/elements/13.jpg" alt="First slide"
-                        style="max-height: 400px; object-fit: cover;" />
+                     <img class="d-block w-100" src="../assets/img/carousels/bleach-landscape.jpeg" alt="First slide"
+                        style="max-height: 400px; object-fit: fill;" />
                      <div class="carousel-caption d-none d-md-block">
-                        <h3>First slide</h3>
-                        <p>Eos mutat malis maluisset et, agam ancillae quo te, in vim congue pertinacia.</p>
+                        <h3>BLEACH</h3>
                      </div>
                   </div>
                   <div class="carousel-item">
-                     <img class="d-block w-100" src="../assets/img/elements/2.jpg" alt="Second slide"
-                        style="max-height: 400px; object-fit: cover;" />
+                     <img class="d-block w-100" src="../assets/img/carousels/hunterxhunter-landscape.jpeg"
+                        alt="Second slide" style="max-height: 400px; object-fit: fill;" />
                      <div class="carousel-caption d-none d-md-block">
-                        <h3>Second slide</h3>
-                        <p>In numquam omittam sea.</p>
+                        <h3>HUNTER X HUNTER</h3>
                      </div>
                   </div>
                   <div class="carousel-item">
-                     <img class="d-block w-100" src="../assets/img/elements/18.jpg" alt="Third slide"
-                        style="max-height: 400px; object-fit: cover;" />
+                     <img class="d-block w-100" src="../assets/img/carousels/naruto-landscape.jpeg" alt="Third slide"
+                        style="max-height: 400px; object-fit: fill;" />
                      <div class="carousel-caption d-none d-md-block">
-                        <h3>Third slide</h3>
-                        <p>Lorem ipsum dolor sit amet, virtute consequat ea qui, minim graeco mel no.</p>
+                        <h3>NARUTO</h3>
                      </div>
                   </div>
                </div>
@@ -137,143 +140,25 @@
             </div>
          </div>
 
-         <!-- Example -->
+         <!-- CARD -->
          <div class="row mb-12 g-6">
-            <div class="col-md-6 col-lg-4">
+            <?php while($data = mysqli_fetch_array($query)) { ?>
+            <div class="col-md-6 col-lg-3">
                <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
+                  <img class="card-img-top" src="../main/pages/book/image/<?php echo $data['cover']; ?>"
+                     alt="Card image cap" style="max-height: 250px; object-fit: cover;" />
                   <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
+                     <h5 class="card-title"><?php echo $data['title']; ?></h5>
+                     <p class="card-text"
+                        style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        <?php echo $data['synopsis']; ?>
                      </p>
                      <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
                      <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
                   </div>
                </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap"
-                     style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title">Card title</h5>
-                     <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                  </div>
-               </div>
-            </div>
+            <?php } ?>
          </div>
       </div>
       <!-- / Content -->
