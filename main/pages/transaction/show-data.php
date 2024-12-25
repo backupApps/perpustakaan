@@ -1,8 +1,16 @@
-<!-- Striped Rows -->
-<div class="container-xxl flex-grow-1 container-p-y">
+<?php 
+include('process/read.php');
+$no = 1;
+?>
 
+<div class="container-xxl flex-grow-1 container-p-y">
    <div class="card">
       <h5 class="card-header">Transaction | Borrower's Data</h5>
+      <?php if (isset($_SESSION['msg']['return'])) { ?>
+      <div class="alert alert-success ms-2 me-2" role="alert">
+         <?php echo $_SESSION['msg']['return'];?>
+      </div>
+      <?php } ?>
       <div class="table-responsive text-nowrap">
          <table class="table table-striped">
             <thead>
@@ -17,57 +25,36 @@
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
+               <?php while($data = mysqli_fetch_array($query)) { ?>
                <tr>
-                  <td>1</td>
-                  <td>1234567843218765</td>
-                  <td>Albert Einsten</td>
-                  <td>3/5</td>
-                  <td>24/12/2024</td>
-                  <td><b>Not return yet</b></td>
+                  <td><?php echo $no++; ?></td>
+                  <td><?php echo $data['nik']; ?></td>
+                  <td><?php echo $data['name'] ?></td>
+                  <td><?php echo $data['borrowed_books'] ?>/5</td>
+                  <td><?php echo $data['borrow_date'] ?></td>
+                  <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>' ?></td>
                   <td>
                      <a href="" class="btn btn-sm btn-info">
                         Edit
                         <i class="ri-pencil-line"></i>
                      </a> |
-                     <a href="?page=transaction/detail-page&id=<?php echo $data['code']; ?>"
+                     <a href="?page=transaction/detail-borrower&id=<?php echo $data['id_transaksi']; ?>"
                         class="btn btn-sm btn-warning">
                         Detail
                         <i class="ri-book-open-line"></i>
                      </a> |
-                     <a href="pages/transaction/process/delete.php?id=<?php echo $data['code']; ?>"
-                        onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
+                     <a href="" onclick="return confirm('Anda yakin ingin menghapus data ini?')"
+                        class="btn btn-sm btn-danger">
                         <i class="ri-delete-bin-line"></i>
                         Delete
                      </a>
                   </td>
                </tr>
-               <tr>
-                  <td>2</td>
-                  <td>1234567843218765</td>
-                  <td>Nicola Tesla</td>
-                  <td>2/5</td>
-                  <td>24/12/2024</td>
-                  <td>31/12/2024</td>
-                  <td>
-                     <a href="?page=transaction/update-transaction&code=<?php echo $data['code']; ?>"
-                        class="btn btn-sm btn-info">
-                        Edit
-                        <i class="ri-pencil-line"></i>
-                     </a> |
-                     <a href="?page=transaction/update-transaction&code=<?php echo $data['code']; ?>"
-                        class="btn btn-sm btn-warning">
-                        Detail
-                        <i class="ri-book-open-line"></i>
-                     </a> |
-                     <a href="pages/transaction/process/delete.php?code=<?php echo $data['code']; ?>"
-                        onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
-                        <i class="ri-delete-bin-line"></i>
-                        Delete
-                     </a>
-                  </td>
-               </tr>
+               <?php } ?>
             </tbody>
          </table>
       </div>
    </div>
 </div>
+
+<?php unset($_SESSION['msg']); ?>

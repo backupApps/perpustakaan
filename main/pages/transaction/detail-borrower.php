@@ -1,4 +1,8 @@
-<!-- Striped Rows -->
+<?php 
+include('process/read.php');
+$no = 1;
+?>
+
 <div class="container-xxl flex-grow-1 container-p-y">
    <a href="?page=transaction/show-data" type="submit" class="btn btn-secondary">
       <i class="ri-arrow-left-s-line"></i>
@@ -11,20 +15,20 @@
             <thead>
                <tr>
                   <th>No.</th>
-                  <th>NIK</th>
-                  <th>Name</th>
-                  <th>Borrowed Books</th>
-                  <th>Borrow Date</th>
+                  <th>Title Book</th>
+                  <th>Cover</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
+               <?php while($data = mysqli_fetch_array($query)) { ?>
                <tr>
-                  <td>1</td>
-                  <td>1234567843218765</td>
-                  <td>Albert Einsten</td>
-                  <td>3/5</td>
-                  <td>24/12/2024</td>
+                  <td><?php echo $no++; ?></td>
+                  <td><?php echo $data['title']; ?></td>
+                  <td>
+                     <img class="w-25" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
+                  </td>
                </tr>
+               <?php } ?>
             </tbody>
          </table>
       </div>
