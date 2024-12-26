@@ -11,6 +11,12 @@ $no = 1;
          <?php echo $_SESSION['msg']['return'];?>
       </div>
       <?php } ?>
+
+      <?php if (isset($_SESSION['msg']['delete'])) { ?>
+      <div class="alert alert-success ms-2 me-2" role="alert">
+         <?php echo $_SESSION['msg']['delete'];?>
+      </div>
+      <?php } ?>
       <div class="table-responsive text-nowrap">
          <table class="table table-striped">
             <thead>
@@ -43,8 +49,8 @@ $no = 1;
                         Detail
                         <i class="ri-book-open-line"></i>
                      </a> |
-                     <a href="" onclick="return confirm('Anda yakin ingin menghapus data ini?')"
-                        class="btn btn-sm btn-danger">
+                     <a href="pages/transaction/process/delete.php?nik=<?php echo $data['nik']; ?>"
+                        onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
                         <i class="ri-delete-bin-line"></i>
                         Delete
                      </a>
