@@ -43,11 +43,11 @@ try {
    $id_transaksi = $dataTransaksi['id'];
 
    // 3. Hapus semua detail_transaksi terkait id_transaksi
-   $sqlDeleteDetail = "DELETE FROM detail_transaksi WHERE id_transaksi='$id_transaksi'";
-   $queryDeleteDetail = mysqli_query($connect, $sqlDeleteDetail);
-   if (!$queryDeleteDetail) {
-      throw new Exception("Gagal menghapus data dari detail_transaksi: " . mysqli_error($connect));
-   }
+   // $sqlDeleteDetail = "DELETE FROM detail_transaksi WHERE id_transaksi='$id_transaksi'";
+   // $queryDeleteDetail = mysqli_query($connect, $sqlDeleteDetail);
+   // if (!$queryDeleteDetail) {
+   //    throw new Exception("Gagal menghapus data dari detail_transaksi: " . mysqli_error($connect));
+   // }
 
    // Commit transaksi
    mysqli_commit($connect);
