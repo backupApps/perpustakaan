@@ -1,2 +1,2 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "phpmyadminpassword", "pbo");
+$connect = mysqli_connect("localhost", "root", "", "pbo");
