@@ -26,15 +26,10 @@ $books = array_filter([
     $_POST['book5'] ?? ''
 ]);
 
-// Validasi data
+// show data
 $_SESSION['value']['nik_member'] = $nik_member;
 $_SESSION['value']['borrow_date'] = $borrow_date;
 $_SESSION['value']['member-name'] = $_POST['member-name'];
-$_SESSION['value']['book1'] = $_POST['book1'];
-$_SESSION['value']['book2'] = $_POST['book2'];
-$_SESSION['value']['book3'] = $_POST['book3'];
-$_SESSION['value']['book4'] = $_POST['book4'];
-$_SESSION['value']['book5'] = $_POST['book5'];
 $_SESSION['value']['title1'] = $_POST['title1'];
 $_SESSION['value']['title2'] = $_POST['title2'];
 $_SESSION['value']['title3'] = $_POST['title3'];
@@ -45,15 +40,29 @@ foreach ($books as $key => $book) {
     $_SESSION['value']['book' . ($key + 1)] = $book;
 }
 
+// validasi jika member tidak ada
+$sql = "SELECT * FROM member WHERE nik='$nik_member'";
+$query = mysqli_query($connect, $sql);
+$data = mysqli_num_rows($query);
+
 if ($nik_member == '') {
     $_SESSION['msg']['nik_member'] = "Tidak ada NIK yang dicari!";
+} else if (strlen($nik_member) < 16 || $data == 0) {
+    $_SESSION['msg']['nik_member'] = '';
 }
 if ($borrow_date == '') {
     $_SESSION['msg']['borrow_date'] = "Isi tanggal peminjaman!";
 }
 
+// validasi jika buku tidak ada
+$sql2 = "SELECT * FROM book WHERE code='$books'";
+$query2 = mysqli_query($connect, $sql2);
+$data2 = mysqli_num_rows($query2);
+
 if (empty($books)) {
     $_SESSION['msg']['book'] = "Pilih buku yang ingin dipinjam!";
+} else if ('what?') {
+    // how to validate?;
 }
 
 if (isset($_SESSION['msg'])) {

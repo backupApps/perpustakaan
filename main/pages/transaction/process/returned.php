@@ -3,6 +3,11 @@
 session_start();
 include('../../../../components/connection.php');
 
+if (isset($_POST['reset'])) {
+   header('location: ../../../?page=transaction/borrow');
+   exit();
+}
+
 if (!isset($_POST['submit'])) {
    header('location: ../../../?page=transaction/return');
    exit();
@@ -11,9 +16,21 @@ if (!isset($_POST['submit'])) {
 $nik_member = $_POST['nik_member'];
 $return_date = $_POST['return_date'];
 
+$_SESSION['value']['nik_member'] = $nik_member;
+$_SESSION['value']['return_date'] = $return_date;
+$_SESSION['value']['member-name'] = $_POST['member-name'];
+
+// validasi jika member tidak ada
+$sql = "SELECT * FROM member WHERE nik='$nik_member'";
+$query = mysqli_query($connect, $sql);
+$data = mysqli_num_rows($query);
+
 if ($nik_member == '') {
    $_SESSION['msg']['nik_member'] = "Tidak ada NIK yang dicari!";
+} else if (strlen($nik_member) < 16 || $data == 0) {
+   $_SESSION['msg']['nik_member'] = '';
 }
+
 if ($return_date == '') {
    $_SESSION['msg']['return_date'] = "Isi tanggal pengembalian!";
 }
@@ -54,6 +71,7 @@ try {
 
    // Set pesan sukses
    $_SESSION['msg']['return'] = "Buku peminjaman <b>" . $nik_member . "</b> berhasil dikembalikan!";
+   unset($_SESSION['value']);
    header('location: ../../../?page=transaction/show-data');
    exit();
 } catch (Exception $e) {
