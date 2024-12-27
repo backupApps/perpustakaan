@@ -4,7 +4,7 @@ $sql = "SELECT transaksi.id, transaksi.nik_member, transaksi.borrow_date, transa
          FROM transaksi
          LEFT JOIN member ON transaksi.nik_member = member.nik
          LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
-         GROUP BY transaksi.id ORDER BY transaksi.return_date ASC";
+         GROUP BY transaksi.id ORDER BY transaksi.id DESC";
 $query = mysqli_query($connect, $sql);
 
 // detail
