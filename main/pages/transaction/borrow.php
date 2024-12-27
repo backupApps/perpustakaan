@@ -7,15 +7,15 @@
                   <h5 class="mb-0">Borrower
                </div>
                <?php if (isset($_SESSION['msg']['sukses'])) { ?>
-               <div class="alert alert-success ms-2 me-2" role="alert">
-                  <?php echo $_SESSION['msg']['sukses'];?>
-               </div>
+                  <div class="alert alert-success ms-2 me-2" role="alert">
+                     <?php echo $_SESSION['msg']['sukses']; ?>
+                  </div>
                <?php } ?>
 
                <?php if (isset($_SESSION['msg']['general'])) { ?>
-               <div class="alert alert-danger ms-2 me-2" role="alert">
-                  <?php echo $_SESSION['msg']['general'];?>
-               </div>
+                  <div class="alert alert-danger ms-2 me-2" role="alert">
+                     <?php echo $_SESSION['msg']['general']; ?>
+                  </div>
                <?php } ?>
                <div class="card-body">
                   <div class="mb-6">
@@ -28,12 +28,15 @@
                            value="<?php echo (isset($_SESSION['value']['nik_member'])) ? $_SESSION['value']['nik_member'] : null; ?>"
                            id="memberNik" onkeyup="showName(this.value)">
                      </div>
-                     <?php if (isset($_SESSION['msg']['nik_member'])) {echo '<span class="text-danger">'.$_SESSION['msg']['nik_member'].'</span>';} ?>
+                     <?php if (isset($_SESSION['msg']['nik_member'])) {
+                        echo '<span class="text-danger">' . $_SESSION['msg']['nik_member'] . '</span>';
+                     } ?>
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Member's Name</label>
                      <input type="text" name="member-name" id="memberName" class="form-control"
-                        value="<?php echo isset($data['name']) ? $data['name'] : ''; ?>" readonly />
+                        value="<?php echo isset($data['name']) ? $data['name'] : '';
+                                 echo (isset($_SESSION['value']['member-name'])) ? $_SESSION['value']['member-name'] : null; ?>" readonly />
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Borrow Date</label>
@@ -41,10 +44,12 @@
                         class="form-control <?php echo (isset($_SESSION['msg']['borrow_date'])) ? 'border-danger' : null; ?>"
                         value="<?php echo (isset($_SESSION['value']['borrow_date'])) ? $_SESSION['value']['borrow_date'] : null; ?>"
                         type="date" name="borrow-date" />
-                     <?php if (isset($_SESSION['msg']['borrow_date'])) {echo '<span class="text-danger">'.$_SESSION['msg']['borrow_date'].'</span>';} ?>
+                     <?php if (isset($_SESSION['msg']['borrow_date'])) {
+                        echo '<span class="text-danger">' . $_SESSION['msg']['borrow_date'] . '</span>';
+                     } ?>
                   </div>
                   <div class="text-end">
-                     <button type="submit" class="btn btn-secondary me-3 p-4">Reset</button>
+                     <button type="submit" name="reset" class="btn btn-secondary me-3 p-4">Reset</button>
                      <button type="submit" name="submit" class="btn btn-primary me-3 p-4">Submit</button>
                   </div>
                </div>
@@ -53,6 +58,9 @@
          <div class="col-xl">
             <div class="card">
                <div class="card-body">
+                  <?php if (isset($_SESSION['msg']['book'])) {
+                     echo '<div class="alert alert-danger float-end w-50" role="alert">' . $_SESSION['msg']['book'] . '</div>';
+                  } ?>
                   <h6>Books</h6>
                   <div class="">
                      <h6>Book 1</h6>
@@ -63,8 +71,9 @@
                            onkeyup="showBook(this.value, 1)" onkeyup="showBook(this.value)" />
                      </div>
                      <div class="form-floating form-floating-outline mb-6">
-                        <input readonly type="text" class="form-control" id="bookTitle1"
-                           value="<?php echo isset($data['title']) ? $data['title'] : ''; ?>" />
+                        <input readonly type="text" name="title1" class="form-control" id="bookTitle1"
+                           value="<?php echo isset($data['title']) ? $data['title'] : '';
+                                    echo (isset($_SESSION['value']['title1'])) ? $_SESSION['value']['title1'] : null; ?>" />
                      </div>
                   </div>
                   <div class="">
@@ -72,12 +81,13 @@
                      <div class="input-group input-group-merge">
                         <span class="input-group-text"><i class="ri-search-line ri-20px"></i></span>
                         <input type="text" class="form-control" placeholder="Book 2" name="book2"
-                           value="<?php echo (isset($_SESSION['value']['book2'])) ? $_SESSION['value']['book2'] : null; ?>"
+                           value="<?php echo (isset($_SESSION['value']['book2'])) ? $_SESSION['value']['book2'] : null;  ?>"
                            onkeyup="showBook(this.value, 2)" />
                      </div>
                      <div class="form-floating form-floating-outline mb-6">
-                        <input readonly type="text" class="form-control" id="bookTitle2"
-                           value="<?php echo isset($data['title']) ? $data['title'] : ''; ?>" />
+                        <input readonly type="text" name="title2" class="form-control" id="bookTitle2"
+                           value="<?php echo isset($data['title']) ? $data['title'] : '';
+                                    echo (isset($_SESSION['value']['title2'])) ? $_SESSION['value']['title2'] : null; ?>" />
                      </div>
                   </div>
                   <div class="">
@@ -89,8 +99,9 @@
                            onkeyup="showBook(this.value, 3)" />
                      </div>
                      <div class="form-floating form-floating-outline mb-6">
-                        <input readonly type="text" class="form-control" id="bookTitle3"
-                           value="<?php echo isset($data['title']) ? $data['title'] : ''; ?>" />
+                        <input readonly type="text" name="title3" class="form-control" id="bookTitle3"
+                           value="<?php echo isset($data['title']) ? $data['title'] : '';
+                                    echo (isset($_SESSION['value']['title3'])) ? $_SESSION['value']['title3'] : null; ?>" />
                      </div>
                   </div>
                   <div class="">
@@ -102,8 +113,9 @@
                            onkeyup="showBook(this.value, 4)" />
                      </div>
                      <div class="form-floating form-floating-outline mb-6">
-                        <input readonly type="text" class="form-control" id="bookTitle4"
-                           value="<?php echo isset($data['title']) ? $data['title'] : ''; ?>" />
+                        <input readonly type="text" name="title4" class="form-control" id="bookTitle4"
+                           value="<?php echo isset($data['title']) ? $data['title'] : '';
+                                    echo (isset($_SESSION['value']['title4'])) ? $_SESSION['value']['title4'] : null; ?>" />
                      </div>
                   </div>
                   <div class="">
@@ -115,8 +127,9 @@
                            onkeyup="showBook(this.value, 5)" />
                      </div>
                      <div class="form-floating form-floating-outline mb-6">
-                        <input readonly type="text" class="form-control" id="bookTitle5"
-                           value="<?php echo isset($data['title']) ? $data['title'] : ''; ?>" />
+                        <input readonly type="text" name="title5" class="form-control" id="bookTitle5"
+                           value="<?php echo isset($data['title']) ? $data['title'] : '';
+                                    echo (isset($_SESSION['value']['title5'])) ? $_SESSION['value']['title5'] : null; ?>" />
                      </div>
                   </div>
                </div>
@@ -126,10 +139,10 @@
    </form>
 </div>
 
-<?php 
+<?php
 include('process/live-search.php');
 unset($_SESSION['value']);
-unset($_SESSION['msg']); 
+unset($_SESSION['msg']);
 ?>
 
 <!-- <div>

@@ -2,9 +2,14 @@
 session_start();
 include('../../../../components/connection.php');
 
+if (isset($_POST['reset'])) {
+    header('location: ../../../?page=transaction/borrow');
+    exit();
+}
+
 // Pastikan form di-submit
 if (!isset($_POST['submit'])) {
-    header('location: ../../../?page=transaction/borrow');
+    header('location: ../../../index.php');
     exit();
 }
 
@@ -24,6 +29,18 @@ $books = array_filter([
 // Validasi data
 $_SESSION['value']['nik_member'] = $nik_member;
 $_SESSION['value']['borrow_date'] = $borrow_date;
+$_SESSION['value']['member-name'] = $_POST['member-name'];
+$_SESSION['value']['book1'] = $_POST['book1'];
+$_SESSION['value']['book2'] = $_POST['book2'];
+$_SESSION['value']['book3'] = $_POST['book3'];
+$_SESSION['value']['book4'] = $_POST['book4'];
+$_SESSION['value']['book5'] = $_POST['book5'];
+$_SESSION['value']['title1'] = $_POST['title1'];
+$_SESSION['value']['title2'] = $_POST['title2'];
+$_SESSION['value']['title3'] = $_POST['title3'];
+$_SESSION['value']['title4'] = $_POST['title4'];
+$_SESSION['value']['title5'] = $_POST['title5'];
+
 foreach ($books as $key => $book) {
     $_SESSION['value']['book' . ($key + 1)] = $book;
 }
@@ -34,6 +51,11 @@ if ($nik_member == '') {
 if ($borrow_date == '') {
     $_SESSION['msg']['borrow_date'] = "Isi tanggal peminjaman!";
 }
+
+if (empty($books)) {
+    $_SESSION['msg']['book'] = "Pilih buku yang ingin dipinjam!";
+}
+
 if (isset($_SESSION['msg'])) {
     header('location: ../../../?page=transaction/borrow');
     exit();
@@ -77,86 +99,3 @@ try {
     header('location: ../../../?page=transaction/borrow');
     exit();
 }
-
-
-
-
-// session_start();
-// include('../../../../components/connection.php');
-
-// if (!isset($_POST['submit'])) {
-//     header('location: ../../../?page=transaction/borrow');
-//     exit();
-// }
-
-// $nik_member = $_POST['member-nik'];
-// $borrow_date = $_POST['borrow-date'];
-// $book1 = $_POST['book1'];
-// $book2 = $_POST['book2'];
-// $book3 = $_POST['book3'];
-// $book4 = $_POST['book4'];
-// $book5 = $_POST['book5'];
-
-// // tidak hilang jika input sudah ada
-// $_SESSION['value']['nik_member'] = $nik_member;
-// $_SESSION['value']['borrow_date'] = $borrow_date;
-// $_SESSION['value']['book1'] = $book1;
-// $_SESSION['value']['book2'] = $book2;
-// $_SESSION['value']['book3'] = $book3;
-// $_SESSION['value']['book4'] = $book4;
-// $_SESSION['value']['book5'] = $book5;
-
-// if ($nik_member == '') {
-//     $_SESSION['msg']['nik_member'] = "Tidak ada NIK yang dicari!";
-// }
-// if ($borrow_date == '') {
-//     $_SESSION['msg']['borrow_date'] = "Isi tanggal peminjaman!";
-// }
-
-// if (isset($_SESSION['msg'])) {
-//     header('location: ../../../?page=transaction/borrow');
-//     exit();
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if (mysqli_query($connect, $sql_transaksi)) {
-//     // Ambil ID transaksi yang baru saja dimasukkan
-//     $id_transaksi = mysqli_insert_id($connect);
-
-//     // Masukkan detail transaksi untuk setiap buku (jika ada)
-//     $books = [$book1, $book2, $book3, $book4, $book5];
-//     foreach ($books as $book) {
-//         if (!empty($book)) {
-//             $sql_detail_transaksi = "INSERT INTO detail_transaksi VALUES ('', '$id_transaksi', '$book')";
-//             mysqli_query($connect, $sql_detail_transaksi);
-//         }
-//     }
-
-//     $_SESSION['msg']['success'] = "Peminjaman berhasil!";
-//     header('location: ../../../?page=transaction/borrow');
-//     exit();
-// } else {
-//     $_SESSION['msg']['error'] = "Terjadi kesalahan saat menyimpan transaksi!";
-//     header('location: ../../../?page=transaction/borrow');
-//     exit();
-// }
