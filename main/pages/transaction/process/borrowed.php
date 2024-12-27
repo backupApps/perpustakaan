@@ -14,7 +14,7 @@ $borrow_date = $_POST['borrow-date'];
 
 // Ambil semua buku dari form, hilangkan elemen kosong
 $books = array_filter([
-    $_POST['book1'] ?? '',
+    $_POST['book1'] ?? '', // ($_POST['book1']) ? $_POST['book1'] : '';
     $_POST['book2'] ?? '',
     $_POST['book3'] ?? '',
     $_POST['book4'] ?? '',
