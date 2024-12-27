@@ -4,7 +4,7 @@
          <div class="text-body mb-2 mb-md-0">
             ©
             <script>
-            document.write(new Date().getFullYear());
+               document.write(new Date().getFullYear());
             </script>
             , made with <span class="text-danger"><i class="tf-icons ri-heart-fill"></i></span> by
             <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
