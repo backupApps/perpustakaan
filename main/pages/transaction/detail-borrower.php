@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('process/read.php');
 $no = 1;
 ?>
@@ -17,17 +17,20 @@ $no = 1;
                   <th>No.</th>
                   <th>Title Book</th>
                   <th>Cover</th>
+                  <th>Return Date</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-               <?php while($data = mysqli_fetch_array($query)) { ?>
-               <tr>
-                  <td><?php echo $no++; ?></td>
-                  <td><?php echo $data['title']; ?></td>
-                  <td>
-                     <img class="w-25" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
-                  </td>
-               </tr>
+               <?php while ($data = mysqli_fetch_array($query)) { ?>
+                  <tr>
+                     <td><?php echo $no++; ?></td>
+                     <td><?php echo $data['title']; ?> | <?= $data['code']; ?></td>
+                     <td>
+                        <img class="w-25" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
+                     </td>
+                     <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>'; ?>
+                     </td>
+                  </tr>
                <?php } ?>
             </tbody>
          </table>
