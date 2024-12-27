@@ -4,8 +4,8 @@ session_start();
 include('../../../../components/connection.php');
 
 if (!isset($_POST['submit'])) {
-    header('location: ../../../?page=transaction/return');
-    exit();
+   header('location: ../../../?page=transaction/return');
+   exit();
 }
 
 $nik_member = $_POST['nik_member'];
@@ -53,7 +53,7 @@ try {
    mysqli_commit($connect);
 
    // Set pesan sukses
-   $_SESSION['msg']['return'] = "Buku berhasil dikembalikan!";
+   $_SESSION['msg']['return'] = "Buku peminjaman <b>" . $nik_member . "</b> berhasil dikembalikan!";
    header('location: ../../../?page=transaction/show-data');
    exit();
 } catch (Exception $e) {
@@ -63,4 +63,3 @@ try {
    header('location: ../../../?page=transaction/return');
    exit();
 }
-?>
