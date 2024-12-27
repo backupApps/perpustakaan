@@ -4,15 +4,15 @@ $sql = "SELECT transaksi.id, transaksi.nik_member, transaksi.borrow_date, transa
          FROM transaksi
          LEFT JOIN member ON transaksi.nik_member = member.nik
          LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
-         GROUP BY transaksi.id";
+         GROUP BY transaksi.id ORDER BY transaksi.return_date ASC";
 $query = mysqli_query($connect, $sql);
 
 // detail
 if (isset($_REQUEST['id'])) {
-   $id = $_REQUEST['id'];
+    $id = $_REQUEST['id'];
 
-   // Ambil detail transaksi beserta data member dan buku
-   $sql = "SELECT 
+    // Ambil detail transaksi beserta data member dan buku
+    $sql = "SELECT 
            *
        FROM 
            detail_transaksi
@@ -25,5 +25,5 @@ if (isset($_REQUEST['id'])) {
        WHERE 
            detail_transaksi.id_transaksi = '$id'
    ";
-   $query = mysqli_query($connect, $sql);
+    $query = mysqli_query($connect, $sql);
 }
