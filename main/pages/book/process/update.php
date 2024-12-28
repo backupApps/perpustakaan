@@ -32,7 +32,7 @@ $ekstensiGambar = end($ekstensiGambar);
 $cover = date('l, d-m-Y  H:i:s');
 
 // generate nama baru
-$newName = strtolower(md5($cover).'.'.$ekstensiGambar);
+$newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
 
 // Ambil gambar lama dari database
 $sql = "SELECT cover FROM book WHERE code='$code'";
@@ -45,16 +45,16 @@ $filePath = $folder . $oldFile;
 if ($_FILES['cover']['name']) {
    // Jika gambar baru diupload, hapus gambar lama
    if (file_exists($filePath)) {
-       unlink($filePath);  // Hapus gambar lama
+      unlink($filePath);  // Hapus gambar lama
    }
 
    // Pindahkan gambar baru ke folder
-   $upload = move_uploaded_file($fileTmp, $folder.$newName);
+   $upload = move_uploaded_file($fileTmp, $folder . $newName);
 
    // Update nama gambar baru di database
    if ($upload) {
-       $sql = "UPDATE book SET cover='$newName' WHERE code='$code'";
-       mysqli_query($connect, $sql);
+      $sql = "UPDATE book SET cover='$newName' WHERE code='$code'";
+      mysqli_query($connect, $sql);
    }
 }
 
@@ -86,8 +86,6 @@ if ($newName) {
    $_SESSION['msg']['cover'] = "Pilih Gambar!";
 } else if (!$upload) {
    $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
-   header('location: ../../../?page=book/update-book&code='.$code);
-   exit();
 }
 if ($language == '') {
    $_SESSION['msg']['language'] = "Pilih bahasa!";
@@ -97,15 +95,15 @@ if ($synopsis == '') {
 }
 
 if (isset($_SESSION['msg'])) {
-   header('location: ../../../?page=book/update-book&code='.$code);
+   header('location: ../../../?page=book/update-book&code=' . $code);
    exit();
 }
 
-$sql = "SELECT * FROM book WHERE title='$title' AND code!='$code' AND isbn!='$isbn'";
+$sql = "SELECT * FROM book WHERE title='$title' AND isbn!='$isbn'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
-   $_SESSION['msg']['failed'] = "Data buku sudah ada, periksa kode atau isbn yang sama!";
-   header('location: ../../../?page=book/update-book&code='.$code);
+   $_SESSION['msg']['failed'] = "Data buku sudah ada, periksa isbn yang sama!";
+   header('location: ../../../?page=book/update-book&code=' . $code);
    exit();
 }
 
@@ -117,5 +115,5 @@ if ($query) {
    exit();
 } else {
    $_SESSION['msg']['failed'] = "Gagal meng-edit data buku!";
-   header('location: ../../../?page=book/update-book&code='.$code);
+   header('location: ../../../?page=book/update-book&code=' . $code);
 }

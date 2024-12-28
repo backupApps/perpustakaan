@@ -30,8 +30,8 @@ $ekstensiGambar = end($ekstensiGambar);
 $cover = date('l, d-m-Y  H:i:s');
 
 // generate nama baru
-$newName = strtolower(md5($cover).'.'.$ekstensiGambar);
-$upload = move_uploaded_file($fileTmp, $folder.$newName);
+$newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
+$upload = move_uploaded_file($fileTmp, $folder . $newName);
 
 // value
 $_SESSION['value']['code'] = $code;
@@ -71,8 +71,6 @@ if ($cover == '') {
    $_SESSION['msg']['cover'] = "Pilih Gambar!";
 } else if (!$upload) {
    $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
-   header('location: ../../../?page=book/input-book');
-   exit();
 }
 if ($language == '') {
    $_SESSION['msg']['language'] = "Pilih bahasa!";
