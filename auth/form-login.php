@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if (isset($_SESSION['login'])) {
    header('location: ../main/?page=dashboard');
@@ -61,6 +61,10 @@ if (isset($_SESSION['login'])) {
          <div class="authentication-inner py-6 mx-4">
             <!-- Login -->
             <div class="card p-7">
+               <a href="../index.php" type="submit" class="btn btn-secondary w-25">
+                  <i class="ri-arrow-left-s-line"></i>
+                  Back
+               </a>
                <!-- Logo -->
                <div class="app-brand justify-content-center mt-5">
                   <a href="" class="app-brand-link gap-3">
@@ -101,33 +105,32 @@ if (isset($_SESSION['login'])) {
                   </a>
                </div>
                <!-- /Logo -->
-
                <div class="card-body mt-1">
                   <h4 class="mb-1">Welcome to Perpustakaan! 👋🏻</h4>
                   <?php if (isset($_SESSION['msg-global'])) { ?>
-                  <div class="alert alert-danger mt-2" role="alert">
-                     <?php 
-                     echo $_SESSION['msg-global']; 
-                     unset($_SESSION['username']); 
-                     unset($_SESSION['password']);
-                     ?>
-                  </div>
+                     <div class="alert alert-danger mt-2" role="alert">
+                        <?php
+                        echo $_SESSION['msg-global'];
+                        unset($_SESSION['username']);
+                        unset($_SESSION['password']);
+                        ?>
+                     </div>
                   <?php } else { ?>
-                  <p class="mb-5">Please sign-in to your account</p>
+                     <p class="mb-5">Please sign-in to your account</p>
                   <?php } ?>
 
                   <form class="mb-5" action="process/login-process.php" method="POST">
                      <div class="form-floating form-floating-outline mb-5">
                         <input type="text"
-                           class="form-control <?php echo (isset($_SESSION['msg-user'])) ?'border-danger' : null; ?>"
+                           class="form-control <?php echo (isset($_SESSION['msg-user'])) ? 'border-danger' : null; ?>"
                            id="email" name="username" placeholder="Enter your username"
                            value="<?php echo (isset($_SESSION['username'])) ? $_SESSION['username'] : null; ?>"
                            <?php echo (isset($_SESSION['msg-user'])) ? null : 'autofocus'; ?> />
                         <label for="email">Username</label>
                         <?php if (isset($_SESSION['msg-user'])) { ?>
-                        <div class="alert alert-danger mt-2" role="alert">
-                           <?php echo $_SESSION['msg-user'];?>
-                        </div>
+                           <div class="text-danger mt-2" role="alert">
+                              <?php echo $_SESSION['msg-user']; ?>
+                           </div>
                         <?php } ?>
                      </div>
                      <div class="mb-5">
@@ -146,9 +149,9 @@ if (isset($_SESSION['login'])) {
                               </span>
                            </div>
                            <?php if (isset($_SESSION['msg-pass'])) { ?>
-                           <div class="alert alert-danger mt-2" role="alert">
-                              <?php echo $_SESSION['msg-pass'];?>
-                           </div>
+                              <div class="text-danger mt-2" role="alert">
+                                 <?php echo $_SESSION['msg-pass']; ?>
+                              </div>
                            <?php } ?>
                         </div>
                      </div>
