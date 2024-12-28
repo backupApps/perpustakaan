@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../components/connection.php');
 $sql = "SELECT * FROM book";
 $query = mysqli_query($connect, $sql);
@@ -108,24 +108,24 @@ $query = mysqli_query($connect, $sql);
                </div>
                <div class="carousel-inner">
                   <div class="carousel-item active">
-                     <img class="d-block w-100" src="../assets/img/carousels/bleach-landscape.jpeg" alt="First slide"
+                     <img class="d-block w-100" src="../assets/img/carousels/bleach-landscape.jpg" alt="First slide"
                         style="max-height: 400px; object-fit: fill;" />
                      <div class="carousel-caption d-none d-md-block">
-                        <h3>BLEACH</h3>
+                        <!-- <h3 class="text-bg-dark w-20">BLEACH</h3> -->
                      </div>
                   </div>
                   <div class="carousel-item">
-                     <img class="d-block w-100" src="../assets/img/carousels/hunterxhunter-landscape.jpeg"
+                     <img class="d-block w-100" src="../assets/img/carousels/demon-slayer-landscape.jpg"
                         alt="Second slide" style="max-height: 400px; object-fit: fill;" />
                      <div class="carousel-caption d-none d-md-block">
-                        <h3>HUNTER X HUNTER</h3>
+                        <!-- <h3>DEMON SLAYER</h3> -->
                      </div>
                   </div>
                   <div class="carousel-item">
-                     <img class="d-block w-100" src="../assets/img/carousels/naruto-landscape.jpeg" alt="Third slide"
+                     <img class="d-block w-100" src="../assets/img/carousels/one-piece-landscape.jpg" alt="Third slide"
                         style="max-height: 400px; object-fit: fill;" />
                      <div class="carousel-caption d-none d-md-block">
-                        <h3>NARUTO</h3>
+                        <!-- <h3>NARUTO</h3> -->
                      </div>
                   </div>
                </div>
@@ -142,22 +142,22 @@ $query = mysqli_query($connect, $sql);
 
          <!-- CARD -->
          <div class="row mb-12 g-6">
-            <?php while($data = mysqli_fetch_array($query)) { ?>
-            <div class="col-md-6 col-lg-3">
-               <div class="card h-100">
-                  <img class="card-img-top" src="../main/pages/book/image/<?php echo $data['cover']; ?>"
-                     alt="Card image cap" style="max-height: 250px; object-fit: cover;" />
-                  <div class="card-body">
-                     <h5 class="card-title"><?php echo $data['title']; ?></h5>
-                     <p class="card-text"
-                        style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        <?php echo $data['synopsis']; ?>
-                     </p>
-                     <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
-                     <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
+            <?php while ($data = mysqli_fetch_array($query)) { ?>
+               <div class="col-md-6 col-lg-3">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="../main/pages/book/image/<?php echo $data['cover']; ?>"
+                        alt="Card image cap" style="max-height: 250px; object-fit: cover;" />
+                     <div class="card-body">
+                        <h5 class="card-title"><?php echo $data['title']; ?></h5>
+                        <p class="card-text"
+                           style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                           <?php echo $data['synopsis']; ?>
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-outline-primary">View</a>
+                        <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
+                     </div>
                   </div>
                </div>
-            </div>
             <?php } ?>
          </div>
       </div>
@@ -255,7 +255,7 @@ $query = mysqli_query($connect, $sql);
                <div class="text-body mb-2 mb-md-0">
                   ©
                   <script>
-                  document.write(new Date().getFullYear());
+                     document.write(new Date().getFullYear());
                   </script>
                   , made with <span class="text-danger"><i class="tf-icons ri-heart-fill"></i></span> by
                   <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
