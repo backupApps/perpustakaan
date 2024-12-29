@@ -65,8 +65,8 @@
                   <div class="">
                      <h6>Book 1</h6>
                      <div class="input-group input-group-merge">
-                        <span class="input-group-text <?php echo (isset($_SESSION['msg']['!book'])) ? 'border-danger' : null; ?>"><i class="ri-search-line ri-20px"></i></span>
-                        <input type="text" class="form-control <?php echo (isset($_SESSION['msg']['!book'])) ? 'border-danger' : null; ?>" placeholder="Book 1" name="book1"
+                        <span class="input-group-text"><i class="ri-search-line ri-20px"></i></span>
+                        <input type="text" class="form-control" placeholder="Book 1" name="book1"
                            value="<?php echo (isset($_SESSION['value']['book1'])) ? $_SESSION['value']['book1'] : null; ?>"
                            onkeyup="showBook(this.value, 1)" onkeyup="showBook(this.value)" />
                      </div>
