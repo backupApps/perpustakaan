@@ -67,10 +67,8 @@ if ($publisher == '') {
 if ($date == '') {
    $_SESSION['msg']['date'] = "Tentukan waktu!";
 }
-if ($cover == '') {
-   $_SESSION['msg']['cover'] = "Pilih Gambar!";
-} else if (!$upload) {
-   $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
+if (!$upload) {
+   $_SESSION['msg']['cover'] = "Pilih gambar!";
 }
 if ($language == '') {
    $_SESSION['msg']['language'] = "Pilih bahasa!";
@@ -111,48 +109,3 @@ $query = mysqli_query($connect, $sql);
 $_SESSION['msg']['book'] = "Data buku baru berhasil ditambahkan!";
 header('location: ../../../?page=book/input-book');
 unset($_SESSION['value']);
-
-
-
-// echo $upload;
-// header('location: ../../../?page=book/input-book');
-// exit();
-
-// if(isset($_FILES['cover']) && $_FILES['cover']['error'] == 0){
-//    // Ambil nama file dan nama sementara
-//    $cover = $_FILES['cover']['name'];
-//    $fileTmp = $_FILES['cover']['tmp_name'];
-
-//    // Tentukan folder tujuan penyimpanan
-//    $folder = '../image/'; // Pastikan path ini benar sesuai struktur folder Anda
-//    $target = $folder . basename($cover); // Gabungkan folder dan nama file
-
-//    // Periksa apakah folder tujuan ada, jika belum buat foldernya
-//    if (!file_exists($folder)) {
-//        mkdir($folder, 0777, true); // Membuat folder jika belum ada
-//    }
-
-//    // Cek apakah file berhasil di-upload
-   // $upload = move_uploaded_file($fileTmp, $target);
-
-   // // Tampilkan pesan status upload
-   // if ($upload) {
-   //     // Jika berhasil, redirect ke halaman input book
-   //     $_SESSION['msg']['cover'] = "File berhasil di-upload!";
-   //     header('location: ../../../?page=book/input-book');
-   //     exit();
-   // } else {
-   //    //  Jika gagal, tampilkan error
-   //     $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
-   //     header('location: ../../../?page=book/input-book');
-   //    // if ($_FILES['cover']['error'] !== UPLOAD_ERR_OK) {
-   //    //    echo "Error uploading file: " . $_FILES['cover']['error'];
-   //    // }
-   //     exit();
-   // }
-// } else {
-//    // Jika tidak ada file yang diupload
-//    $_SESSION['msg']['cover'] = "Tidak ada file yang dipilih.";
-//    header('location: ../../../?page=book/input-book');
-//    exit();
-// }
