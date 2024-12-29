@@ -68,7 +68,7 @@
                         <span class="input-group-text"><i class="ri-search-line ri-20px"></i></span>
                         <input type="text" class="form-control" placeholder="Book 1" name="book1"
                            value="<?php echo (isset($_SESSION['value']['book1'])) ? $_SESSION['value']['book1'] : null; ?>"
-                           onkeyup="showBook(this.value, 1)" onkeyup="showBook(this.value)" />
+                           onkeyup="showBook(this.value, 1)" />
                      </div>
                      <div class="form-floating form-floating-outline mb-6">
                         <input readonly type="text" name="title1" class="form-control" id="bookTitle1"
