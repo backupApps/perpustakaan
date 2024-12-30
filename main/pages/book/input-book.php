@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../components/connection.php');
 
 $category = "SELECT * FROM category";
@@ -16,15 +16,15 @@ $selectPublisher = mysqli_query($connect, $publisher);
                <h5 class="mb-0">Book | Input</h5>
             </div>
             <?php if (isset($_SESSION['msg']['failed'])) { ?>
-            <div class="alert alert-danger ms-2 me-2" role="alert">
-               <?php echo $_SESSION['msg']['failed'];?>
-            </div>
+               <div class="alert alert-danger ms-2 me-2" role="alert">
+                  <?php echo $_SESSION['msg']['failed']; ?>
+               </div>
             <?php } ?>
 
             <?php if (isset($_SESSION['msg']['book'])) { ?>
-            <div class="alert alert-success ms-2 me-2" role="alert">
-               <?php echo $_SESSION['msg']['book'];?>
-            </div>
+               <div class="alert alert-success ms-2 me-2" role="alert">
+                  <?php echo $_SESSION['msg']['book']; ?>
+               </div>
             <?php } ?>
             <div class="card-body pt-0">
                <form action="pages/book/process/create.php" method="POST" enctype="multipart/form-data">
@@ -37,7 +37,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            <?php echo (isset($_SESSION['msg']['code'])) ? null : 'autofocus'; ?> type="text" name="code"
                            placeholder="B-book" />
                         <?php if (isset($_SESSION['msg']['code'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['code'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['code'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -47,7 +47,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['title'])) ? $_SESSION['value']['title'] : null; ?>"
                            type="text" name="title" placeholder="Book title" />
                         <?php if (isset($_SESSION['msg']['title'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['title'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['title'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -57,14 +57,14 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['category'])) ? $_SESSION['value']['category'] : null; ?>"
                            name="category">
                            <option value="">-- Select Category --</option>
-                           <?php while($var = mysqli_fetch_array($selectCategory)) { ?>
-                           <option value="<?php echo $var['category_code'];?>"
-                              <?php echo (isset($_SESSION['value']['category']) && $_SESSION['value']['category'] == $var['category_code']) ? 'selected' : ''; ?>>
-                              <?php echo $var['category_name']; ?></option>
+                           <?php while ($var = mysqli_fetch_array($selectCategory)) { ?>
+                              <option value="<?php echo $var['category_code']; ?>"
+                                 <?php echo (isset($_SESSION['value']['category']) && $_SESSION['value']['category'] == $var['category_code']) ? 'selected' : ''; ?>>
+                                 <?php echo $var['category_name']; ?></option>
                            <?php } ?>
                         </select>
                         <?php if (isset($_SESSION['msg']['category'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['category'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['category'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -74,7 +74,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['isbn'])) ? $_SESSION['value']['isbn'] : null; ?>"
                            type="text" name="isbn" placeholder="123-456-7890-12-3" />
                         <?php if (isset($_SESSION['msg']['isbn'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['isbn'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['isbn'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -84,7 +84,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['writer'])) ? $_SESSION['value']['writer'] : null; ?>"
                            type="text" name="writer" placeholder="J.K. Rowling; J.R.R. Tolkien; ..." />
                         <?php if (isset($_SESSION['msg']['writer'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['writer'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['writer'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -94,15 +94,15 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['publisher'])) ? $_SESSION['value']['publisher'] : null; ?>"
                            name="publisher">
                            <option value="">-- Select Publisher --</option>
-                           <?php while($var = mysqli_fetch_array($selectPublisher)) { ?>
-                           <option value="<?php echo $var['publisher_code'];?>"
-                              <?php echo (isset($_SESSION['value']['publisher']) && $_SESSION['value']['publisher'] == $var['publisher_code']) ? 'selected' : ''; ?>>
-                              <?php echo $var['publisher_name']; ?>
-                           </option>
+                           <?php while ($var = mysqli_fetch_array($selectPublisher)) { ?>
+                              <option value="<?php echo $var['publisher_code']; ?>"
+                                 <?php echo (isset($_SESSION['value']['publisher']) && $_SESSION['value']['publisher'] == $var['publisher_code']) ? 'selected' : ''; ?>>
+                                 <?php echo $var['publisher_name']; ?>
+                              </option>
                            <?php } ?>
                         </select>
                         <?php if (isset($_SESSION['msg']['publisher'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['publisher'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['publisher'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -112,7 +112,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['date'])) ? $_SESSION['value']['date'] : null; ?>"
                            type="date" name="date" />
                         <?php if (isset($_SESSION['msg']['date'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['date'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['date'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -122,7 +122,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            value="<?php echo (isset($_SESSION['value']['cover'])) ? $_SESSION['value']['cover'] : null; ?>"
                            name="cover" />
                         <?php if (isset($_SESSION['msg']['cover'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['cover'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['cover'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
@@ -145,7 +145,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                            </option>
                         </select>
                         <?php if (isset($_SESSION['msg']['language'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['language'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['language'] ?></span>
                         <?php } ?>
                      </div>
 
@@ -153,18 +153,18 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <label class="form-label">Synopsis</label>
                         <div class="input-group">
                            <textarea
+                              style="min-height: 20vh;"
                               class="form-control ps-3 <?php echo (isset($_SESSION['msg']['synopsis'])) ? 'border-danger' : null; ?>"
-                              value="" name="synopsis" placeholder="typing..."
-                              rows="2"><?php echo (isset($_SESSION['value']['synopsis'])) ? $_SESSION['value']['synopsis'] : null; ?></textarea>
+                              name="synopsis" placeholder="typing..."><?php echo (isset($_SESSION['value']['synopsis'])) ? $_SESSION['value']['synopsis'] : null; ?></textarea>
                         </div>
                         <?php if (isset($_SESSION['msg']['synopsis'])) { ?>
-                        <span class="text-danger"><?php echo $_SESSION['msg']['synopsis'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['synopsis'] ?></span>
                         <?php } ?>
                      </div>
                   </div>
                   <div class="mt-6">
-                     <button type="submit" name="submit" class="btn btn-primary me-3">Submit</button>
                      <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                     <button type="submit" name="submit" class="btn btn-primary me-3">Submit</button>
                   </div>
                </form>
             </div>
@@ -173,7 +173,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
    </div>
 </div>
 
-<?php 
-unset($_SESSION['msg']); 
+<?php
+unset($_SESSION['msg']);
 unset($_SESSION['value']);
 ?>
