@@ -20,9 +20,10 @@
       <ul class="navbar-nav flex-row align-items-center ms-auto">
          <!-- Place this tag where you want the button to render. -->
          <li class="nav-item lh-1 me-4">
-            <a class="github-button" href="https://github.com/themeselection/materio-bootstrap-html-admin-template-free"
-               data-icon="octicon-star" data-size="large" data-show-count="true"
-               aria-label="Star themeselection/materio-bootstrap-html-admin-template-free on GitHub">Star</a>
+            <a class="btn btn-warning" href="../index.php">
+               View Books |
+               <img style="width: 25px;" src="../assets/img/elements/book.png" alt="">
+            </a>
          </li>
 
          <!-- User -->
