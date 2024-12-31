@@ -19,7 +19,7 @@
 
       <!-- Category -->
       <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'category/data-category' || $_REQUEST['page'] == 'category/input-category') {
+         class="menu-item <?php if ($_REQUEST['page'] == 'category/data-category' || $_REQUEST['page'] == 'category/input-category' || $_REQUEST['page'] == 'category/update-category') {
                               echo 'open';
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -27,7 +27,7 @@
             <div data-i18n="Dashboards">Category</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page'] == 'category/data-category') ? 'active' : null ?>">
+            <li class="menu-item <?php echo ($_REQUEST['page'] == 'category/data-category' || $_REQUEST['page'] == 'category/update-category') ? 'active' : null ?>">
                <a href="?page=category/data-category" class="menu-link">
                   <div data-i18n="Data">Category Data</div>
                </a>
@@ -44,7 +44,7 @@
 
       <!-- Publisher -->
       <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'publisher/data-publisher' || $_REQUEST['page'] == 'publisher/input-publisher') {
+         class="menu-item <?php if ($_REQUEST['page'] == 'publisher/data-publisher' || $_REQUEST['page'] == 'publisher/input-publisher' || $_REQUEST['page'] == 'publisher/update-publisher') {
                               echo 'open';
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -52,7 +52,7 @@
             <div data-i18n="Dashboards">Publisher</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page'] == 'publisher/data-publisher') ? 'active' : null ?>">
+            <li class="menu-item <?php echo ($_REQUEST['page'] == 'publisher/data-publisher' || $_REQUEST['page'] == 'publisher/update-publisher') ? 'active' : null ?>">
                <a href="?page=publisher/data-publisher" class="menu-link">
                   <div data-i18n="Data">Publisher Data</div>
                </a>
@@ -69,7 +69,7 @@
 
       <!-- Book -->
       <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'book/data-book' || $_REQUEST['page'] == 'book/input-book') {
+         class="menu-item <?php if ($_REQUEST['page'] == 'book/data-book' || $_REQUEST['page'] == 'book/input-book' || $_REQUEST['page'] == 'book/update-book') {
                               echo 'open';
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -77,7 +77,7 @@
             <div data-i18n="Dashboards">Book</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page'] == 'book/data-book') ? 'active' : null ?>">
+            <li class="menu-item <?php echo ($_REQUEST['page'] == 'book/data-book' || $_REQUEST['page'] == 'book/update-book') ? 'active' : null ?>">
                <a href="?page=book/data-book" class="menu-link">
                   <div data-i18n="Data">Book Data</div>
                </a>
@@ -94,7 +94,7 @@
 
       <!-- Member -->
       <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'member/data-member' || $_REQUEST['page'] == 'member/input-member') {
+         class="menu-item <?php if ($_REQUEST['page'] == 'member/data-member' || $_REQUEST['page'] == 'member/input-member' || $_REQUEST['page'] == 'member/update-member') {
                               echo 'open';
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -102,7 +102,7 @@
             <div data-i18n="Member">Member</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page'] == 'member/data-member') ? 'active' : null ?>">
+            <li class="menu-item <?php echo ($_REQUEST['page'] == 'member/data-member' || $_REQUEST['page'] == 'member/update-member') ? 'active' : null ?>">
                <a href="?page=member/data-member" class="menu-link">
                   <div data-i18n="Data">Member Data</div>
                </a>
@@ -119,7 +119,7 @@
 
       <!-- Transaction -->
       <li
-         class="menu-item <?php if ($_REQUEST['page'] == 'transaction/borrow' || $_REQUEST['page'] == 'transaction/return' || $_REQUEST['page'] == 'transaction/show-data') {
+         class="menu-item <?php if ($_REQUEST['page'] == 'transaction/borrow' || $_REQUEST['page'] == 'transaction/return' || $_REQUEST['page'] == 'transaction/show-data' || $_REQUEST['page'] == 'transaction/borrow-update') {
                               echo 'open';
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -127,7 +127,7 @@
             <div data-i18n="Transaction">Transaction</div>
          </a>
          <ul class="menu-sub ms-5">
-            <li class="menu-item <?php echo ($_REQUEST['page'] == 'transaction/show-data') ? 'active' : null ?>">
+            <li class="menu-item <?php echo ($_REQUEST['page'] == 'transaction/show-data' || $_REQUEST['page'] == 'transaction/borrow-update') ? 'active' : null ?>">
                <a href="?page=transaction/show-data" class="menu-link">
                   <div data-i18n="Data">Borrower's Data</div>
                </a>
