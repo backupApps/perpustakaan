@@ -21,10 +21,17 @@
          <!-- Login -->
          <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <div class="d-grid px-4 pt-2 pb-1">
-               <a class="btn btn-danger d-flex" href="../auth/form-login.php">
-                  <div class="align-middle">Login</div>
-                  <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
-               </a>
+               <?php if (!isset($_SESSION['login'])) { ?>
+                  <a class="btn btn-danger d-flex" href="../auth/form-login.php">
+                     <div class="align-middle">Login</div>
+                     <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
+                  </a>
+               <?php } else { ?>
+                  <a class="btn btn-warning d-flex" href="../main">
+                     <div class="align-middle">Dashboard</div>
+                     <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
+                  </a>
+               <?php } ?>
             </div>
          </li>
       </ul>
