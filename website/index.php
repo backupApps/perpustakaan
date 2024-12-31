@@ -1,4 +1,6 @@
-<?php include('functions/read.php') ?>
+<?php
+session_start();
+include('functions/read.php') ?>
 
 <!doctype html>
 
