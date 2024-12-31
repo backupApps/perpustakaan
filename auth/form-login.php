@@ -61,7 +61,7 @@ if (isset($_SESSION['login'])) {
          <div class="authentication-inner py-6 mx-4">
             <!-- Login -->
             <div class="card p-7">
-               <a href="../index.php" type="submit" class="btn btn-secondary w-25">
+               <a href="../index.php" type="submit" class="btn btn-outline-primary w-20">
                   <i class="ri-arrow-left-s-line"></i>
                   Back
                </a>
