@@ -40,19 +40,14 @@ $no = 1;
                      <td><?php echo $data['borrow_date'] ?></td>
                      <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>' ?></td>
                      <td>
-                        <a href="" class="btn btn-sm btn-info">
-                           Edit
-                           <i class="ri-pencil-line"></i>
-                        </a> |
-                        <a href="?page=transaction/detail-borrower&id=<?php echo $data['id_transaksi']; ?>"
+                        <a href="?page=transaction/detail-borrower&id_tr=<?php echo $data['id_transaksi']; ?>"
                            class="btn btn-sm btn-warning">
                            Detail
                            <i class="ri-book-open-line"></i>
-                        </a> |
-                        <a href="pages/transaction/process/delete.php?nik=<?php echo $data['nik']; ?>"
-                           onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
-                           <i class="ri-delete-bin-line"></i>
-                           Delete
+                        </a>
+                        <a href="?page=transaction/borrow&id=<?php echo $data['id']; ?>" class="btn btn-sm btn-info">
+                           Add books
+                           <i class="ri-add-line"></i>
                         </a>
                      </td>
                   </tr>
