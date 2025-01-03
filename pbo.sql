@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 30, 2024 at 09:49 PM
+-- Generation Time: Jan 03, 2025 at 08:38 PM
 -- Server version: 8.0.40-0ubuntu0.24.04.1
 -- PHP Version: 8.3.6
 
@@ -111,11 +111,26 @@ INSERT INTO `detail_transaksi` (`id`, `id_transaksi`, `nik_member`, `code_book`)
 (22, '17', '1472567812345678', 'B-4'),
 (23, '18', '1472098709870987', 'B-6'),
 (24, '18', '1472098709870987', 'B-3'),
-(32, '27', '1472987654324567', 'B-5'),
-(33, '27', '1472987654324567', 'B-8'),
-(34, '27', '1472987654324567', 'B-2'),
-(35, '27', '1472987654324567', 'B-3'),
-(36, '28', '1472987654324567', 'B-5');
+(52, '43', '1472009988776655', 'B-9'),
+(56, '47', '1472098712347654', 'B-5'),
+(57, '47', '1472098712347654', 'B-9'),
+(58, '47', '1472098712347654', 'B-10'),
+(61, '50', '1472567812345678', 'B-9'),
+(65, '50', '1472567812345678', 'B-3'),
+(66, '18', '1472098709870987', 'B-4'),
+(67, '18', '1472098709870987', 'B-2'),
+(69, '18', '1472098709870987', 'B-8'),
+(70, '43', '1472009988776655', 'B-10'),
+(71, '43', '1472009988776655', 'B-1'),
+(72, '15', '1472123456781234', 'B-4'),
+(73, '', '1472009988776655', 'B-3'),
+(74, '43', '1472009988776655', 'B-6'),
+(75, '', '1472009988776655', 'B-2'),
+(76, '', '1472009988776655', 'B-4'),
+(77, '43', '1472009988776655', 'B-3'),
+(80, '53', '1472098709870987', 'B-7'),
+(81, '53', '1472098709870987', 'B-1'),
+(82, '53', '1472098709870987', 'B-3');
 
 -- --------------------------------------------------------
 
@@ -137,13 +152,14 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`nik`, `name`, `phone_number`, `email`, `address`, `photo`) VALUES
-('1472009988776655', 'Kucing', '80912345678', 'kucing@example.com', 'Jl. Sidomulyo', '3e386dc5f224baa19eefea2a47540914.png'),
-('1472098709870987', 'Elang', '86709876789', 'elang@example.com', 'Jl. Kopi', '7a0d6fa6e7dc2652c97bfb707b5eecdf.png'),
-('1472098712347654', 'Bangau', '89512340987', 'bangau@example.com', 'Jl. Sukajadi', 'd0dd7a6bc2c232ea16a90b21522f924c.png'),
-('1472123456781234', 'Harimau', '81234567890', 'harimau@example.com', 'Jl. Sudirman', '4b2ab33e657b4cf0e6e0e4b8dcc9c0da.png'),
-('1472567476544567', 'Kuda', '89012347658', 'kuda@example.com', 'Jl. Beringin', 'b99be565c6b111271274c6dfc95c9b24.png'),
-('1472567812345678', 'Cheetah', '81209876543', 'cheetah@example.com', 'Jl. Budi Kemuliaan', '3c45ff191d62122e7cb24a9c3a4b86f5.png'),
-('1472987654324567', 'Beruang', '88987652345', 'beruang@example.com', 'Jl. Kesuma', 'e103cdac976d486ce3bc43b09ecfbdf5.png');
+('1345987623458765', 'Sapi', '845334561234', 'sapi@example.com', 'Jl. Arifin Ahmad', '2c72002628e16a6dc9804a10df8703a8.jpg'),
+('1472009988776655', 'Kucing', '80912345678', 'kucing@example.com', 'Jl. Sidomulyo', 'af358524bc9ed47565b71ac27fea2f9c.jpg'),
+('1472098709870987', 'Elang', '86709876789', 'elang@example.com', 'Jl. Kopi', 'a93d7205163c296984909ef6e564c523.jpg'),
+('1472098712347654', 'Bangau', '89512340987', 'bangau@example.com', 'Jl. Sukajadi', 'c4b9e57efbec2baeb7d0d73934d6761d.jpg'),
+('1472123456781234', 'Harimau', '81234567890', 'harimau@example.com', 'Jl. Sudirman', '39e156a5b069f30ac4f7502659d6a7e5.jpg'),
+('1472567476544567', 'Kuda', '89012347658', 'kuda@example.com', 'Jl. Beringin', 'ca01e73a6cb704eec766797b399be4b1.jpg'),
+('1472567812345678', 'Cheetah', '81209876543', 'cheetah@example.com', 'Jl. Budi Kemuliaan', '61bd51552be7410d580855db1a6e509c.jpg'),
+('1472987654324567', 'Beruang', '88987652345', 'beruang@example.com', 'Jl. Kesuma', 'd1cdef223210708e67501f61feaee649.jpg');
 
 -- --------------------------------------------------------
 
@@ -190,14 +206,15 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `nik_member`, `borrow_date`, `return_date`) VALUES
-(10, '1472987654324567', '2024-12-25', '2024-12-27'),
 (11, '1472009988776655', '2024-12-28', '2024-12-28'),
 (14, '1472098712347654', '2024-12-28', '2024-12-28'),
 (15, '1472123456781234', '2024-12-28', NULL),
 (17, '1472567812345678', '2024-12-28', '2024-12-28'),
-(18, '1472098709870987', '2024-12-28', NULL),
-(27, '1472987654324567', '2024-12-28', NULL),
-(28, '1472987654324567', '2024-12-30', NULL);
+(18, '1472098709870987', '2024-12-28', '2025-01-03'),
+(43, '1472009988776655', '2025-01-02', NULL),
+(47, '1472098712347654', '2025-01-02', NULL),
+(50, '1472567812345678', '2025-01-02', NULL),
+(53, '1472098709870987', '2025-01-04', NULL);
 
 -- --------------------------------------------------------
 
@@ -277,13 +294,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `users`
