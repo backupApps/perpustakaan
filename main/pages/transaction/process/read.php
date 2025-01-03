@@ -15,9 +15,13 @@ if (isset($_REQUEST['id_tr'])) {
     $sql = "SELECT * FROM detail_transaksi
             LEFT JOIN book ON detail_transaksi.code_book = book.code
             LEFT JOIN transaksi ON detail_transaksi.id_transaksi = transaksi.id
+            LEFT JOIN member ON transaksi.nik_member = member.nik
             WHERE detail_transaksi.id_transaksi = '$id'
    ";
     $query = mysqli_query($connect, $sql);
+
+    $queryMember = mysqli_query($connect, $sql);
+    $dataMember = mysqli_fetch_array($queryMember);
 }
 
 // menampilkan data lama di form peminjaman

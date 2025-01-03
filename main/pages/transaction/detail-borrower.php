@@ -23,9 +23,6 @@ $no = 1;
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-               <?php $sql = "SELECT * FROM member";
-               $queryMember = mysqli_query($connect, $sql);
-               $dataMember = mysqli_fetch_array($queryMember); ?>
                <tr>
                   <td>
                      <img class="rounded" style="width: 150px;" src="pages/member/photo/<?php echo $dataMember['photo']; ?>" alt="">
