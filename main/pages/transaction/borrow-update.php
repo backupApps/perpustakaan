@@ -25,7 +25,7 @@
                         <span
                            class="input-group-text <?php echo (isset($_SESSION['msg']['nik_member'])) ? 'border-danger' : null; ?>">
                            <i class="ri-search-line ri-20px"></i></span>
-                        <input type="text" placeholder="Search Member's NIK" name="member-nik"
+                        <input readonly type="text" placeholder="Search Member's NIK" name="member-nik"
                            class="form-control <?php echo (isset($_SESSION['msg']['nik_member'])) ? 'border-danger' : null; ?>"
                            value="<?php echo $_SESSION['value']['nik_member'] ?? $data['nik_member'] ?? ''; ?>"
                            id="memberNik" onkeyup="showName(this.value)">
@@ -42,7 +42,8 @@
                   <div class="mb-6">
                      <label class="form-label">Borrow Date</label>
                      <input
-                        class="form-control <?php echo (isset($_SESSION['msg']['borrow_date'])) ? 'border-danger' : null; ?>"
+                        readonly
+                        class="form-control disabled <?php echo (isset($_SESSION['msg']['borrow_date'])) ? 'border-danger' : null; ?>"
                         value="<?php echo $_SESSION['value']['borrow_date'] ?? $data['borrow_date'] ?? ''; ?>"
                         type="date" name="borrow-date" />
                      <?php if (isset($_SESSION['msg']['borrow_date'])) {
