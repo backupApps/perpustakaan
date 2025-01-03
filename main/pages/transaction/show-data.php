@@ -45,7 +45,8 @@ $no = 1;
                            Detail
                            <i class="ri-book-open-line"></i>
                         </a>
-                        <a href="?page=transaction/borrow&id=<?php echo $data['id']; ?>" class="btn btn-sm btn-info">
+                        <a href="?page=transaction/borrow-update&id=<?php echo $data['id_transaksi']; ?>"
+                           class="btn btn-sm btn-info <?php echo ($data['return_date'] != null || $data['borrowed_books'] == '5') ? 'disabled' : null ?>">
                            Add books
                            <i class="ri-add-line"></i>
                         </a>
