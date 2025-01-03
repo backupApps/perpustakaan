@@ -1,5 +1,3 @@
-<?php include('process/read.php'); ?>
-
 <div class="container-xxl flex-grow-1 container-p-y">
    <form action="pages/transaction/process/borrowed.php" method="POST">
       <div class="row">
