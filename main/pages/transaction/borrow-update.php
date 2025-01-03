@@ -50,6 +50,11 @@
                         echo '<span class="text-danger">' . $_SESSION['msg']['borrow_date'] . '</span>';
                      } ?>
                   </div>
+                  <div class="mb-6" hidden>
+                     <label class="form-label">Id</label>
+                     <input type="text" name="id" id="id" class="form-control" placeholder="Name will appear here"
+                        value="<?php echo $_SESSION['value']['id'] ?? $data['id'] ?? ''; ?>" readonly />
+                  </div>
                   <div class="text-end">
                      <button type="reset" name="reset" class="btn btn-secondary me-3 p-4">Reset</button>
                      <button type="submit" name="submit" class="btn btn-primary me-3 p-4">Submit</button>
