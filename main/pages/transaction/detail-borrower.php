@@ -15,7 +15,7 @@ $no = 1;
          <table class="table table-striped">
             <thead>
                <tr>
-                  <th>No.</th>
+                  <th>Photo</th>
                   <th>NIK</th>
                   <th>Name</th>
                   <th>Email</th>
@@ -27,7 +27,9 @@ $no = 1;
                $queryMember = mysqli_query($connect, $sql);
                $dataMember = mysqli_fetch_array($queryMember); ?>
                <tr>
-                  <td><?php echo $no++; ?></td>
+                  <td>
+                     <img class="rounded" style="width: 150px;" src="pages/member/photo/<?php echo $dataMember['photo']; ?>" alt="">
+                  </td>
                   <td><?php echo $dataMember['nik']; ?></td>
                   <td><?php echo $dataMember['name']; ?></td>
                   <td><?php echo $dataMember['email']; ?></td>
@@ -55,7 +57,7 @@ $no = 1;
                      <td><?php echo $no++; ?></td>
                      <td><?php echo $data['title']; ?> | <?= $data['code']; ?></td>
                      <td>
-                        <img class="w-25" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
+                        <img class="w-25 rounded" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
                      </td>
                      <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>'; ?>
                      </td>
