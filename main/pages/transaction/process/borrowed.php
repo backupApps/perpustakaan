@@ -49,7 +49,16 @@ if (empty($borrow_date)) {
 if (empty($books)) {
     $_SESSION['msg']['book'] = "Pilih buku yang ingin dipinjam!";
 } else {
+    $codes = []; // Array untuk menyimpan kode buku yang diinput
     foreach ($books as $book) {
+        // Validasi apakah buku dengan kode yang sama sudah ada di input
+        if (in_array($book['code'], $codes)) {
+            $_SESSION['msg']['book'] = "Tidak bisa meminjam buku dengan kode yang sama!";
+            break;
+        }
+        $codes[] = $book['code']; // Tambahkan kode ke array jika belum ada
+
+        // Validasi apakah buku ada di database
         $sql = "SELECT * FROM book WHERE code='{$book['code']}'";
         $query = mysqli_query($connect, $sql);
         if (mysqli_num_rows($query) == 0) {
