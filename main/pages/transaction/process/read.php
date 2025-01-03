@@ -1,11 +1,25 @@
 <?php
 include('../components/connection.php');
+
+// Pagination setup
+$limit = 5; // Jumlah data per halaman
+$page = isset($_REQUEST['pagination']) ? (int)$_REQUEST['pagination'] : 1; // Halaman saat ini, default 1
+$offset = ($page - 1) * $limit; // Hitung offset untuk SQL
+
+// Hitung total data
+$totalQuery = mysqli_query($connect, "SELECT COUNT(*) AS total FROM book");
+$totalData = mysqli_fetch_assoc($totalQuery)['total'];
+$totalPages = ceil($totalData / $limit); // Total halaman
+
 $sql = "SELECT transaksi.id, transaksi.nik_member, transaksi.borrow_date, transaksi.return_date, detail_transaksi.id_transaksi, member.nik, member.name, COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
         FROM transaksi
         LEFT JOIN member ON transaksi.nik_member = member.nik
         LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
-        GROUP BY transaksi.id ORDER BY transaksi.id DESC";
+        GROUP BY transaksi.id ORDER BY transaksi.id DESC LIMIT $limit OFFSET $offset";
 $query = mysqli_query($connect, $sql);
+
+if ($page < 1) $page = 1;
+if ($page > $totalPages) $page = $totalPages;
 
 // detail
 if (isset($_REQUEST['id_tr'])) {
