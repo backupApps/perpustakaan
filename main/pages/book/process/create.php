@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../../../../components/connection.php');
 
 if (!isset($_POST['submit'])) {
    header('location: ../../../index.php');
@@ -7,6 +8,7 @@ if (!isset($_POST['submit'])) {
 }
 
 $code = $_POST['code'];
+$code = strtoupper($code);
 $title = $_POST['title'];
 $category = $_POST['category'];
 $writer = $_POST['writer'];
@@ -28,10 +30,6 @@ $ekstensiGambar = end($ekstensiGambar);
 
 // fungsi waktu
 $cover = date('l, d-m-Y  H:i:s');
-
-// generate nama baru
-$newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
-$upload = move_uploaded_file($fileTmp, $folder . $newName);
 
 // value
 $_SESSION['value']['code'] = $code;
@@ -57,9 +55,13 @@ if ($category == '') {
 }
 if ($writer == '') {
    $_SESSION['msg']['writer'] = "Kolom penulis tidak boleh kosong!";
+} else if (preg_match('/\d/', $writer)) { // Validasi tidak boleh ada angka
+   $_SESSION['msg']['writer'] = "Nama penulis tidak boleh mengandung angka!";
 }
 if ($isbn == '') {
    $_SESSION['msg']['isbn'] = "Kolom isbn tidak boleh kosong!";
+} else if (!ctype_digit($isbn)) {
+   $_SESSION['msg']['isbn'] = "isbn hanya boleh berisi angka!";
 }
 if ($publisher == '') {
    $_SESSION['msg']['publisher'] = "Pilih penerbit!";
@@ -67,8 +69,21 @@ if ($publisher == '') {
 if ($date == '') {
    $_SESSION['msg']['date'] = "Tentukan waktu!";
 }
-if (!$upload) {
-   $_SESSION['msg']['cover'] = "Pilih gambar!";
+if ($cover == '') {
+   $_SESSION['msg']['cover'] = "Pilih Gambar!";
+} else if (!in_array($ekstensiFile, $ekstensiValid)) { // Validasi ekstensi file
+   $_SESSION['msg']['cover'] = "Hanya file dengan ekstensi jpg, jpeg, atau png yang diperbolehkan!";
+} else if ($_FILES['cover']['size'] > 2 * 1024 * 1024) { // Validasi ukuran file maksimal 2MB
+   $_SESSION['msg']['cover'] = "Ukuran file maksimal 2MB!";
+} else {
+   // Jika validasi berhasil, upload file
+   // generate nama baru
+   $newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
+   $upload = move_uploaded_file($fileTmp, $folder . $newName);
+
+   if (!$upload) {
+      $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
+   }
 }
 if ($language == '') {
    $_SESSION['msg']['language'] = "Pilih bahasa!";
@@ -81,8 +96,6 @@ if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=book/input-book');
    exit();
 }
-
-include('../../../../components/connection.php');
 
 $sql = "SELECT * FROM book WHERE code='$code' OR isbn='$isbn'";
 $query = mysqli_query($connect, $sql);
