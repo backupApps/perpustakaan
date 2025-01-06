@@ -65,6 +65,10 @@ if (empty($photo)) {
 } else if ($_FILES['photo']['size'] > 2 * 1024 * 1024) { // Validasi ukuran file maksimal 2MB
    $_SESSION['msg']['photo'] = "Ukuran file maksimal 2MB!";
 } else {
+   if (isset($_SESSION['msg'])) {
+      header('location: ../../../?page=member/input-member');
+      exit();
+   }
    // Jika validasi berhasil, upload file
    // generate nama baru
    $newName = strtolower(md5($photo) . '.' . $ekstensiGambar);

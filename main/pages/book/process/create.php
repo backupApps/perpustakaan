@@ -69,6 +69,12 @@ if ($publisher == '') {
 if ($date == '') {
    $_SESSION['msg']['date'] = "Tentukan waktu!";
 }
+if ($language == '') {
+   $_SESSION['msg']['language'] = "Pilih bahasa!";
+}
+if ($synopsis == '') {
+   $_SESSION['msg']['synopsis'] = "Kolom sinopsis tidak boleh kosong!";
+}
 if ($cover == '') {
    $_SESSION['msg']['cover'] = "Pilih Gambar!";
 } else if (!in_array($ekstensiFile, $ekstensiValid)) { // Validasi ekstensi file
@@ -76,6 +82,10 @@ if ($cover == '') {
 } else if ($_FILES['cover']['size'] > 2 * 1024 * 1024) { // Validasi ukuran file maksimal 2MB
    $_SESSION['msg']['cover'] = "Ukuran file maksimal 2MB!";
 } else {
+   if (isset($_SESSION['msg'])) {
+      header('location: ../../../?page=book/input-book');
+      exit();
+   }
    // Jika validasi berhasil, upload file
    // generate nama baru
    $newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
@@ -84,12 +94,6 @@ if ($cover == '') {
    if (!$upload) {
       $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
    }
-}
-if ($language == '') {
-   $_SESSION['msg']['language'] = "Pilih bahasa!";
-}
-if ($synopsis == '') {
-   $_SESSION['msg']['synopsis'] = "Kolom sinopsis tidak boleh kosong!";
 }
 
 if (isset($_SESSION['msg'])) {
