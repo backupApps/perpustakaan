@@ -2,13 +2,27 @@
     style="height: 10vh;">
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
-        <div class="navbar-nav align-items-center border border-primary rounded px-4">
+        <!-- using live search ajax -->
+        <!-- <div class="navbar-nav align-items-center border border-primary rounded px-4">
             <div class="nav-item d-flex align-items-center">
                 <i class="ri-search-line ri-22px me-2"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
                     onkeyup="searchBook(this.value)" />
             </div>
-        </div>
+        </div> -->
+
+        <!-- using query like php -->
+        <form action="" method="POST">
+            <div class="navbar-nav align-items-center border-primary rounded px-4">
+                <div class="input-group">
+                    <input type="text" name="title-book" class="form-control border-primary" placeholder="Search book"
+                        value="<?= (isset($_SESSION['value-title'])) ? $_SESSION['value-title'] : null; ?>">
+                    <button class="btn btn-outline-primary waves-effect" type="submit" id="button-addon2"
+                        name="search">Search</button>
+                </div>
+            </div>
+        </form>
+        <!-- End search -->
 
         <div class="navbar-nav align-items-center m-auto d-flex flex-row">
             <img style="width: 80px;" src="../assets/img/elements/book.png" alt="">
