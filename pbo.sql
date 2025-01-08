@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 03, 2025 at 08:38 PM
--- Server version: 8.0.40-0ubuntu0.24.04.1
--- PHP Version: 8.3.6
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 08 Jan 2025 pada 14.33
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,24 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `book`
+-- Struktur dari tabel `book`
 --
 
 CREATE TABLE `book` (
-  `code` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `isbn` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `writer` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `publisher_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(30) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `category_code` varchar(30) NOT NULL,
+  `isbn` varchar(20) NOT NULL,
+  `writer` varchar(50) NOT NULL,
+  `publisher_code` varchar(30) NOT NULL,
   `date` date NOT NULL,
-  `language` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cover` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `synopsis` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `language` varchar(20) NOT NULL,
+  `cover` varchar(100) NOT NULL,
+  `synopsis` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `book`
+-- Dumping data untuk tabel `book`
 --
 
 INSERT INTO `book` (`code`, `title`, `category_code`, `isbn`, `writer`, `publisher_code`, `date`, `language`, `cover`, `synopsis`) VALUES
@@ -59,16 +59,16 @@ INSERT INTO `book` (`code`, `title`, `category_code`, `isbn`, `writer`, `publish
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Struktur dari tabel `category`
 --
 
 CREATE TABLE `category` (
-  `category_code` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `category_code` varchar(10) NOT NULL,
+  `category_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category`
+-- Dumping data untuk tabel `category`
 --
 
 INSERT INTO `category` (`category_code`, `category_name`) VALUES
@@ -79,23 +79,24 @@ INSERT INTO `category` (`category_code`, `category_name`) VALUES
 ('ENC', 'Encyclopedia'),
 ('NVL-CO', 'Novel Comedy'),
 ('NVL-DR', 'Novel Drama'),
+('NVL-HOR', 'Novel Horor'),
 ('NVL-RO', 'Novel Romance');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_transaksi`
+-- Struktur dari tabel `detail_transaksi`
 --
 
 CREATE TABLE `detail_transaksi` (
-  `id` int NOT NULL,
-  `id_transaksi` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nik_member` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code_book` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `id_transaksi` varchar(5) NOT NULL,
+  `nik_member` varchar(16) NOT NULL,
+  `code_book` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `detail_transaksi`
+-- Dumping data untuk tabel `detail_transaksi`
 --
 
 INSERT INTO `detail_transaksi` (`id`, `id_transaksi`, `nik_member`, `code_book`) VALUES
@@ -130,25 +131,28 @@ INSERT INTO `detail_transaksi` (`id`, `id_transaksi`, `nik_member`, `code_book`)
 (77, '43', '1472009988776655', 'B-3'),
 (80, '53', '1472098709870987', 'B-7'),
 (81, '53', '1472098709870987', 'B-1'),
-(82, '53', '1472098709870987', 'B-3');
+(82, '53', '1472098709870987', 'B-3'),
+(83, '53', '1472098709870987', 'B-4'),
+(84, '54', '1472123456781234', 'B-1'),
+(85, '54', '1472123456781234', 'B-9');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
+-- Struktur dari tabel `member`
 --
 
 CREATE TABLE `member` (
-  `nik` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `nik` varchar(16) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `phone_number` varchar(13) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `photo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `member`
+-- Dumping data untuk tabel `member`
 --
 
 INSERT INTO `member` (`nik`, `name`, `phone_number`, `email`, `address`, `photo`) VALUES
@@ -164,17 +168,17 @@ INSERT INTO `member` (`nik`, `name`, `phone_number`, `email`, `address`, `photo`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `publisher`
+-- Struktur dari tabel `publisher`
 --
 
 CREATE TABLE `publisher` (
-  `publisher_code` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `publisher_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `publisher_code` varchar(10) NOT NULL,
+  `publisher_name` varchar(50) NOT NULL,
+  `address` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `publisher`
+-- Dumping data untuk tabel `publisher`
 --
 
 INSERT INTO `publisher` (`publisher_code`, `publisher_name`, `address`) VALUES
@@ -191,45 +195,46 @@ INSERT INTO `publisher` (`publisher_code`, `publisher_name`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
-  `id` int NOT NULL,
-  `nik_member` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `nik_member` varchar(16) NOT NULL,
   `borrow_date` date NOT NULL,
   `return_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `transaksi`
+-- Dumping data untuk tabel `transaksi`
 --
 
 INSERT INTO `transaksi` (`id`, `nik_member`, `borrow_date`, `return_date`) VALUES
 (11, '1472009988776655', '2024-12-28', '2024-12-28'),
-(14, '1472098712347654', '2024-12-28', '2024-12-28'),
-(15, '1472123456781234', '2024-12-28', NULL),
+(14, '1472098712347654', '2024-12-28', '2025-01-08'),
+(15, '1472123456781234', '2024-12-28', '2025-01-06'),
 (17, '1472567812345678', '2024-12-28', '2024-12-28'),
 (18, '1472098709870987', '2024-12-28', '2025-01-03'),
 (43, '1472009988776655', '2025-01-02', NULL),
-(47, '1472098712347654', '2025-01-02', NULL),
+(47, '1472098712347654', '2025-01-02', '2025-01-08'),
 (50, '1472567812345678', '2025-01-02', NULL),
-(53, '1472098709870987', '2025-01-04', NULL);
+(53, '1472098709870987', '2025-01-04', NULL),
+(54, '1472123456781234', '2025-01-06', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
@@ -240,26 +245,26 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 
 --
--- Indexes for table `book`
+-- Indeks untuk tabel `book`
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`code`);
 
 --
--- Indexes for table `category`
+-- Indeks untuk tabel `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_code`),
   ADD UNIQUE KEY `name` (`category_name`);
 
 --
--- Indexes for table `detail_transaksi`
+-- Indeks untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `member`
+-- Indeks untuk tabel `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`nik`),
@@ -267,7 +272,7 @@ ALTER TABLE `member`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `publisher`
+-- Indeks untuk tabel `publisher`
 --
 ALTER TABLE `publisher`
   ADD PRIMARY KEY (`publisher_code`),
@@ -275,38 +280,38 @@ ALTER TABLE `publisher`
   ADD UNIQUE KEY `publisher_name` (`publisher_name`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `detail_transaksi`
+-- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
