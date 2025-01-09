@@ -25,14 +25,12 @@ $folder = '../image/';
 
 $ekstensiValid = ['jpg', 'jpeg', 'png'];
 $ekstensiFile = strtolower(pathinfo($cover, PATHINFO_EXTENSION));
-$ekstensiGambar = explode('.', $cover);
-$ekstensiGambar = end($ekstensiGambar);
 
 // fungsi waktu
 $cover = date('l, d-m-Y  H:i:s');
 
 // generate nama baru
-$newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
+$newName = strtolower(md5($cover) . '.' . $ekstensiFile);
 
 // Ambil gambar lama dari database
 $sql = "SELECT cover FROM book WHERE code='$code'";
@@ -43,6 +41,16 @@ $filePath = $folder . $oldFile;
 
 // Cek apakah file gambar baru diupload
 if ($_FILES['cover']['name']) {
+
+   if (!in_array($ekstensiFile, $ekstensiValid)) { // Validasi ekstensi file
+      $_SESSION['msg']['cover'] = "Hanya file dengan ekstensi jpg, jpeg, atau png yang diperbolehkan!";
+      header('location: ../../../?page=book/update-book&code=' . $code);
+      exit();
+   } else if ($_FILES['cover']['size'] > 2 * 1024 * 1024) { // Validasi ukuran file maksimal 2MB
+      $_SESSION['msg']['cover'] = "Ukuran file maksimal 2MB!";
+      header('location: ../../../?page=book/update-book&code=' . $code);
+      exit();
+   }
    // Jika gambar baru diupload, hapus gambar lama
    if (file_exists($filePath)) {
       unlink($filePath);  // Hapus gambar lama

@@ -25,8 +25,6 @@ $folder = '../image/';
 
 $ekstensiValid = ['jpg', 'jpeg', 'png'];
 $ekstensiFile = strtolower(pathinfo($cover, PATHINFO_EXTENSION));
-$ekstensiGambar = explode('.', $cover);
-$ekstensiGambar = end($ekstensiGambar);
 
 // fungsi waktu
 $cover = date('l, d-m-Y  H:i:s');
@@ -60,8 +58,6 @@ if ($writer == '') {
 }
 if ($isbn == '') {
    $_SESSION['msg']['isbn'] = "Kolom isbn tidak boleh kosong!";
-} else if (!ctype_digit($isbn)) {
-   $_SESSION['msg']['isbn'] = "isbn hanya boleh berisi angka!";
 }
 if ($publisher == '') {
    $_SESSION['msg']['publisher'] = "Pilih penerbit!";
@@ -88,8 +84,8 @@ if ($cover == '') {
    }
    // Jika validasi berhasil, upload file
    // generate nama baru
-   $newName = strtolower(md5($cover) . '.' . $ekstensiGambar);
-   $upload = move_uploaded_file($fileTmp, $folder . $newName);
+   $newName = strtolower(md5($cover) . '.' . $ekstensiFile); // masuk ke db
+   $upload = move_uploaded_file($fileTmp, $folder . $newName); // masuk ke folder local
 
    if (!$upload) {
       $_SESSION['msg']['cover'] = "Gagal meng-upload file.";
