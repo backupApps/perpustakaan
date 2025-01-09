@@ -83,7 +83,7 @@ try {
       exit();
    } else {
       // Jika tidak ada transaksi dengan return_date NULL, maka member sudah mengembalikan semua bukunya
-      $_SESSION['msg']['failed'] = "Member sudah mengembalikan semua buku!";
+      $_SESSION['msg']['failed'] = "Tidak ada peminjaman buku dari member ini!";
       header('location: ../../../?page=transaction/return');
       exit();
    }
