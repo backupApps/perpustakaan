@@ -20,8 +20,6 @@ $folder = '../photo/';
 
 $ekstensiValid = ['jpg', 'jpeg', 'png'];
 $ekstensiFile = strtolower(pathinfo($photo, PATHINFO_EXTENSION));
-$ekstensiGambar = explode('.', $photo);
-$ekstensiGambar = end($ekstensiGambar);
 
 // fungsi waktu
 $photo = date('l, d-m-Y  H:i:s');
@@ -71,7 +69,7 @@ if (empty($photo)) {
    }
    // Jika validasi berhasil, upload file
    // generate nama baru
-   $newName = strtolower(md5($photo) . '.' . $ekstensiGambar);
+   $newName = strtolower(md5($photo) . '.' . $ekstensiFile);
    $upload = move_uploaded_file($fileTmp, $folder . $newName);
 
    if (!$upload) {

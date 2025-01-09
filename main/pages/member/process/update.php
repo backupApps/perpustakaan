@@ -20,14 +20,12 @@ $folder = '../photo/';
 
 $ekstensiValid = ['jpg', 'jpeg', 'png'];
 $ekstensiFile = strtolower(pathinfo($photo, PATHINFO_EXTENSION));
-$ekstensiGambar = explode('.', $photo);
-$ekstensiGambar = end($ekstensiGambar);
 
 // fungsi waktu
 $photo = date('l, d-m-Y  H:i:s');
 
 // generate nama baru
-$newName = strtolower(md5($photo).'.'.$ekstensiGambar);
+$newName = strtolower(md5($photo).'.'.$ekstensiFile);
 
 // Ambil gambar lama dari database
 $sql = "SELECT photo FROM member WHERE nik='$nik'";
@@ -37,24 +35,28 @@ $oldFile = $data['photo'];
 $filePath = $folder . $oldFile;
 
 if ($_FILES['photo']['name']) {
+
+   if (!in_array($ekstensiFile, $ekstensiValid)) { // Validasi ekstensi file
+      $_SESSION['msg']['photo'] = "Hanya file dengan ekstensi jpg, jpeg, atau png yang diperbolehkan!";
+      header('location: ../../../?page=member/update-member&nik=' . $nik);
+      exit();
+   } else if ($_FILES['photo']['size'] > 2 * 1024 * 1024) { // Validasi ukuran file maksimal 2MB
+      $_SESSION['msg']['photo'] = "Ukuran file maksimal 2MB!";
+      header('location: ../../../?page=member/update-member&nik=' . $nik);
+      exit();
+   }
+
    if (file_exists($filePath)) {
       unlink($filePath);
    }
 
    $upload = move_uploaded_file($fileTmp, $folder.$newName);
+
    if ($upload) {
       $sql = "UPDATE member SET photo='$newName' WHERE nik='$nik'";
       mysqli_query($connect, $sql);
    }
 }
-
-// value
-// $_SESSION['value']['nik'] = $nik;
-// $_SESSION['value']['name'] = $name;
-// $_SESSION['value']['phoneNumber'] = $phoneNumber;
-// $_SESSION['value']['email'] = $email;
-// $_SESSION['value']['address'] = $address;
-// $_SESSION['value']['photo'] = $photo;
 
 // validation
 if ($nik == '') {
