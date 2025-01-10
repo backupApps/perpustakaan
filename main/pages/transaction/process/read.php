@@ -11,7 +11,7 @@ $totalQuery = mysqli_query($connect, "SELECT COUNT(*) AS total FROM book");
 $totalData = mysqli_fetch_assoc($totalQuery)['total'];
 $totalPages = ceil($totalData / $limit); // Total halaman
 
-$sql = "SELECT transaksi.id, transaksi.nik_member, transaksi.borrow_date, transaksi.return_date, detail_transaksi.id_transaksi, member.nik, member.name, COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
+$sql = "SELECT *, COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
         FROM transaksi
         LEFT JOIN member ON transaksi.nik_member = member.nik
         LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
