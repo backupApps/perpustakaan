@@ -36,9 +36,11 @@ foreach ($books as $key => $book) {
 //! Validasi
 if (empty($nik_member)) {
     $_SESSION['msg']['nik_member'] = "Tidak ada NIK yang dicari!";
-} else if (strlen($nik_member) < 16 || mysqli_num_rows(mysqli_query($connect, "SELECT * FROM member WHERE nik='$nik_member'")) == 0) {
+} else if (strlen($nik_member) < 16 || 
+            mysqli_num_rows(mysqli_query($connect, "SELECT * FROM member WHERE nik='$nik_member'")) == 0
+    ) {
     $_SESSION['msg']['nik_member'] = "";
-} else if (!isset($_REQUEST['id']) && mysqli_num_rows(mysqli_query($connect, "SELECT * FROM transaksi WHERE nik_member='$nik_member' AND return_date IS NULL")) != 0) {
+} else if (mysqli_num_rows(mysqli_query($connect, "SELECT * FROM transaksi WHERE nik_member='$nik_member' AND return_date IS NULL")) != 0) {
     $_SESSION['msg']['general'] = "Anggota belum mengembalikan buku";
 }
 
