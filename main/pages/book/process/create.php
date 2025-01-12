@@ -71,7 +71,7 @@ if ($language == '') {
 if ($synopsis == '') {
    $_SESSION['msg']['synopsis'] = "Kolom sinopsis tidak boleh kosong!";
 }
-if ($cover == '') {
+if (empty($cover)) {
    $_SESSION['msg']['cover'] = "Pilih Gambar!";
 } else if (!in_array($ekstensiFile, $ekstensiValid)) { // Validasi ekstensi file
    $_SESSION['msg']['cover'] = "Hanya file dengan ekstensi jpg, jpeg, atau png yang diperbolehkan!";

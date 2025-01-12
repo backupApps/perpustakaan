@@ -24,27 +24,21 @@
                      <input type="text" name="code" class="form-control" id="basic-default-fullname"
                         placeholder="ERL; GRA; ..." />
                      <?php if (isset($_SESSION['msg']['code'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['code'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['code'] ?></span>
                      <?php } ?>
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Name</label>
                      <input type="text" name="name" class="form-control" placeholder="Erlangga; Grammedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['name'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
                      <?php } ?>
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Address</label>
-                     <input type="text" name="address" class="form-control" />
+                     <input type="text" name="address" class="form-control" placeholder="Jl. Soekarno-Hatta" />
                      <?php if (isset($_SESSION['msg']['address'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['address'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['address'] ?></span>
                      <?php } ?>
                   </div>
                   <button type="submit" name="submit" class="btn btn-primary">Add Publisher</button>

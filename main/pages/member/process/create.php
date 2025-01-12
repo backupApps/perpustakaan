@@ -50,7 +50,9 @@ if ($phoneNumber == '') {
 } else if (!ctype_digit($phoneNumber)) { // Validasi hanya angka
    $_SESSION['msg']['phoneNumber'] = "Nomor telepon hanya boleh berisi angka!";
 }
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if ($email == '') {
+   $_SESSION['msg']['email'] = "Email tidak boleh kosong";
+} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
    $_SESSION['msg']['email'] = "Format email tidak valid!";
 }
 if ($address == '') {
@@ -74,8 +76,6 @@ if (empty($photo)) {
 
    if (!$upload) {
       $_SESSION['msg']['photo'] = "Gagal meng-upload file.";
-      header('location: ../../../?page=member/input-member');
-      exit();
    }
 }
 if (isset($_SESSION['msg'])) {

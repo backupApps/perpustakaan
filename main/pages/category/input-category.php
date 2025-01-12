@@ -24,9 +24,7 @@
                      <input type="text" name="code" class="form-control" id="basic-default-fullname"
                         placeholder="NVL; CMC; SNC; ..." />
                      <?php if (isset($_SESSION['msg']['code'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['code'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['code'] ?></span>
                      <?php } ?>
                   </div>
                   <div class="mb-6">
@@ -34,9 +32,7 @@
                      <input type="text" name="name" class="form-control"
                         placeholder="Novel; Comic; Sains; Encyclopedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['name'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
                      <?php } ?>
                   </div>
                   <button type="submit" name="submit" class="btn btn-primary">Add Category</button>

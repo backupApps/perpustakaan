@@ -19,7 +19,7 @@ if ($name == '') {
 }
 
 if ($address == '') {
-   $_SESSION['msg']['address'] = "Kolom penerbit tidak boleh kosong!";
+   $_SESSION['msg']['address'] = "Kolom alamat tidak boleh kosong!";
 }
 
 if (isset($_SESSION['msg'])) {

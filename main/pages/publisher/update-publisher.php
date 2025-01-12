@@ -1,5 +1,11 @@
 <?php
-include('process/read.php');
+include('../components/connection.php');
+if (isset($_REQUEST['code'])) {
+   $code = $_REQUEST['code'];
+   $sql = "SELECT * FROM publisher WHERE publisher_code='$code'";
+   $query = mysqli_query($connect, $sql);
+   $data = mysqli_fetch_array($query);
+}
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -27,18 +33,14 @@ include('process/read.php');
                      <input type="text" name="name" class="form-control" value="<?php echo $data['publisher_name']; ?>"
                         placeholder="Novel; Comic; Sains; Encyclopedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['name'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
                      <?php } ?>
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Address</label>
                      <input type="text" name="address" class="form-control" value="<?php echo $data['address']; ?>" />
                      <?php if (isset($_SESSION['msg']['address'])) { ?>
-                     <div class="alert alert-danger mt-2" role="alert">
-                        <?php echo $_SESSION['msg']['address'];?>
-                     </div>
+                     <span class="text-danger"><?php echo $_SESSION['msg']['address'] ?></span>
                      <?php } ?>
                   </div>
                   <button type="submit" class="btn btn-secondary">Back</button>

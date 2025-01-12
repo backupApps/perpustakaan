@@ -1,4 +1,12 @@
-<?php include('process/read.php'); ?>
+<?php
+include('../components/connection.php');
+if (isset($_REQUEST['nik'])) {
+   $nik = $_REQUEST['nik'];
+   $sql = "SELECT * FROM member WHERE nik='$nik'";
+   $query = mysqli_query($connect, $sql);
+   $data = mysqli_fetch_array($query);
+}
+?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
    <div class="row">
