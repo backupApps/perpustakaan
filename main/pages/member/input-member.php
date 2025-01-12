@@ -4,22 +4,22 @@
          <div class="card mb-6">
             <h5 class="card-header">Member | Input</h5>
             <?php if (isset($_SESSION['msg']['failed'])) { ?>
-               <div class="alert alert-danger ms-2 me-2" role="alert">
-                  <?php echo $_SESSION['msg']['failed']; ?>
-               </div>
+            <div class="alert alert-danger ms-2 me-2" role="alert">
+               <?php echo $_SESSION['msg']['failed']; ?>
+            </div>
             <?php } ?>
 
             <?php if (isset($_SESSION['msg']['member'])) { ?>
-               <div class="alert alert-success ms-2 me-2" role="alert">
-                  <?php echo $_SESSION['msg']['member']; ?>
-               </div>
+            <div class="alert alert-success ms-2 me-2" role="alert">
+               <?php echo $_SESSION['msg']['member']; ?>
+            </div>
             <?php } ?>
             <div class="card-body pt-0">
                <form action="pages/member/process/create.php" method="POST" enctype="multipart/form-data">
                   <div class="row mt-1 g-5">
                      <div class="col-md-6">
                         <div class="form-floating form-floating-outline">
-                           <input type="number"
+                           <input type="text"
                               class="form-control <?php echo (isset($_SESSION['msg']['nik'])) ? 'border-danger' : null; ?>"
                               value="<?php echo (isset($_SESSION['value']['nik'])) ? $_SESSION['value']['nik'] : null; ?>"
                               name="nik" placeholder="NIK"
@@ -27,7 +27,7 @@
                            <label for="nik">NIK</label>
                         </div>
                         <?php if (isset($_SESSION['msg']['nik'])) { ?>
-                           <span class="text-danger"><?php echo $_SESSION['msg']['nik'] ?></span>
+                        <span class="text-danger"><?php echo $_SESSION['msg']['nik'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-6">
@@ -38,7 +38,7 @@
                               value="<?php echo (isset($_SESSION['value']['name'])) ? $_SESSION['value']['name'] : null; ?>" />
                            <label for="name">Name</label>
                            <?php if (isset($_SESSION['msg']['name'])) { ?>
-                              <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
                            <?php } ?>
                         </div>
                      </div>
@@ -49,7 +49,7 @@
                               ID (+62)
                            </span>
                            <div class="form-floating form-floating-outline">
-                              <input type="number" id="phoneNumber" name="phoneNumber"
+                              <input type="text" id="phoneNumber" name="phoneNumber"
                                  class="form-control <?php echo (isset($_SESSION['msg']['phoneNumber'])) ? 'border-danger' : null; ?>"
                                  placeholder="81234567890"
                                  value="<?php echo (isset($_SESSION['value']['phoneNumber'])) ? $_SESSION['value']['phoneNumber'] : null; ?>" />
@@ -57,7 +57,7 @@
                            </div>
                         </div>
                         <?php if (isset($_SESSION['msg']['phoneNumber'])) { ?>
-                           <span class="text-danger"><?php echo $_SESSION['msg']['phoneNumber'] ?></span>
+                        <span class="text-danger"><?php echo $_SESSION['msg']['phoneNumber'] ?></span>
                         <?php } ?>
                      </div>
                      <div class="col-md-6">
@@ -68,7 +68,7 @@
                               value="<?php echo (isset($_SESSION['value']['email'])) ? $_SESSION['value']['email'] : null; ?>" />
                            <label for="email">E-mail</label>
                            <?php if (isset($_SESSION['msg']['email'])) { ?>
-                              <span class="text-danger"><?php echo $_SESSION['msg']['email'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['email'] ?></span>
                            <?php } ?>
                         </div>
                      </div>
@@ -80,7 +80,7 @@
                               value="<?php echo (isset($_SESSION['value']['address'])) ? $_SESSION['value']['address'] : null; ?>" />
                            <label for="address">Address</label>
                            <?php if (isset($_SESSION['msg']['address'])) { ?>
-                              <span class="text-danger"><?php echo $_SESSION['msg']['address'] ?></span>
+                           <span class="text-danger"><?php echo $_SESSION['msg']['address'] ?></span>
                            <?php } ?>
                         </div>
                      </div>
@@ -92,7 +92,7 @@
                               value="<?php echo (isset($_SESSION['value']['photo'])) ? $_SESSION['value']['photo'] : null; ?>" />
                            <label for="photo">Photo</label>
                         </div><?php if (isset($_SESSION['msg']['photo'])) { ?>
-                           <span class="text-danger"><?php echo $_SESSION['msg']['photo'] ?></span>
+                        <span class="text-danger"><?php echo $_SESSION['msg']['photo'] ?></span>
                         <?php } ?>
                      </div>
                   </div>
@@ -109,4 +109,5 @@
 
 <?php
 unset($_SESSION['msg']);
+unset($_SESSION['value']);
 ?>
