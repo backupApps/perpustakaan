@@ -15,10 +15,10 @@ if ($name == '') {
 }
 
 if ($address == '') {
-   $_SESSION['msg']['name'] = "Kolom alamat tidak boleh kosong!";
+   $_SESSION['msg']['address'] = "Kolom alamat tidak boleh kosong!";
 }
 
-if (isset($_SESSION['msg']['name'])) {
+if (isset($_SESSION['msg'])) {
    header('location: ../../../?page=publisher/update-publisher&code='.$code);
    exit();
 }
