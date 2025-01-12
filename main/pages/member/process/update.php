@@ -89,7 +89,7 @@ if (isset($_SESSION['msg'])) {
    exit();
 }
 
-$sql = "SELECT * FROM member WHERE email='$email' AND nik!='$nik'";
+$sql = "SELECT * FROM member WHERE (email='$email' OR phone_number='$phoneNumber') AND nik!='$nik'";
 $query = mysqli_query($connect, $sql);
 if (mysqli_num_rows($query) != 0) {
    $_SESSION['msg']['failed'] = "Data anggota sudah ada, periksa kembali nomor telepon atau alamat email!";
