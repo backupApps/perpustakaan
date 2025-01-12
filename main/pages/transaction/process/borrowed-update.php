@@ -92,9 +92,7 @@ try {
       $bookCode = strtoupper($bookCode);
       $queryDetail = "INSERT INTO detail_transaksi (id, id_transaksi, nik_member, code_book) 
                         VALUES (NULL, '$id', '$nik_member', '$bookCode')";
-      if (!mysqli_query($connect, $queryDetail)) {
-         throw new Exception(mysqli_error($connect));
-      }
+      mysqli_query($connect, $queryDetail);
    }
    mysqli_commit($connect);
    $_SESSION['msg']['sukses'] = "Buku baru berhasil ditambahkan!";

@@ -80,18 +80,14 @@ mysqli_autocommit($connect, false);
 try {
     $queryTransaksi = "INSERT INTO transaksi (id, nik_member, borrow_date, return_date) 
                        VALUES (NULL, '$nik_member', '$borrow_date', NULL)";
-    if (!mysqli_query($connect, $queryTransaksi)) {
-        throw new Exception(mysqli_error($connect));
-    }
+    mysqli_query($connect, $queryTransaksi);
 
     $idTransaksi = mysqli_insert_id($connect);
     foreach ($books as $book) {
         $book = strtoupper($book['code']);
         $queryDetail = "INSERT INTO detail_transaksi (id, id_transaksi, nik_member, code_book) 
                         VALUES (NULL, '$idTransaksi', '$nik_member', '$book')";
-        if (!mysqli_query($connect, $queryDetail)) {
-            throw new Exception(mysqli_error($connect));
-        }
+        mysqli_query($connect, $queryDetail);
     }
 
     mysqli_commit($connect);

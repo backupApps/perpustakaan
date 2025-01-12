@@ -7,9 +7,9 @@
                   <h5 class="mb-0">Return Books
                </div>
                <?php if (isset($_SESSION['msg']['failed'])) { ?>
-                  <div class="alert alert-danger ms-2 me-2" role="alert">
-                     <?php echo $_SESSION['msg']['failed']; ?>
-                  </div>
+               <div class="alert alert-danger ms-2 me-2" role="alert">
+                  <?php echo $_SESSION['msg']['failed']; ?>
+               </div>
                <?php } ?>
                <div class="card-body">
                   <div class="mb-6">
@@ -43,7 +43,7 @@
                      } ?>
                   </div>
                   <div class="text-end">
-                     <button type="submit" class="btn btn-secondary me-3 p-4">Reset</button>
+                     <button type="reset" class="btn btn-secondary me-3 p-4">Reset</button>
                      <button type="submit" name="submit" class="btn btn-primary me-3 p-4">Submit</button>
                   </div>
                </div>

@@ -27,9 +27,11 @@ if (isset($_REQUEST['id_tr'])) {
 
     // Ambil detail transaksi beserta data member dan buku
     $sql = "SELECT * FROM detail_transaksi
-            LEFT JOIN book ON detail_transaksi.code_book = book.code
             LEFT JOIN transaksi ON detail_transaksi.id_transaksi = transaksi.id
             LEFT JOIN member ON transaksi.nik_member = member.nik
+            LEFT JOIN book ON detail_transaksi.code_book = book.code
+            LEFT JOIN category ON book.category_code = category.category_code
+            LEFT JOIN publisher ON book.publisher_code = publisher.publisher_code
             WHERE detail_transaksi.id_transaksi = '$id'
    ";
     $query = mysqli_query($connect, $sql);

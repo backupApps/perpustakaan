@@ -20,17 +20,20 @@ $no = 1;
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone Number</th>
+                  <th>Address</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
                <tr>
                   <td>
-                     <img class="rounded" style="width: 150px;" src="pages/member/photo/<?php echo $dataMember['photo']; ?>" alt="">
+                     <img class="rounded" style="width: 150px;"
+                        src="pages/member/photo/<?php echo $dataMember['photo']; ?>" alt="">
                   </td>
                   <td><?php echo $dataMember['nik']; ?></td>
                   <td><?php echo $dataMember['name']; ?></td>
                   <td><?php echo $dataMember['email']; ?></td>
                   <td><?php echo $dataMember['phone_number']; ?></td>
+                  <td><?php echo $dataMember['address']; ?></td>
                </tr>
             </tbody>
          </table>
@@ -43,22 +46,35 @@ $no = 1;
             <thead>
                <tr>
                   <th>No.</th>
-                  <th>Title Book</th>
                   <th>Cover</th>
+                  <th>Title Book</th>
+                  <th>Writer</th>
+                  <th>Category</th>
+                  <th>Publisher</th>
+                  <th>ISBN</th>
+                  <th>Borrow Date</th>
                   <th>Return Date</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
                <?php while ($data = mysqli_fetch_array($query)) { ?>
-                  <tr>
-                     <td><?php echo $no++; ?></td>
-                     <td><?php echo $data['title']; ?> | <?= $data['code']; ?></td>
-                     <td>
-                        <img class="w-25 rounded" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
-                     </td>
-                     <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>'; ?>
-                     </td>
-                  </tr>
+               <tr>
+                  <td><?php echo $no++; ?></td>
+                  <td>
+                     <img width="100" class="rounded" src="pages/book/image/<?php echo $data['cover']; ?>" alt="">
+                  </td>
+                  <td><b><?php echo $data['code']; ?></b> | <?php echo $data['title']; ?></td>
+                  <td><?php echo $data['writer']; ?></td>
+                  <td><?php echo $data['category_name']; ?></td>
+                  <td><?php echo $data['publisher_name']; ?></td>
+                  <td><?php echo $data['isbn']; ?></td>
+                  <td>
+                     <?php echo $data['borrow_date']; ?>
+                  </td>
+                  <td>
+                     <?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>'; ?>
+                  </td>
+               </tr>
                <?php } ?>
             </tbody>
          </table>
