@@ -87,19 +87,15 @@ if (!empty($_SESSION['msg'])) {
 
 // Tambahkan buku baru ke transaksi
 mysqli_autocommit($connect, false);
-try {
-   foreach ($newBooks as $bookCode) {
-      $bookCode = strtoupper($bookCode);
-      $queryDetail = "INSERT INTO detail_transaksi (id, id_transaksi, nik_member, code_book) 
-                        VALUES (NULL, '$id', '$nik_member', '$bookCode')";
-      mysqli_query($connect, $queryDetail);
-   }
-   mysqli_commit($connect);
-   $_SESSION['msg']['sukses'] = "Buku baru berhasil ditambahkan!";
-} catch (Exception $e) {
-   mysqli_rollback($connect);
-   $_SESSION['msg']['general'] = "Terjadi kesalahan saat menambahkan buku: " . $e->getMessage();
+
+foreach ($newBooks as $bookCode) {
+   $bookCode = strtoupper($bookCode);
+   $queryDetail = "INSERT INTO detail_transaksi (id, id_transaksi, nik_member, code_book) 
+                     VALUES (NULL, '$id', '$nik_member', '$bookCode')";
+   mysqli_query($connect, $queryDetail);
 }
+mysqli_commit($connect);
+$_SESSION['msg']['sukses'] = "Buku baru berhasil ditambahkan!";
 
 // Redirect ke halaman transaksi
 header('location: ../../../?page=transaction/borrow-update&id=' . $id);

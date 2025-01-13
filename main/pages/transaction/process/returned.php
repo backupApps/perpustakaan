@@ -39,53 +39,36 @@ if (isset($_SESSION['msg'])) {
 // Mulai transaksi
 mysqli_autocommit($connect, false); // Mulai transaksi untuk konsistensi data
 
-try {
-   // 1. Cek apakah ada transaksi peminjaman yang belum dikembalikan
-   $sqlCheckReturn = "
-      SELECT borrow_date, return_date 
-      FROM transaksi 
-      WHERE nik_member='$nik_member' 
-         AND return_date IS NULL
-   ";
-   $queryCheckReturn = mysqli_query($connect, $sqlCheckReturn);
+// 1. Cek apakah ada transaksi peminjaman yang belum dikembalikan
+$sqlCheckReturn = "SELECT borrow_date, return_date FROM transaksi 
+                  WHERE nik_member='$nik_member' AND return_date IS NULL";
+$queryCheckReturn = mysqli_query($connect, $sqlCheckReturn);
 
-   $dataBorrow = mysqli_fetch_assoc($queryCheckReturn);
-   if (!$dataBorrow) {
-      $_SESSION['msg']['failed'] = "Tidak ada peminjaman buku yang belum dikembalikan untuk member ini!";
-      header('location: ../../../?page=transaction/return');
-      exit();
-   }
-
-   // 2. Validasi tanggal pengembalian tidak boleh lebih kecil dari tanggal peminjaman
-   $borrow_date = $dataBorrow['borrow_date']; // Ambil tanggal peminjaman
-   if (strtotime($return_date) < strtotime($borrow_date)) {
-      $_SESSION['msg']['failed'] = "Tanggal pengembalian tidak boleh lebih kecil dari tanggal peminjaman!";
-      header('location: ../../../?page=transaction/return');
-      exit();
-   }
-
-   // 3. Update return_date untuk transaksi yang belum dikembalikan
-   $sqlUpdateTransaksi = "
-      UPDATE transaksi 
-      SET return_date='$return_date' 
-      WHERE nik_member='$nik_member' AND return_date IS NULL
-   ";
-   mysqli_query($connect, $sqlUpdateTransaksi);
-
-   // Commit transaksi
-   mysqli_commit($connect);
-
-   // Set pesan sukses
-   $_SESSION['msg']['return'] = "Buku peminjaman <b>" . $nik_member . "</b> berhasil dikembalikan!";
-   unset($_SESSION['value']);
-   header('location: ../../../?page=transaction/show-data');
-   exit();
-
-} catch (Exception $e) {
-   // Rollback jika terjadi error
-   mysqli_rollback($connect);
-   $_SESSION['msg']['failed'] = "Terjadi kesalahan saat memproses data: " . $e->getMessage();
+$dataBorrow = mysqli_fetch_assoc($queryCheckReturn);
+if (!$dataBorrow) {
+   $_SESSION['msg']['failed'] = "Tidak ada peminjaman buku yang belum dikembalikan untuk member ini!";
    header('location: ../../../?page=transaction/return');
    exit();
 }
-?>
+
+// 2. Validasi tanggal pengembalian tidak boleh lebih kecil dari tanggal peminjaman
+$borrow_date = $dataBorrow['borrow_date']; // Ambil tanggal peminjaman
+if (strtotime($return_date) < strtotime($borrow_date)) {
+   $_SESSION['msg']['failed'] = "Tanggal pengembalian tidak boleh lebih kecil dari tanggal peminjaman!";
+   header('location: ../../../?page=transaction/return');
+   exit();
+}
+
+// 3. Update return_date untuk transaksi yang belum dikembalikan
+$sqlUpdateTransaksi = "UPDATE transaksi SET return_date='$return_date' 
+                     WHERE nik_member='$nik_member' AND return_date IS NULL";
+mysqli_query($connect, $sqlUpdateTransaksi);
+
+// Commit transaksi
+mysqli_commit($connect);
+
+// Set pesan sukses
+$_SESSION['msg']['return'] = "Buku peminjaman <b>" . $nik_member . "</b> berhasil dikembalikan!";
+unset($_SESSION['value']);
+header('location: ../../../?page=transaction/show-data');
+exit();
