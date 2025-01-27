@@ -14,6 +14,34 @@ $totalPages = ceil($totalData / $limit); // Total halaman
 $sql = "SELECT * FROM publisher LIMIT $limit OFFSET $offset";
 $query = mysqli_query($connect, $sql);
 
+if (isset($_POST['search'])) {
+   $publisher_name = $_POST['publisher_name'];
+
+   if (!empty($publisher_name)) {
+      // Simpan input pencarian ke session
+      $_SESSION['value']['publisher_name'] = $publisher_name;
+
+      // Query pencarian
+      $sql = "SELECT * FROM publisher WHERE publisher_name LIKE '%$publisher_name%' ORDER BY publisher_name ASC";
+      $query = mysqli_query($connect, $sql);
+
+      // Hitung total data hasil pencarian
+      $totalQuery = mysqli_query($connect, "SELECT COUNT(*) AS total FROM publisher WHERE publisher_name LIKE '%$publisher_name%'");
+      $totalData = mysqli_fetch_assoc($totalQuery)['total'];
+      $totalPages = ceil($totalData / $limit);
+
+      // Notifikasi jika data tidak ditemukan
+      if (mysqli_num_rows($query) == 0) {
+         $_SESSION['msg']['not-found'] = 'Penerbit tidak ditemukan!';
+      }
+   } else {
+      // Reset pencarian jika input kosong
+      unset($_SESSION['value']['publisher_name'], $_SESSION['msg']['not-found']);
+      $sql = "SELECT * FROM publisher LIMIT $limit OFFSET $offset";
+      $query = mysqli_query($connect, $sql);
+   }
+}
+
 if ($page < 1) $page = 1;
 if ($page > $totalPages) $page = $totalPages;
 

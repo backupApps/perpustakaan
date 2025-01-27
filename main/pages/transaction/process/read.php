@@ -2,7 +2,7 @@
 include('../components/connection.php');
 
 // Pagination setup
-$limit = 5; // Jumlah data per halaman
+$limit = 10; // Jumlah data per halaman
 $page = isset($_REQUEST['pagination']) ? (int)$_REQUEST['pagination'] : 1; // Halaman saat ini, default 1
 
 // Hitung total data
@@ -28,9 +28,68 @@ $sql = "SELECT
         LEFT JOIN member ON transaksi.nik_member = member.nik
         LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
         GROUP BY transaksi.id 
-        ORDER BY transaksi.id 
-        DESC LIMIT $limit OFFSET $offset";
+        ORDER BY transaksi.id DESC
+        LIMIT $limit OFFSET $offset";
 $query = mysqli_query($connect, $sql);
+
+// fungsi cari
+if (isset($_POST['search'])) {
+    $member_nik = $_POST['member_nik'];
+
+    if (!empty($member_nik)) {
+        // Simpan input pencarian ke session
+        $_SESSION['value']['member_nik'] = $member_nik;
+
+        // Query pencarian
+        $sql = "SELECT 
+                transaksi.id, 
+                transaksi.nik_member, 
+                transaksi.borrow_date, 
+                transaksi.return_date, 
+                detail_transaksi.id_transaksi, 
+                member.name, 
+                COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
+            FROM transaksi
+            LEFT JOIN member ON transaksi.nik_member = member.nik
+            LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
+            WHERE transaksi.nik_member LIKE '%$member_nik%'
+            GROUP BY transaksi.id 
+            ORDER BY transaksi.id DESC
+            LIMIT $limit OFFSET $offset";
+        $query = mysqli_query($connect, $sql);
+
+        // Hitung total data hasil pencarian
+        $totalQuery = mysqli_query($connect, "SELECT COUNT(DISTINCT transaksi.id) AS total FROM transaksi
+                                      LEFT JOIN member ON transaksi.nik_member = member.nik
+                                      LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
+                                      WHERE transaksi.nik_member LIKE '%$member_nik%'");
+        $totalData = mysqli_fetch_assoc($totalQuery)['total'];
+        $totalPages = ceil($totalData / $limit);
+
+        // Notifikasi jika data tidak ditemukan
+        if (mysqli_num_rows($query) == 0) {
+            $_SESSION['msg']['not-found'] = 'Anggota tidak ditemukan!';
+        }
+    } else {
+        // Reset pencarian jika input kosong
+        unset($_SESSION['value']['member_nik'], $_SESSION['msg']['not-found']);
+        $sql = "SELECT 
+                    transaksi.id, 
+                    transaksi.nik_member, 
+                    transaksi.borrow_date, 
+                    transaksi.return_date, 
+                    detail_transaksi.id_transaksi, 
+                    member.name, 
+                    COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
+                FROM transaksi
+                LEFT JOIN member ON transaksi.nik_member = member.nik
+                LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
+                GROUP BY transaksi.id 
+                ORDER BY transaksi.id DESC
+                LIMIT $limit OFFSET $offset";
+        $query = mysqli_query($connect, $sql);
+    }
+}
 
 // detail
 if (isset($_REQUEST['detail'])) {
