@@ -4,26 +4,37 @@ include('../components/connection.php');
 // Pagination setup
 $limit = 5; // Jumlah data per halaman
 $page = isset($_REQUEST['pagination']) ? (int)$_REQUEST['pagination'] : 1; // Halaman saat ini, default 1
-$offset = ($page - 1) * $limit; // Hitung offset untuk SQL
 
 // Hitung total data
-$totalQuery = mysqli_query($connect, "SELECT COUNT(*) AS total FROM book");
+$totalQuery = mysqli_query($connect, "SELECT COUNT(DISTINCT transaksi.id) AS total FROM transaksi
+                                      LEFT JOIN member ON transaksi.nik_member = member.nik
+                                      LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi");
 $totalData = mysqli_fetch_assoc($totalQuery)['total'];
 $totalPages = ceil($totalData / $limit); // Total halaman
 
-$sql = "SELECT *, COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
+if ($page < 1) $page = 1;
+if ($page > $totalPages) $page = $totalPages;
+$offset = ($page - 1) * $limit; // Hitung offset untuk SQL
+
+$sql = "SELECT 
+            transaksi.id, 
+            transaksi.nik_member, 
+            transaksi.borrow_date, 
+            transaksi.return_date, 
+            detail_transaksi.id_transaksi, 
+            member.name, 
+            COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
         FROM transaksi
         LEFT JOIN member ON transaksi.nik_member = member.nik
         LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
-        GROUP BY transaksi.id ORDER BY transaksi.id DESC LIMIT $limit OFFSET $offset";
+        GROUP BY transaksi.id 
+        ORDER BY transaksi.id 
+        DESC LIMIT $limit OFFSET $offset";
 $query = mysqli_query($connect, $sql);
 
-if ($page < 1) $page = 1;
-if ($page > $totalPages) $page = $totalPages;
-
 // detail
-if (isset($_REQUEST['id_tr'])) {
-    $id = $_REQUEST['id_tr'];
+if (isset($_REQUEST['detail'])) {
+    $id = $_REQUEST['detail'];
 
     // Ambil detail transaksi beserta data member dan buku
     $sql = "SELECT * FROM detail_transaksi
@@ -40,7 +51,7 @@ if (isset($_REQUEST['id_tr'])) {
     $dataMember = mysqli_fetch_array($queryMember);
 }
 
-// menampilkan data lama di form peminjaman
+// tambah buku
 if (isset($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
 
