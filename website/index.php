@@ -35,20 +35,20 @@ if (isset($_POST['search'])) {
          <!-- Carousel -->
          <div id="carousel-container" class="col-md mb-10">
 
-            <?php 
-                if (!isset($_POST['search']) || empty($_POST['title-book'])) {
-                   include('layouts/carousel.php'); 
-                }
-                ?>
+            <?php
+            if (!isset($_POST['search']) || empty($_POST['title-book'])) {
+               include('layouts/carousel.php');
+            }
+            ?>
          </div>
 
          <!-- CARD -->
          <div class="row mb-12 g-6" id="card">
-            <?php 
-               if (isset($_SESSION['not-found'])) {
-                  echo '<h1 class="text-center bg-warning py-5">'.$_SESSION['not-found'].'</h1>';
-               }
-               include('layouts/card2.php') 
+            <?php
+            if (isset($_SESSION['not-found'])) {
+               echo '<h1 class="text-center bg-warning py-5">' . $_SESSION['not-found'] . '</h1>';
+            }
+            include('layouts/card.php')
             ?>
          </div>
       </div>
@@ -73,9 +73,9 @@ if (isset($_POST['search'])) {
 
 </html>
 
-<?php 
+<?php
 unset($_SESSION['value-title']);
-unset($_SESSION['not-found']); 
+unset($_SESSION['not-found']);
 
 
 
