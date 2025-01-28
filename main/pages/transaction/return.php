@@ -38,7 +38,7 @@
                      <input
                         class="form-control <?php echo (isset($_SESSION['msg']['return_date'])) ? 'border-danger' : null; ?>"
                         value="<?php echo (isset($_SESSION['value']['return_date'])) ? $_SESSION['value']['return_date'] : null; ?>"
-                        type="date" name="return_date" />
+                        type="datetime-local" name="return_date" />
                      <?php if (isset($_SESSION['msg']['return_date'])) {
                         echo '<span class="text-danger">' . $_SESSION['msg']['return_date'] . '</span>';
                      } ?>

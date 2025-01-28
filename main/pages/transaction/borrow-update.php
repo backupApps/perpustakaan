@@ -46,7 +46,7 @@
                      <input readonly
                         class="form-control disabled <?php echo (isset($_SESSION['msg']['borrow_date'])) ? 'border-danger' : null; ?>"
                         value="<?php echo $_SESSION['value']['borrow_date'] ?? $data['borrow_date'] ?? ''; ?>"
-                        type="date" name="borrow-date" />
+                        type="datetime-local" name="borrow-date" />
                      <?php if (isset($_SESSION['msg']['borrow_date'])) {
                         echo '<span class="text-danger">' . $_SESSION['msg']['borrow_date'] . '</span>';
                      } ?>

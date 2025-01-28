@@ -110,9 +110,9 @@ $no = $offset + 1;
                      <td><?php echo $no++; ?></td>
                      <td><?php echo $data['nik_member']; ?></td>
                      <td><?php echo $data['name'] ?></td>
-                     <td><?php echo ($data['return_date'] != null) ? '0' : $data['borrowed_books'] ?>/5</td>
-                     <td><?php echo $data['borrow_date'] ?></td>
-                     <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Belum Dikembalikan</b>' ?></td>
+                     <td><?php echo ($data['returned_date'] != null) ? '0' : $data['borrowed_books'] ?>/5</td>
+                     <td><?php echo $data['borrowed_date'] ?></td>
+                     <td><?php echo ($data['returned_date'] != null) ? $data['returned_date'] : '<b>Belum Dikembalikan</b>' ?></td>
                      <td>
                         <a href="?page=transaction/detail-borrower&detail=<?php echo $data['id_transaksi']; ?>"
                            class="btn btn-sm btn-warning">
@@ -120,7 +120,7 @@ $no = $offset + 1;
                            <i class="ri-book-open-line"></i>
                         </a>
                         <a href="?page=transaction/borrow-update&id=<?php echo $data['id_transaksi']; ?>"
-                           class="btn btn-sm btn-info <?php echo ($data['return_date'] != null || $data['borrowed_books'] == '5') ? 'disabled' : null ?>">
+                           class="btn btn-sm btn-info <?php echo ($data['returned_date'] != null || $data['borrowed_books'] == '5') ? 'disabled' : null ?>">
                            <i class="ri-add-line"></i>
                            Tambah Buku
                         </a>

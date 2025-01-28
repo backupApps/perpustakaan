@@ -19,8 +19,8 @@ $offset = ($page - 1) * $limit; // Hitung offset untuk SQL
 $sql = "SELECT 
             transaksi.id, 
             transaksi.nik_member, 
-            transaksi.borrow_date, 
-            transaksi.return_date, 
+            DATE_FORMAT(transaksi.borrow_date, '%Y-%m-%d %H:%i') AS borrowed_date,
+            DATE_FORMAT(transaksi.return_date, '%Y-%m-%d %H:%i') AS returned_date,
             detail_transaksi.id_transaksi, 
             member.name, 
             COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
@@ -42,20 +42,19 @@ if (isset($_POST['search'])) {
 
         // Query pencarian
         $sql = "SELECT 
-                transaksi.id, 
-                transaksi.nik_member, 
-                transaksi.borrow_date, 
-                transaksi.return_date, 
-                detail_transaksi.id_transaksi, 
-                member.name, 
-                COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
-            FROM transaksi
-            LEFT JOIN member ON transaksi.nik_member = member.nik
-            LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
-            WHERE transaksi.nik_member LIKE '%$member_nik%'
-            GROUP BY transaksi.id 
-            ORDER BY transaksi.id DESC
-            LIMIT $limit OFFSET $offset";
+                    transaksi.id, 
+                    transaksi.nik_member, 
+                    DATE_FORMAT(transaksi.borrow_date, '%Y-%m-%d %H:%i') AS borrowed_date,
+                    DATE_FORMAT(transaksi.return_date, '%Y-%m-%d %H:%i') AS returned_date, 
+                    detail_transaksi.id_transaksi, 
+                    member.name, 
+                    COUNT(detail_transaksi.id_transaksi) AS borrowed_books 
+                FROM transaksi
+                LEFT JOIN member ON transaksi.nik_member = member.nik
+                LEFT JOIN detail_transaksi ON transaksi.id = detail_transaksi.id_transaksi
+                WHERE transaksi.nik_member LIKE '%$member_nik%'
+                GROUP BY transaksi.id 
+                ORDER BY transaksi.id DESC";
         $query = mysqli_query($connect, $sql);
 
         // Hitung total data hasil pencarian
@@ -76,8 +75,8 @@ if (isset($_POST['search'])) {
         $sql = "SELECT 
                     transaksi.id, 
                     transaksi.nik_member, 
-                    transaksi.borrow_date, 
-                    transaksi.return_date, 
+                    DATE_FORMAT(transaksi.borrow_date, '%Y-%m-%d %H:%i') AS borrowed_date,
+                    DATE_FORMAT(transaksi.return_date, '%Y-%m-%d %H:%i') AS returned_date, 
                     detail_transaksi.id_transaksi, 
                     member.name, 
                     COUNT(detail_transaksi.id_transaksi) AS borrowed_books 

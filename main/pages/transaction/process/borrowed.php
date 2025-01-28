@@ -79,7 +79,7 @@ if (!empty($_SESSION['msg'])) {
 mysqli_autocommit($connect, false);
 
 $queryTransaksi = "INSERT INTO transaksi (id, nik_member, borrow_date, return_date) 
-                    VALUES (NULL, '$nik_member', '$borrow_date', NULL)";
+                    VALUES (NULL, '$nik_member', DATE_FORMAT('$borrow_date', '%Y-%m-%dT%H:%i'), NULL)";
 mysqli_query($connect, $queryTransaksi);
 
 $idTransaksi = mysqli_insert_id($connect);

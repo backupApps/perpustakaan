@@ -40,7 +40,9 @@ if (isset($_SESSION['msg'])) {
 mysqli_autocommit($connect, false); // Mulai transaksi untuk konsistensi data
 
 // 1. Cek apakah ada transaksi peminjaman yang belum dikembalikan
-$sqlCheckReturn = "SELECT borrow_date, return_date FROM transaksi 
+$sqlCheckReturn = "SELECT borrow_date, return_date, member.name
+                  FROM transaksi
+                  LEFT JOIN member ON transaksi.nik_member = member.nik
                   WHERE nik_member='$nik_member' AND return_date IS NULL";
 $queryCheckReturn = mysqli_query($connect, $sqlCheckReturn);
 
@@ -60,7 +62,7 @@ if (strtotime($return_date) < strtotime($borrow_date)) {
 }
 
 // 3. Update return_date untuk transaksi yang belum dikembalikan
-$sqlUpdateTransaksi = "UPDATE transaksi SET return_date='$return_date' 
+$sqlUpdateTransaksi = "UPDATE transaksi SET return_date=STR_TO_DATE('$return_date', '%Y-%m-%dT%H:%i') 
                      WHERE nik_member='$nik_member' AND return_date IS NULL";
 mysqli_query($connect, $sqlUpdateTransaksi);
 
@@ -68,7 +70,7 @@ mysqli_query($connect, $sqlUpdateTransaksi);
 mysqli_commit($connect);
 
 // Set pesan sukses
-$_SESSION['msg']['return'] = "Buku peminjaman <b>" . $nik_member . "</b> berhasil dikembalikan!";
+$_SESSION['msg']['return'] = "Buku peminjaman <b>" . $nik_member . " | " . $dataBorrow['name'] . "</b> berhasil dikembalikan!";
 unset($_SESSION['value']);
 header('location: ../../../?page=transaction/show-data');
 exit();
