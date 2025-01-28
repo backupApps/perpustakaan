@@ -22,8 +22,8 @@ $no = $offset + 1;
          <form action="" method="POST">
             <div class="navbar-nav align-items-center border-primary rounded px-4">
                <div class="input-group">
-                  <input type="text" name="member_name" class="form-control border-primary" placeholder="Cari Anggota"
-                     value="<?= (isset($_SESSION['value']['member_name'])) ? $_SESSION['value']['member_name'] : null; ?>">
+                  <input type="text" name="member_nik" class="form-control border-primary" placeholder="Cari NIK Anggota"
+                     value="<?= (isset($_SESSION['value']['member_nik'])) ? $_SESSION['value']['member_nik'] : null; ?>">
                   <button class="btn btn-outline-primary waves-effect" type="submit" id="button-addon2"
                      name="search">Cari</button>
                </div>

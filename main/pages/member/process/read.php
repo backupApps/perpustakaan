@@ -3,7 +3,7 @@ include('../components/connection.php');
 
 
 // Pagination setup
-$limit = 5; // Jumlah data per halaman
+$limit = 10; // Jumlah data per halaman
 $page = isset($_REQUEST['pagination']) ? (int)$_REQUEST['pagination'] : 1; // Halaman saat ini, default 1
 $offset = ($page - 1) * $limit; // Hitung offset untuk SQL
 
@@ -16,18 +16,18 @@ $sql = "SELECT * FROM member ORDER BY name ASC LIMIT $limit OFFSET $offset";
 $query = mysqli_query($connect, $sql);
 
 if (isset($_POST['search'])) {
-   $member_name = $_POST['member_name'];
+   $member_nik = $_POST['member_nik'];
 
-   if (!empty($member_name)) {
+   if (!empty($member_nik)) {
       // Simpan input pencarian ke session
-      $_SESSION['value']['member_name'] = $member_name;
+      $_SESSION['value']['member_nik'] = $member_nik;
 
       // Query pencarian
-      $sql = "SELECT * FROM member WHERE name LIKE '%$member_name%' ORDER BY name ASC";
+      $sql = "SELECT * FROM member WHERE nik LIKE '%$member_nik%' ORDER BY name ASC";
       $query = mysqli_query($connect, $sql);
 
       // Hitung total data hasil pencarian
-      $totalQuery = mysqli_query($connect, "SELECT COUNT(*) AS total FROM member WHERE name LIKE '%$member_name%'");
+      $totalQuery = mysqli_query($connect, "SELECT COUNT(*) AS total FROM member WHERE name LIKE '%$member_nik%'");
       $totalData = mysqli_fetch_assoc($totalQuery)['total'];
       $totalPages = ceil($totalData / $limit);
 
@@ -37,7 +37,7 @@ if (isset($_POST['search'])) {
       }
    } else {
       // Reset pencarian jika input kosong
-      unset($_SESSION['value']['member_name'], $_SESSION['msg']['not-found']);
+      unset($_SESSION['value']['member_nik'], $_SESSION['msg']['not-found']);
       $sql = "SELECT * FROM member ORDER BY name ASC LIMIT $limit OFFSET $offset";
       $query = mysqli_query($connect, $sql);
    }

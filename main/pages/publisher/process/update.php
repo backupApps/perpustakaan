@@ -38,7 +38,7 @@ if (mysqli_num_rows($query) != 0) {
    exit();
 }
 
-$sql = "UPDATE publisher SET publisher_name='$name', address='$address' WHERE publisher_code='$code'";
+$sql = "UPDATE publisher SET publisher_name='$name', publisher_address='$address' WHERE publisher_code='$code'";
 $query = mysqli_query($connect, $sql);
 $_SESSION['msg']['update'] = "Data penerbit berhasil di-edit!";
 header('location: ../../../?page=publisher/data-publisher');

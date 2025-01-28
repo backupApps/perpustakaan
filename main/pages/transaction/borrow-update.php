@@ -1,27 +1,4 @@
-<?php 
-include('../components/connection.php');
-if (isset($_REQUEST['id'])) {
-   $id = $_REQUEST['id'];
-
-   $sql = "SELECT * FROM detail_transaksi
-           LEFT JOIN transaksi ON detail_transaksi.id_transaksi = transaksi.id
-           LEFT JOIN book ON detail_transaksi.code_book = book.code
-           LEFT JOIN member ON detail_transaksi.nik_member = member.nik
-           WHERE detail_transaksi.id_transaksi = '$id'
-   ";
-
-   $query = mysqli_query($connect, $sql);
-   $book = [];
-   if (mysqli_num_rows($query) > 0) {
-       while ($row = mysqli_fetch_array($query)) {
-           $book[] = $row; // Menyimpan setiap baris data ke dalam array
-       }
-   }
-
-   $query = mysqli_query($connect, $sql);
-   $data = mysqli_fetch_array($query);
-}
-?>
+<?php include('process/read.php'); ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
    <form action="pages/transaction/process/borrowed-update.php" method="POST">
@@ -29,42 +6,43 @@ if (isset($_REQUEST['id'])) {
          <div class="col-xl">
             <div class="card">
                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0">Borrower | Add Books
+                  <h5 class="mb-0">Peminjam | Tambah Buku
                </div>
                <?php if (isset($_SESSION['msg']['sukses'])) { ?>
-               <div class="alert alert-success ms-2 me-2" role="alert">
-                  <?php echo $_SESSION['msg']['sukses']; ?>
-               </div>
+                  <div class="alert alert-success ms-2 me-2" role="alert">
+                     <?php echo $_SESSION['msg']['sukses']; ?>
+                  </div>
                <?php } ?>
 
                <?php if (isset($_SESSION['msg']['general'])) { ?>
-               <div class="alert alert-danger ms-2 me-2" role="alert">
-                  <?php echo $_SESSION['msg']['general']; ?>
-               </div>
+                  <div class="alert alert-danger ms-2 me-2" role="alert">
+                     <?php echo $_SESSION['msg']['general']; ?>
+                  </div>
                <?php } ?>
                <div class="card-body">
                   <div class="mb-6">
+                     <label class="form-label">NIK Anggota</label>
                      <div class="input-group">
-                        <span
-                           class="input-group-text <?php echo (isset($_SESSION['msg']['nik_member'])) ? 'border-danger' : null; ?>">
-                           <i class="ri-search-line ri-20px"></i></span>
                         <input readonly type="text" placeholder="Search Member's NIK" name="member-nik"
                            class="form-control <?php echo (isset($_SESSION['msg']['nik_member'])) ? 'border-danger' : null; ?>"
                            value="<?php echo $_SESSION['value']['nik_member'] ?? $data['nik_member'] ?? ''; ?>"
                            id="memberNik" onkeyup="showName(this.value)">
+                        <span
+                           class="input-group-text <?php echo (isset($_SESSION['msg']['nik_member'])) ? 'border-danger' : null; ?>">
+                           <i class="ri-search-line ri-20px"></i></span>
                      </div>
                      <?php if (isset($_SESSION['msg']['nik_member'])) {
                         echo '<span class="text-danger">' . $_SESSION['msg']['nik_member'] . '</span>';
                      } ?>
                   </div>
                   <div class="mb-6">
-                     <label class="form-label">Member's Name</label>
+                     <label class="form-label">Nama Anggota</label>
                      <input type="text" name="member-name" id="memberName" class="form-control"
                         placeholder="Name will appear here"
                         value="<?php echo $_SESSION['value']['member-name'] ?? $data['name'] ?? ''; ?>" readonly />
                   </div>
                   <div class="mb-6">
-                     <label class="form-label">Borrow Date</label>
+                     <label class="form-label">Waktu Peminjaman</label>
                      <input readonly
                         class="form-control disabled <?php echo (isset($_SESSION['msg']['borrow_date'])) ? 'border-danger' : null; ?>"
                         value="<?php echo $_SESSION['value']['borrow_date'] ?? $data['borrow_date'] ?? ''; ?>"
@@ -80,7 +58,7 @@ if (isset($_REQUEST['id'])) {
                   </div>
                   <div class="text-end">
                      <button type="reset" name="reset" class="btn btn-secondary me-3 p-4">Reset</button>
-                     <button type="submit" name="submit" class="btn btn-primary me-3 p-4">Submit</button>
+                     <button type="submit" name="submit" class="btn btn-primary me-3 p-4">Simpan</button>
                   </div>
                </div>
             </div>
@@ -89,11 +67,11 @@ if (isset($_REQUEST['id'])) {
             <div class="card">
                <div class="card-body">
                   <?php if (isset($_SESSION['msg']['book'])) { ?>
-                  <div class="alert alert-danger float-end w-50" role="alert">
-                     <?php echo $_SESSION['msg']['book']; ?>
-                  </div>
+                     <div class="alert alert-danger float-end w-50" role="alert">
+                        <?php echo $_SESSION['msg']['book']; ?>
+                     </div>
                   <?php } ?>
-                  <h6>Books</h6>
+                  <h5>Buku</h5>
                   <?php
                   // Total maksimum buku
                   $maxBooks = 5;
@@ -102,24 +80,32 @@ if (isset($_REQUEST['id'])) {
                      if ($i <= count($book)) {
                         // Jika buku sudah dipinjam
                   ?>
-                  <div class="mb-4">
-                     <h6>Book <?php echo $i; ?> (Borrowed)</h6>
-                     <input type="text" class="form-control" readonly
-                        value="<?php echo $book[$i - 1]['code_book']; ?>" />
-                     <input type="text" class="form-control" readonly value="<?php echo $book[$i - 1]['title']; ?>" />
-                  </div>
-                  <?php
+                        <div class="mb-4">
+                           <label class="form-label">Buku <?php echo $i; ?> (Dipinjam)</label>
+                           <div class="input-group">
+                              <input type="text" class="form-control" readonly
+                                 value="<?php echo $book[$i - 1]['code_book']; ?>" />
+                              <span class="input-group-text"><i class="ri-search-line ri-20px"></i></span>
+                           </div>
+                           <input type="text" class="form-control" readonly value="<?php echo $book[$i - 1]['title']; ?>" />
+                        </div>
+                     <?php
                      } else {
                         // Jika buku baru
                      ?>
-                  <div class="mb-4">
-                     <h6>Book <?php echo $i; ?></h6>
-                     <input type="text" class="form-control" name="book<?php echo $i; ?>" placeholder="Book Code"
-                        onkeyup="showBook(this.value, <?php echo $i; ?>)" />
-                     <input type="text" class="form-control" readonly id="bookTitle<?php echo $i; ?>"
-                        name="title<?php echo $i; ?>" placeholder="Book Title" value="<?php echo $_SESSION['value']["title$i"] ?? '';
+                        <div class="mb-4">
+                           <label class="form-label">Buku <?php echo $i; ?></label>
+                           <div class="input-group">
+                              <input type="text" class="form-control" name="book<?php echo $i; ?>" placeholder="Kode Buku"
+                                 onkeyup="showBook(this.value, <?php echo $i; ?>)" />
+                              <span class="input-group-text"><i class="ri-search-line ri-20px"></i></span>
+                           </div>
+                           </span>
+                           <input type="text" class="form-control" readonly id="bookTitle<?php echo $i; ?>"
+                              name="title<?php echo $i; ?>" placeholder="Judul Buku"
+                              value="<?php echo $_SESSION['value']["title$i"] ?? '';
                                        echo $book[$i - 1]['title'] ?? '' ?>" />
-                  </div>
+                        </div>
                   <?php
                      }
                   }

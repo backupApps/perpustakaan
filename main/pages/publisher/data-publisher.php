@@ -112,7 +112,7 @@ $no = $offset + 1;
                      <td><?php echo $data['publisher_code']; ?></td>
                      <td><?php echo $data['publisher_name']; ?></td>
                      <td style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        <?php echo $data['address']; ?></td>
+                        <?php echo $data['publisher_address']; ?></td>
                      </td>
                      <td>
                         <a href="?page=publisher/update-publisher&code=<?php echo $data['publisher_code']; ?>"

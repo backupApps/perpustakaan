@@ -38,7 +38,7 @@ if (isset($_REQUEST['code'])) {
                   </div>
                   <div class="mb-6">
                      <label class="form-label">Alamat Penerbit</label>
-                     <input type="text" name="address" class="form-control" value="<?php echo $data['address']; ?>" />
+                     <input type="text" name="address" class="form-control" value="<?php echo $data['publisher_address']; ?>" />
                      <?php if (isset($_SESSION['msg']['address'])) { ?>
                         <span class="text-danger"><?php echo $_SESSION['msg']['address'] ?></span>
                      <?php } ?>

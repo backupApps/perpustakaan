@@ -2,7 +2,7 @@
 include('../components/connection.php');
 
 // Pagination setup
-$limit = 5; // Jumlah data per halaman
+$limit = 10; // Jumlah data per halaman
 $page = isset($_REQUEST['pagination']) ? (int)$_REQUEST['pagination'] : 1; // Halaman saat ini, default 1
 $offset = ($page - 1) * $limit; // Hitung offset untuk SQL
 
