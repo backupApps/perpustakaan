@@ -71,10 +71,10 @@ $no = 1;
                      <td><?php echo $data['publisher_name']; ?></td>
                      <td><?php echo $data['isbn']; ?></td>
                      <td>
-                        <?php echo $data['borrow_date']; ?>
+                        <?php echo $data['borrowed_date']; ?>
                      </td>
                      <td>
-                        <?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>'; ?>
+                        <?php echo ($data['returned_date'] != null) ? $data['returned_date'] : '<b>Belum Dikembalikan</b>'; ?>
                      </td>
                   </tr>
                <?php } ?>

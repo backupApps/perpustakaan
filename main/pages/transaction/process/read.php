@@ -95,7 +95,10 @@ if (isset($_REQUEST['detail'])) {
     $id = $_REQUEST['detail'];
 
     // Ambil detail transaksi beserta data member dan buku
-    $sql = "SELECT * FROM detail_transaksi
+    $sql = "SELECT *, 
+                DATE_FORMAT(transaksi.borrow_date, '%Y-%m-%d %H:%i') AS borrowed_date,
+                DATE_FORMAT(transaksi.return_date, '%Y-%m-%d %H:%i') AS returned_date    
+            FROM detail_transaksi
             LEFT JOIN transaksi ON detail_transaksi.id_transaksi = transaksi.id
             LEFT JOIN member ON transaksi.nik_member = member.nik
             LEFT JOIN book ON detail_transaksi.code_book = book.code
