@@ -5,7 +5,7 @@ $no = $offset + 1;
 
 <div class="container-xxl flex-grow-1 container-p-y">
    <div class="card">
-      <h5 class="card-header">Transaction | Borrower's Data</h5>
+      <h5 class="card-header">Transaksi | Data Peminjaman</h5>
       <?php if (isset($_SESSION['msg']['return']) || isset($_SESSION['msg']['not-found'])) { ?>
          <div class="alert alert-<?php echo (isset($_SESSION['msg']['return'])) ? 'success' : 'warning'; ?> mt-2" role="alert">
             <?php
@@ -97,11 +97,11 @@ $no = $offset + 1;
                <tr>
                   <th>No.</th>
                   <th>NIK</th>
-                  <th>Name</th>
-                  <th>Borrowed Books</th>
-                  <th>Borrow Date</th>
-                  <th>Return Date</th>
-                  <th>Action</th>
+                  <th>Nama</th>
+                  <th>Jumlah Peminjaman</th>
+                  <th>Waktu Peminjaman</th>
+                  <th>Waktu Pengembalian</th>
+                  <th>Aksi</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -112,7 +112,7 @@ $no = $offset + 1;
                      <td><?php echo $data['name'] ?></td>
                      <td><?php echo ($data['return_date'] != null) ? '0' : $data['borrowed_books'] ?>/5</td>
                      <td><?php echo $data['borrow_date'] ?></td>
-                     <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Not return yet</b>' ?></td>
+                     <td><?php echo ($data['return_date'] != null) ? $data['return_date'] : '<b>Belum Dikembalikan</b>' ?></td>
                      <td>
                         <a href="?page=transaction/detail-borrower&detail=<?php echo $data['id_transaksi']; ?>"
                            class="btn btn-sm btn-warning">
@@ -121,8 +121,8 @@ $no = $offset + 1;
                         </a>
                         <a href="?page=transaction/borrow-update&id=<?php echo $data['id_transaksi']; ?>"
                            class="btn btn-sm btn-info <?php echo ($data['return_date'] != null || $data['borrowed_books'] == '5') ? 'disabled' : null ?>">
-                           Add books
                            <i class="ri-add-line"></i>
+                           Tambah Buku
                         </a>
                      </td>
                   </tr>

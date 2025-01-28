@@ -7,7 +7,7 @@ $no = $offset + 1;
 <div class="container-xxl flex-grow-1 container-p-y">
 
    <div class="card">
-      <h5 class="card-header">Member | Data</h5>
+      <h5 class="card-header">Anggota | Data</h5>
       <?php if (isset($_SESSION['msg']['delete']) || isset($_SESSION['msg']['update']) || isset($_SESSION['msg']['not-found'])) { ?>
          <div class="alert alert-<?php echo (isset($_SESSION['msg']['delete']) || isset($_SESSION['msg']['update'])) ? 'success' : 'warning'; ?> mt-2" role="alert">
             <?php
@@ -99,13 +99,13 @@ $no = $offset + 1;
             <thead>
                <tr>
                   <th>No.</th>
-                  <th>Photo's</th>
+                  <th>Foto</th>
                   <th>NIK</th>
-                  <th>Name</th>
-                  <th>Phone Number</th>
+                  <th>Nama</th>
+                  <th>Nomor HP</th>
                   <th>E-mail</th>
-                  <th>Address</th>
-                  <th>Action</th>
+                  <th>Alamat</th>
+                  <th>Aksi</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -123,13 +123,13 @@ $no = $offset + 1;
                      <td><?php echo $data['address'] ?></td>
                      <td>
                         <a href="?page=member/update-member&nik=<?php echo $data['nik']; ?>" class="btn btn-sm btn-info">
-                           Edit
+                           Ubah
                            <i class="ri-pencil-line"></i>
                         </a> |
                         <a href="pages/member/process/delete.php?nik=<?php echo $data['nik']; ?>"
                            onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
                            <i class="ri-delete-bin-line"></i>
-                           Delete
+                           Hapus
                         </a>
                      </td>
                   </tr>

@@ -14,30 +14,30 @@ if (isset($_REQUEST['code'])) {
       <div class="col-xl">
          <div class="card mb-6">
             <div class="card-header d-flex justify-content-between align-items-center">
-               <h5 class="mb-0">Category | Update</h5>
+               <h5 class="mb-0">Kategori | Pembaruan</h5>
             </div>
             <?php if (isset($_SESSION['msg']['failed'])) { ?>
-            <div class="alert alert-danger mt-2" role="alert">
-               <?php echo $_SESSION['msg']['failed'];?>
-            </div>
+               <div class="alert alert-danger mt-2" role="alert">
+                  <?php echo $_SESSION['msg']['failed']; ?>
+               </div>
             <?php } ?>
             <div class="card-body">
                <form action="pages/category/process/update.php" method="POST">
                   <div class="mb-6">
-                     <label class="form-label">Code Category</label>
+                     <label class="form-label">Kode Kategori</label>
                      <input type="text" name="code" class="form-control" value="<?php echo $data['category_code']; ?>"
                         readonly />
                   </div>
                   <div class="mb-6">
-                     <label class="form-label">Name Category</label>
+                     <label class="form-label">Nama Kategori</label>
                      <input type="text" name="name" class="form-control" value="<?php echo $data['category_name']; ?>"
                         placeholder="Novel; Comic; Sains; Encyclopedia; ..." />
                      <?php if (isset($_SESSION['msg']['name'])) { ?>
-                     <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
+                        <span class="text-danger"><?php echo $_SESSION['msg']['name'] ?></span>
                      <?php } ?>
                   </div>
-                  <button type="submit" class="btn btn-secondary">Back</button>
-                  <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-secondary">Kembali</button>
+                  <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
                </form>
             </div>
          </div>

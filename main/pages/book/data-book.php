@@ -7,7 +7,7 @@ $no = $offset + 1;
 <div class="container-xxl flex-grow-1 container-p-y">
 
    <div class="card">
-      <h5 class="card-header">Book | Data</h5>
+      <h5 class="card-header">Buku | Data</h5>
       <?php if (isset($_SESSION['msg']['delete']) || isset($_SESSION['msg']['update']) || isset($_SESSION['msg']['not-found'])) { ?>
          <div class="alert alert-<?php echo (isset($_SESSION['msg']['delete']) || isset($_SESSION['msg']['update'])) ? 'success' : 'warning'; ?> mt-2" role="alert">
             <?php
@@ -99,17 +99,17 @@ $no = $offset + 1;
             <thead>
                <tr>
                   <th>No.</th>
-                  <th>Cover</th>
-                  <th>Code</th>
-                  <th>Title</th>
-                  <th>Category</th>
+                  <th>Gambar</th>
+                  <th>Kode</th>
+                  <th>Judul</th>
+                  <th>Kategori</th>
                   <th>ISBN</th>
-                  <th>Writer</th>
-                  <th>Publisher</th>
-                  <th>Date</th>
-                  <th>Language</th>
-                  <th>Synopsis</th>
-                  <th>Action</th>
+                  <th>Penulis</th>
+                  <th>Penerbit</th>
+                  <th>Tahun</th>
+                  <th>Bahasa</th>
+                  <th>Sinopsis</th>
+                  <th>Aksi</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -134,13 +134,13 @@ $no = $offset + 1;
                         <?php echo $data['synopsis'] ?></td>
                      <td>
                         <a href="?page=book/update-book&code=<?php echo $data['code']; ?>" class="btn btn-sm btn-info">
-                           Edit
+                           Ubah
                            <i class="ri-pencil-line"></i>
                         </a> |
                         <a href="pages/book/process/delete.php?code=<?php echo $data['code']; ?>"
                            onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
                            <i class="ri-delete-bin-line"></i>
-                           Delete
+                           Hapus
                         </a>
                      </td>
                   </tr>

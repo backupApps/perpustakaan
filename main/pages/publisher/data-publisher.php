@@ -7,7 +7,7 @@ $no = $offset + 1;
 <div class="container-xxl flex-grow-1 container-p-y">
 
    <div class="card">
-      <h5 class="card-header">Publisher | Data</h5>
+      <h5 class="card-header">Penerbit | Data</h5>
       <?php if (isset($_SESSION['msg']['delete']) || isset($_SESSION['msg']['update']) || isset($_SESSION['msg']['not-found'])) { ?>
          <div class="alert alert-<?php echo (isset($_SESSION['msg']['delete']) || isset($_SESSION['msg']['update'])) ? 'success' : 'warning'; ?> mt-2" role="alert">
             <?php
@@ -99,10 +99,10 @@ $no = $offset + 1;
             <thead>
                <tr>
                   <th>No.</th>
-                  <th>Code</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Action</th>
+                  <th>Kode Penerbit</th>
+                  <th>Nama Penerbit</th>
+                  <th>Alamat Penerbit</th>
+                  <th>Aksi</th>
                </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -117,13 +117,13 @@ $no = $offset + 1;
                      <td>
                         <a href="?page=publisher/update-publisher&code=<?php echo $data['publisher_code']; ?>"
                            class="btn btn-sm btn-info">
-                           Edit
+                           Ubah
                            <i class="ri-pencil-line"></i>
                         </a> |
                         <a href="pages/publisher/process/delete.php?code=<?php echo $data['publisher_code']; ?>"
                            onclick="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">
                            <i class="ri-delete-bin-line"></i>
-                           Delete
+                           Hapus
                         </a>
                      </td>
                   </tr>

@@ -13,7 +13,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
       <div class="col-md-12">
          <div class="card mb-6">
             <div class="card-header d-flex justify-content-between align-items-center">
-               <h5 class="mb-0">Book | Input</h5>
+               <h5 class="mb-0">Buku | Input</h5>
             </div>
             <?php if (isset($_SESSION['msg']['failed'])) { ?>
                <div class="alert alert-danger ms-2 me-2" role="alert">
@@ -30,7 +30,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                <form action="pages/book/process/create.php" method="POST" enctype="multipart/form-data">
                   <div class="row mt-1 g-5">
                      <div class="col-md-4">
-                        <label class="form-label">Code</label>
+                        <label class="form-label">Kode</label>
                         <input
                            class="form-control <?php echo (isset($_SESSION['msg']['code'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['code'])) ? $_SESSION['value']['code'] : null; ?>"
@@ -41,7 +41,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Title</label>
+                        <label class="form-label">Judul</label>
                         <input
                            class="form-control <?php echo (isset($_SESSION['msg']['title'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['title'])) ? $_SESSION['value']['title'] : null; ?>"
@@ -51,12 +51,12 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Category</label>
+                        <label class="form-label">Kategori</label>
                         <select
                            class="select2 form-select <?php echo (isset($_SESSION['msg']['category'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['category'])) ? $_SESSION['value']['category'] : null; ?>"
                            name="category">
-                           <option value="">-- Select Category --</option>
+                           <option value="">-- Pilih Kategori --</option>
                            <?php while ($var = mysqli_fetch_array($selectCategory)) { ?>
                               <option value="<?php echo $var['category_code']; ?>"
                                  <?php echo (isset($_SESSION['value']['category']) && $_SESSION['value']['category'] == $var['category_code']) ? 'selected' : ''; ?>>
@@ -78,7 +78,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Writer</label>
+                        <label class="form-label">Penulis</label>
                         <input
                            class="form-control <?php echo (isset($_SESSION['msg']['writer'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['writer'])) ? $_SESSION['value']['writer'] : null; ?>"
@@ -88,12 +88,12 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Publisher</label>
+                        <label class="form-label">Penerbit</label>
                         <select
                            class="select2 form-select <?php echo (isset($_SESSION['msg']['publisher'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['publisher'])) ? $_SESSION['value']['publisher'] : null; ?>"
                            name="publisher">
-                           <option value="">-- Select Publisher --</option>
+                           <option value="">-- Pilih Penerbit --</option>
                            <?php while ($var = mysqli_fetch_array($selectPublisher)) { ?>
                               <option value="<?php echo $var['publisher_code']; ?>"
                                  <?php echo (isset($_SESSION['value']['publisher']) && $_SESSION['value']['publisher'] == $var['publisher_code']) ? 'selected' : ''; ?>>
@@ -106,7 +106,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Date</label>
+                        <label class="form-label">Tahun</label>
                         <input
                            class="form-control <?php echo (isset($_SESSION['msg']['date'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['date'])) ? $_SESSION['value']['date'] : null; ?>"
@@ -116,7 +116,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Cover</label>
+                        <label class="form-label">Gambar</label>
                         <input type="file"
                            class="form-control <?php echo (isset($_SESSION['msg']['cover'])) ? 'border-danger' : null; ?>"
                            value="<?php echo (isset($_SESSION['value']['cover'])) ? $_SESSION['value']['cover'] : null; ?>"
@@ -126,11 +126,11 @@ $selectPublisher = mysqli_query($connect, $publisher);
                         <?php } ?>
                      </div>
                      <div class="col-md-4">
-                        <label class="form-label">Language</label>
+                        <label class="form-label">Bahasa</label>
                         <select
                            class="select2 form-select <?php echo (isset($_SESSION['msg']['language'])) ? 'border-danger' : null; ?>"
                            name="language">
-                           <option value="">-- Select Language --</option>
+                           <option value="">-- Pilih Bahasa --</option>
                            <option value="Indonesia"
                               <?php echo (isset($_SESSION['value']['language']) && $_SESSION['value']['language'] == 'Indonesia') ? 'selected' : ''; ?>>
                               Indonesia
@@ -150,12 +150,12 @@ $selectPublisher = mysqli_query($connect, $publisher);
                      </div>
 
                      <div class="col-12">
-                        <label class="form-label">Synopsis</label>
+                        <label class="form-label">Sinopsis</label>
                         <div class="input-group">
                            <textarea
                               style="min-height: 20vh;"
                               class="form-control ps-3 <?php echo (isset($_SESSION['msg']['synopsis'])) ? 'border-danger' : null; ?>"
-                              name="synopsis" placeholder="typing..."><?php echo (isset($_SESSION['value']['synopsis'])) ? $_SESSION['value']['synopsis'] : null; ?></textarea>
+                              name="synopsis" placeholder="tulis..."><?php echo (isset($_SESSION['value']['synopsis'])) ? $_SESSION['value']['synopsis'] : null; ?></textarea>
                         </div>
                         <?php if (isset($_SESSION['msg']['synopsis'])) { ?>
                            <span class="text-danger"><?php echo $_SESSION['msg']['synopsis'] ?></span>
@@ -164,7 +164,7 @@ $selectPublisher = mysqli_query($connect, $publisher);
                   </div>
                   <div class="mt-6">
                      <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                     <button type="submit" name="submit" class="btn btn-primary me-3">Submit</button>
+                     <button type="submit" name="submit" class="btn btn-primary me-3">Simpan</button>
                   </div>
                </form>
             </div>
