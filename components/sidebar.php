@@ -2,7 +2,7 @@
    <div class="app-brand demo">
       <a href="" class="app-brand-link">
          <img style="width: 50px;" src="../assets/img/elements/book.png" alt="">
-         <span class="app-brand-text demo menu-text fw-semibold ms-2">Perpustakaan</span>
+         <span class="app-brand-text demo menu-text fw-semibold ms-2 text-primary">E - PUSTAKA</span>
       </a>
    </div>
    <div class="menu-inner-shadow"></div>
@@ -24,19 +24,19 @@
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-book-read-line"></i>
-            <div data-i18n="Dashboards">Category</div>
+            <div data-i18n="Dashboards">Kategori</div>
          </a>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'category/data-category' || $_REQUEST['page'] == 'category/update-category') ? 'active' : null ?>">
                <a href="?page=category/data-category" class="menu-link">
-                  <div data-i18n="Data">Category Data</div>
+                  <div data-i18n="Data">Data Kategori</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'category/input-category') ? 'active' : null ?>">
                <a href="?page=category/input-category" class="menu-link">
-                  <div data-i18n="Input">Category Input</div>
+                  <div data-i18n="Input">Input Kategori</div>
                </a>
             </li>
          </ul>
@@ -49,19 +49,19 @@
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-price-tag-3-line"></i>
-            <div data-i18n="Dashboards">Publisher</div>
+            <div data-i18n="Dashboards">Penerbit</div>
          </a>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'publisher/data-publisher' || $_REQUEST['page'] == 'publisher/update-publisher') ? 'active' : null ?>">
                <a href="?page=publisher/data-publisher" class="menu-link">
-                  <div data-i18n="Data">Publisher Data</div>
+                  <div data-i18n="Data">Data Penerbit</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'publisher/input-publisher') ? 'active' : null ?>">
                <a href="?page=publisher/input-publisher" class="menu-link">
-                  <div data-i18n="Input">Publisher Input</div>
+                  <div data-i18n="Input">Input Penerbit</div>
                </a>
             </li>
          </ul>
@@ -74,19 +74,19 @@
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-book-shelf-line"></i>
-            <div data-i18n="Dashboards">Book</div>
+            <div data-i18n="Dashboards">Buku</div>
          </a>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'book/data-book' || $_REQUEST['page'] == 'book/update-book') ? 'active' : null ?>">
                <a href="?page=book/data-book" class="menu-link">
-                  <div data-i18n="Data">Book Data</div>
+                  <div data-i18n="Data">Data Buku</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'book/input-book') ? 'active' : null ?>">
                <a href="?page=book/input-book" class="menu-link">
-                  <div data-i18n="Input">Book Input</div>
+                  <div data-i18n="Input">Input Buku</div>
                </a>
             </li>
          </ul>
@@ -99,19 +99,19 @@
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-id-card-line"></i>
-            <div data-i18n="Member">Member</div>
+            <div data-i18n="Member">Anggota</div>
          </a>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'member/data-member' || $_REQUEST['page'] == 'member/update-member') ? 'active' : null ?>">
                <a href="?page=member/data-member" class="menu-link">
-                  <div data-i18n="Data">Member Data</div>
+                  <div data-i18n="Data">Data Anggota</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'member/input-member') ? 'active' : null ?>">
                <a href="?page=member/input-member" class="menu-link">
-                  <div data-i18n="Input">Member Input</div>
+                  <div data-i18n="Input">Input Anggota</div>
                </a>
             </li>
          </ul>
@@ -124,26 +124,26 @@
                            } ?>">
          <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ri-shopping-cart-line"></i>
-            <div data-i18n="Transaction">Transaction</div>
+            <div data-i18n="Transaction">Transaksi</div>
          </a>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'transaction/show-data' || $_REQUEST['page'] == 'transaction/borrow-update') ? 'active' : null ?>">
                <a href="?page=transaction/show-data" class="menu-link">
-                  <div data-i18n="Data">Borrower's Data</div>
+                  <div data-i18n="Data">Data Peminjaman</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'transaction/borrow') ? 'active' : null ?>">
                <a href="?page=transaction/borrow" class="menu-link">
-                  <div data-i18n="Data">Borrowed Books</div>
+                  <div data-i18n="Data">Peminjaman Buku</div>
                </a>
             </li>
          </ul>
          <ul class="menu-sub ms-5">
             <li class="menu-item <?php echo ($_REQUEST['page'] == 'transaction/return') ? 'active' : null ?>">
                <a href="?page=transaction/return" class="menu-link">
-                  <div data-i18n="Input">Return Books</div>
+                  <div data-i18n="Input">Pengembalian Buku</div>
                </a>
             </li>
          </ul>

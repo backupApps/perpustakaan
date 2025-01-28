@@ -11,7 +11,7 @@
          <!-- Place this tag where you want the button to render. -->
          <li class="nav-item lh-1 me-4">
             <a class="btn btn-warning" href="../index.php">
-               View Books |
+               Daftar Buku |
                <img style="width: 25px;" src="../assets/img/elements/book.png" alt="">
             </a>
          </li>
