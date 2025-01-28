@@ -1,16 +1,23 @@
 <?php
 session_start();
 include('../components/connection.php');
-$sql = "SELECT * FROM book ORDER BY book.title ASC";
+$sql = "SELECT * FROM book 
+         LEFT JOIN category ON book.category_code = category.category_code
+         LEFT JOIN publisher ON book.publisher_code = publisher.publisher_code
+         ORDER BY book.title ASC";
 $query = mysqli_query($connect, $sql);
 
 if (isset($_POST['search'])) {
    $title = $_POST['title-book'];
    $_SESSION['value-title'] = $title;
-   $sql = "SELECT * FROM book WHERE title LIKE '%$title%' ORDER BY book.title ASC";
+   $sql = "SELECT * FROM book 
+            LEFT JOIN category ON book.category_code = category.category_code
+            LEFT JOIN publisher ON book.publisher_code = publisher.publisher_code
+            WHERE title LIKE '%$title%' 
+            ORDER BY book.title ASC";
    $query = mysqli_query($connect, $sql);
    if (mysqli_num_rows($query) == 0) {
-      $_SESSION['not-found'] = 'Book not found!';
+      $_SESSION['not-found'] = 'Buku tidak ditemukan!';
    }
 }
 ?>
@@ -46,7 +53,7 @@ if (isset($_POST['search'])) {
          <div class="row mb-12 g-6" id="card">
             <?php
             if (isset($_SESSION['not-found'])) {
-               echo '<h1 class="text-center bg-warning py-5">' . $_SESSION['not-found'] . '</h1>';
+               echo '<h1 class="text-center bg-warning py-5 rounded">' . $_SESSION['not-found'] . '</h1>';
             }
             include('layouts/card.php')
             ?>

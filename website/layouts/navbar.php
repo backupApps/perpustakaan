@@ -15,10 +15,10 @@
         <form action="" method="POST">
             <div class="navbar-nav align-items-center border-primary rounded px-4">
                 <div class="input-group">
-                    <input type="text" name="title-book" class="form-control border-primary" placeholder="Search book"
+                    <input type="text" name="title-book" class="form-control border-primary" placeholder="Cari Buku"
                         value="<?= (isset($_SESSION['value-title'])) ? $_SESSION['value-title'] : null; ?>">
                     <button class="btn btn-outline-primary waves-effect" type="submit" id="button-addon2"
-                        name="search">Search</button>
+                        name="search">Cari</button>
                 </div>
             </div>
         </form>
@@ -36,15 +36,15 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <div class="d-grid px-4 pt-2 pb-1">
                     <?php if (!isset($_SESSION['login'])) { ?>
-                    <a class="btn btn-danger d-flex" href="../auth/form-login.php">
-                        <div class="align-middle">Login</div>
-                        <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
-                    </a>
+                        <a class="btn btn-danger d-flex" href="../auth/form-login.php">
+                            <div class="align-middle">Login</div>
+                            <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
+                        </a>
                     <?php } else { ?>
-                    <a class="btn btn-warning d-flex" href="../main/?page=dashboard">
-                        <div class="align-middle">Dashboard</div>
-                        <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
-                    </a>
+                        <a class="btn btn-warning d-flex" href="../main/?page=dashboard">
+                            <div class="align-middle">Dashboard</div>
+                            <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
+                        </a>
                     <?php } ?>
                 </div>
             </li>

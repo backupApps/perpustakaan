@@ -1,7 +1,7 @@
 <footer class="content-footer footer bg-footer-theme shadow">
    <div class="row container-xxl p-5 justify-content-center">
       <div class="col-md-6 col-12">
-         <h5>About</h5>
+         <h5>Tentang Kami</h5>
          <p class="w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tempore
             necessitatibus optio
             nostrum fugit nihil! Necessitatibus impedit, eos nostrum amet inventore sequi fugit, ducimus,
@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-2 col-12">
          <div class="card-header">
-            <h5 class="mb-1">Connected Accounts</h5>
+            <h5 class="mb-1">Koneksi</h5>
          </div>
          <div class="card-body">
             <div class="d-flex mb-4 align-items-center">
@@ -40,7 +40,7 @@
       </div>
       <div class="col-md-2 col-12">
          <div class="card-header">
-            <h5 class="mb-1">Social Accounts</h5>
+            <h5 class="mb-1">Social Media</h5>
          </div>
          <div class="card-body">
             <!-- Social Accounts -->
